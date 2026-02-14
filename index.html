@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Redwards Media — Real Estate Media in Greater Boston</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sand: #F5F0EB;
+    --sand-light: #FAF8F5;
+    --warm-white: #FDFCFA;
+    --charcoal: #2C2926;
+    --charcoal-light: #4A4541;
+    --terracotta: #C4704B;
+    --terracotta-soft: #D4896A;
+    --terracotta-bg: rgba(196, 112, 75, 0.08);
+    --sage: #8B9E83;
+    --sage-soft: #A8B8A1;
+    --cream: #EDE8E0;
+    --border: rgba(44, 41, 38, 0.08);
+    --shadow-sm: 0 1px 3px rgba(44, 41, 38, 0.06);
+    --shadow-md: 0 4px 20px rgba(44, 41, 38, 0.08);
+    --shadow-lg: 0 12px 40px rgba(44, 41, 38, 0.1);
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body: 'DM Sans', -apple-system, sans-serif;
+    --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--charcoal);
+    background: var(--warm-white);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* ========== NAV ========== */
+  nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    background: rgba(253, 252, 250, 0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    transition: all 0.3s var(--ease-smooth);
+  }
+
+  nav .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--charcoal);
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .logo span {
+    color: var(--terracotta);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--charcoal-light);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+    cursor: pointer;
+  }
+
+  .nav-links a:hover { color: var(--terracotta); }
+
+  .nav-cta {
+    background: var(--charcoal) !important;
+    color: var(--warm-white) !important;
+    padding: 0.6rem 1.5rem;
+    border-radius: 6px;
+    font-size: 0.8rem !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: all 0.25s var(--ease-smooth) !important;
+  }
+
+  .nav-cta:hover {
+    background: var(--terracotta) !important;
+    transform: translateY(-1px);
+  }
+
+  /* ========== HERO ========== */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 2rem 4rem;
+    background: var(--sand-light);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -30%;
+    right: -10%;
+    width: 60%;
+    height: 120%;
+    background: radial-gradient(ellipse, rgba(196, 112, 75, 0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .hero-text { position: relative; z-index: 2; }
+
+  .hero-tag {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s var(--ease-out) 0.2s forwards;
+  }
+
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 4.5vw, 3.8rem);
+    font-weight: 500;
+    line-height: 1.15;
+    color: var(--charcoal);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s var(--ease-out) 0.35s forwards;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--terracotta);
+  }
+
+  .hero-desc {
+    font-size: 1.1rem;
+    color: var(--charcoal-light);
+    line-height: 1.75;
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s var(--ease-out) 0.5s forwards;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    opacity: 0;
+    animation: fadeUp 0.8s var(--ease-out) 0.65s forwards;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--charcoal);
+    color: var(--warm-white);
+    padding: 0.9rem 2rem;
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s var(--ease-smooth);
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-primary:hover {
+    background: var(--terracotta);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .btn-secondary {
+    display: inline-block;
+    color: var(--charcoal);
+    padding: 0.9rem 1.5rem;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    transition: color 0.2s;
+    cursor: pointer;
+  }
+
+  .btn-secondary:hover { color: var(--terracotta); }
+
+  .btn-secondary svg {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 0.4rem;
+    transition: transform 0.2s;
+  }
+
+  .btn-secondary:hover svg { transform: translateX(3px); }
+
+  .hero-images {
+    position: relative;
+    height: 520px;
+    opacity: 0;
+    animation: fadeIn 1s var(--ease-out) 0.5s forwards;
+  }
+
+  .hero-img {
+    position: absolute;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .hero-img-1 {
+    width: 320px;
+    height: 400px;
+    top: 0;
+    left: 0;
+    background: linear-gradient(135deg, var(--cream) 0%, var(--sage-soft) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-img-2 {
+    width: 240px;
+    height: 300px;
+    top: 120px;
+    right: 0;
+    background: linear-gradient(135deg, var(--terracotta-soft) 0%, var(--terracotta) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .img-placeholder {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .hero-stat {
+    position: absolute;
+    bottom: 20px;
+    left: 40px;
+    background: white;
+    padding: 1.2rem 1.5rem;
+    border-radius: 10px;
+    box-shadow: var(--shadow-md);
+    z-index: 3;
+  }
+
+  .hero-stat strong {
+    font-size: 1.8rem;
+    font-family: var(--font-display);
+    color: var(--terracotta);
+    display: block;
+  }
+
+  .hero-stat span {
+    font-size: 0.78rem;
+    color: var(--charcoal-light);
+    letter-spacing: 0.02em;
+  }
+
+  /* ========== SECTIONS SHARED ========== */
+  section { padding: 6rem 2rem; }
+
+  .section-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-tag {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--charcoal);
+    margin-bottom: 1rem;
+  }
+
+  .section-desc {
+    font-size: 1.05rem;
+    color: var(--charcoal-light);
+    line-height: 1.75;
+    max-width: 580px;
+  }
+
+  /* ========== SERVICES ========== */
+  .services { background: var(--warm-white); }
+
+  .services-header { margin-bottom: 4rem; }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .service-card {
+    background: var(--sand-light);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 2.5rem 2rem;
+    transition: all 0.35s var(--ease-smooth);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--terracotta);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s var(--ease-smooth);
+  }
+
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: transparent;
+  }
+
+  .service-card:hover::after { transform: scaleX(1); }
+
+  .service-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--terracotta-bg);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    color: var(--terracotta);
+  }
+
+  .service-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+  }
+
+  .service-card p {
+    font-size: 0.92rem;
+    color: var(--charcoal-light);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .service-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .service-list li {
+    font-size: 0.85rem;
+    color: var(--charcoal-light);
+    padding: 0.35rem 0;
+    padding-left: 1.2rem;
+    position: relative;
+  }
+
+  .service-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--terracotta-soft);
+    transform: translateY(-50%);
+  }
+
+  /* ========== PACKAGES ========== */
+  .packages { background: var(--sand-light); }
+
+  .packages-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .packages-header .section-desc {
+    margin: 0.75rem auto 0;
+  }
+
+  .packages-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .package-card {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    transition: all 0.35s var(--ease-smooth);
+    position: relative;
+  }
+
+  .package-card.featured {
+    border-color: var(--terracotta);
+    box-shadow: var(--shadow-md);
+    transform: scale(1.03);
+  }
+
+  .package-card.featured .package-badge {
+    display: block;
+  }
+
+  .package-badge {
+    display: none;
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--terracotta);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.35rem 1rem;
+    border-radius: 20px;
+  }
+
+  .package-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .package-card.featured:hover {
+    transform: scale(1.03) translateY(-4px);
+  }
+
+  .package-name {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+
+  .package-desc {
+    font-size: 0.85rem;
+    color: var(--charcoal-light);
+    margin-bottom: 2rem;
+  }
+
+  .package-features {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 2rem;
+    text-align: left;
+  }
+
+  .package-features li {
+    font-size: 0.88rem;
+    color: var(--charcoal-light);
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .package-features li:last-child { border-bottom: none; }
+
+  .check {
+    width: 18px;
+    height: 18px;
+    background: var(--terracotta-bg);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--terracotta);
+  }
+
+  .package-cta {
+    display: block;
+    width: 100%;
+    padding: 0.85rem;
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.3s var(--ease-smooth);
+    cursor: pointer;
+    border: none;
+  }
+
+  .package-cta-outline {
+    background: transparent;
+    color: var(--charcoal);
+    border: 1.5px solid var(--charcoal);
+  }
+
+  .package-cta-outline:hover {
+    background: var(--charcoal);
+    color: var(--warm-white);
+  }
+
+  .package-cta-filled {
+    background: var(--terracotta);
+    color: white;
+  }
+
+  .package-cta-filled:hover {
+    background: var(--charcoal);
+    transform: translateY(-1px);
+  }
+
+  /* ========== GALLERY ========== */
+  .gallery { background: var(--warm-white); }
+
+  .gallery-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 3rem;
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 280px 280px;
+    gap: 1rem;
+  }
+
+  .gallery-item {
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    background: var(--cream);
+    transition: all 0.4s var(--ease-smooth);
+  }
+
+  .gallery-item:hover {
+    transform: scale(1.02);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .gallery-item:nth-child(1) { grid-column: span 2; }
+  .gallery-item:nth-child(4) { grid-column: span 2; }
+
+  .gallery-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    color: var(--charcoal-light);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, var(--cream) 0%, var(--sand) 100%);
+  }
+
+  .gallery-item:nth-child(2) .gallery-placeholder {
+    background: linear-gradient(135deg, var(--sage-soft) 0%, var(--sage) 100%);
+    color: rgba(255,255,255,0.7);
+  }
+
+  .gallery-item:nth-child(3) .gallery-placeholder {
+    background: linear-gradient(135deg, var(--terracotta-soft) 0%, var(--terracotta) 100%);
+    color: rgba(255,255,255,0.7);
+  }
+
+  .gallery-item:nth-child(5) .gallery-placeholder {
+    background: linear-gradient(135deg, var(--charcoal-light) 0%, var(--charcoal) 100%);
+    color: rgba(255,255,255,0.5);
+  }
+
+  /* ========== VIDEO SECTION ========== */
+  .video-section {
+    background: var(--charcoal);
+    color: var(--warm-white);
+    padding: 6rem 2rem;
+  }
+
+  .video-section .section-tag { color: var(--terracotta-soft); }
+  .video-section .section-title { color: var(--warm-white); }
+  .video-section .section-desc { color: rgba(255,255,255,0.65); }
+
+  .video-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .video-card {
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    height: 320px;
+    background: var(--charcoal-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.35s var(--ease-smooth);
+  }
+
+  .video-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+  }
+
+  .play-btn {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+
+  .play-btn:hover {
+    background: var(--terracotta);
+    transform: scale(1.1);
+  }
+
+  .video-label {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.8);
+  }
+
+  /* ========== CTA ========== */
+  .cta-section {
+    background: var(--sand-light);
+    padding: 6rem 2rem;
+    text-align: center;
+  }
+
+  .cta-inner {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .cta-section .section-title {
+    margin-bottom: 1rem;
+  }
+
+  .cta-section .section-desc {
+    margin: 0 auto 2.5rem;
+    text-align: center;
+  }
+
+  /* ========== ABOUT PAGE ========== */
+  .page-about { display: none; }
+
+  .about-hero {
+    padding: 10rem 2rem 5rem;
+    background: var(--sand-light);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-hero::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    left: -10%;
+    width: 50%;
+    height: 100%;
+    background: radial-gradient(ellipse, rgba(139, 158, 131, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .about-hero-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .about-photo {
+    width: 100%;
+    height: 500px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--cream) 0%, var(--sage-soft) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+  }
+
+  .about-text .section-tag { margin-bottom: 1rem; }
+
+  .about-text h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--charcoal);
+    margin-bottom: 2rem;
+  }
+
+  .about-text h1 em {
+    font-style: italic;
+    color: var(--terracotta);
+  }
+
+  .about-bio {
+    font-size: 1.05rem;
+    color: var(--charcoal-light);
+    line-height: 1.8;
+  }
+
+  .about-bio p { margin-bottom: 1.25rem; }
+
+  .about-values {
+    background: var(--warm-white);
+    padding: 6rem 2rem;
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    margin-top: 3.5rem;
+  }
+
+  .value-item {
+    text-align: center;
+    padding: 2rem 1.5rem;
+  }
+
+  .value-num {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 400;
+    color: var(--terracotta);
+    line-height: 1;
+    margin-bottom: 0.75rem;
+  }
+
+  .value-label {
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--charcoal);
+    margin-bottom: 0.5rem;
+  }
+
+  .value-desc {
+    font-size: 0.85rem;
+    color: var(--charcoal-light);
+    line-height: 1.6;
+  }
+
+  .about-contact {
+    background: var(--sand-light);
+    padding: 5rem 2rem;
+  }
+
+  .contact-inner {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .contact-links {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.95rem;
+    color: var(--charcoal);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .contact-link:hover { color: var(--terracotta); }
+
+  .contact-link svg { color: var(--terracotta); }
+
+  /* ========== FOOTER ========== */
+  footer {
+    background: var(--charcoal);
+    color: rgba(255,255,255,0.5);
+    padding: 3rem 2rem;
+  }
+
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-logo {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: rgba(255,255,255,0.8);
+    text-transform: uppercase;
+  }
+
+  .footer-logo span { color: var(--terracotta-soft); }
+
+  .footer-text {
+    font-size: 0.8rem;
+    text-align: center;
+  }
+
+  .footer-socials {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .footer-socials a {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    transition: all 0.2s;
+    font-size: 0.85rem;
+  }
+
+  .footer-socials a:hover {
+    background: var(--terracotta);
+    color: white;
+  }
+
+  /* ========== ANIMATIONS ========== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .hero-images { height: 350px; }
+    .hero-img-1 { width: 240px; height: 300px; }
+    .hero-img-2 { width: 180px; height: 220px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .packages-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+    .package-card.featured { transform: none; }
+    .package-card.featured:hover { transform: translateY(-4px); }
+    .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+    .gallery-item:nth-child(1) { grid-column: span 2; }
+    .gallery-item:nth-child(4) { grid-column: span 1; }
+    .video-grid { grid-template-columns: 1fr; }
+    .about-hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .about-photo { height: 350px; }
+    .values-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .footer-inner { flex-direction: column; gap: 1.5rem; text-align: center; }
+    .nav-links { gap: 1.5rem; }
+  }
+
+  @media (max-width: 600px) {
+    .nav-links .nav-hide-mobile { display: none; }
+    .hero { padding: 7rem 1.5rem 3rem; }
+    section { padding: 4rem 1.5rem; }
+    .gallery-grid { grid-template-columns: 1fr; }
+    .gallery-item:nth-child(1) { grid-column: span 1; }
+    .gallery-item { height: 220px; }
+    .contact-links { flex-direction: column; align-items: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ========== NAVIGATION ========== -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo" onclick="showPage('home')">Redwards <span>Media</span></a>
+    <ul class="nav-links">
+      <li><a onclick="showPage('home')" class="nav-hide-mobile">Home</a></li>
+      <li><a onclick="showPage('about')" class="nav-hide-mobile">About</a></li>
+      <li><a href="#services" class="nav-hide-mobile">Services</a></li>
+      <li><a href="https://redwards-media-llc.aryeo.com/order" class="nav-cta" target="_blank">Book a Shoot</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ==================== HOME PAGE ==================== -->
+<div class="page-home" id="page-home">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <p class="hero-tag">Greater Boston Real Estate Media</p>
+        <h1>Your Listings Deserve to Look <em>Their Best</em></h1>
+        <p class="hero-desc">Professional photography, cinematic video, and listing media for agents who want their properties to stand out — with fast turnaround and an easy booking process.</p>
+        <div class="hero-actions">
+          <a href="https://redwards-media-llc.aryeo.com/order" class="btn-primary" target="_blank">Book a Shoot</a>
+          <a href="#services" class="btn-secondary">See Services <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+      <div class="hero-images">
+        <div class="hero-img hero-img-1">
+          <span class="img-placeholder">Your featured<br>property photo here</span>
+        </div>
+        <div class="hero-img hero-img-2">
+          <span class="img-placeholder">Aerial<br>shot here</span>
+        </div>
+        <div class="hero-stat">
+          <strong>500+</strong>
+          <span>Properties Photographed</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="section-inner">
+      <div class="services-header reveal">
+        <p class="section-tag">What I Do</p>
+        <h2 class="section-title">Everything Your Listing Needs,<br>Under One Roof</h2>
+        <p class="section-desc">Whether you need crisp listing photos ready for MLS or a full cinematic video walkthrough, I've got you covered. Every shoot is designed to help buyers fall in love before they walk through the door.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="6" width="20" height="14" rx="2"/><circle cx="12" cy="13" r="4"/><path d="M6 6V4a2 2 0 012-2h2"/></svg>
+          </div>
+          <h3>Listing Photography & Video</h3>
+          <p>Professional HDR photos and aerial shots that make your listings pop, plus cinematic video tours and social-ready clips — all delivered fast.</p>
+          <ul class="service-list">
+            <li>HDR Real Estate Photography</li>
+            <li>Drone & Aerial Photography</li>
+            <li>Cinematic Video Tours</li>
+            <li>Social Media Video Clips</li>
+            <li>Town Highlight Videos</li>
+          </ul>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <h3>Listing Media</h3>
+          <p>Floor plans, virtual staging, and 3D tours give buyers the context they need to take the next step — and give your listing a serious edge.</p>
+          <ul class="service-list">
+            <li>3D Virtual Tours</li>
+            <li>Interactive & 2D Floor Plans</li>
+            <li>Virtual Staging</li>
+            <li>Twilight Photo Editing</li>
+            <li>Property Line Overlays</li>
+          </ul>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 8a6 6 0 01-12 0"/><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10A15.3 15.3 0 0112 2z"/></svg>
+          </div>
+          <h3>Grow Your Brand</h3>
+          <p>Your listings aren't the only thing worth showing off. I help agents build a personal brand that sticks with lifestyle shoots and monthly content.</p>
+          <ul class="service-list">
+            <li>Lifestyle & Headshot Photography</li>
+            <li>Short Form Social Content</li>
+            <li>Monthly Content Packages</li>
+            <li>Higher-End Video Productions</li>
+            <li>Developer & Agent Interviews</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PACKAGES -->
+  <section class="packages">
+    <div class="section-inner">
+      <div class="packages-header reveal">
+        <p class="section-tag">Packages</p>
+        <h2 class="section-title">Pick Your Package</h2>
+        <p class="section-desc">Not sure what you need? These three cover the most common requests. Pick the one that fits, or reach out and we'll build something custom.</p>
+      </div>
+      <div class="packages-grid">
+        <div class="package-card reveal">
+          <p class="package-name">Base</p>
+          <p class="package-desc">The essentials for a solid listing</p>
+          <ul class="package-features">
+            <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Listing Photos</li>
+            <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Aerial Photos</li>
+            <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>2D Floorplans</li>
+            <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Property Website</li>
+            <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Marketing Kit</li>
+          </ul>
+          <a href="https://redwards-media-llc.aryeo.com/order" class="package-cta package-cta-outline" target="_blank">Book Now</a>
+        </div>
+        <div class="package-card featured reveal">
+          <span class="package-badge">Most Popular</span>
+          <p class="package-name">Standard</p>
+          <p class="package-desc">Everything most agents need</p>
+          <ul class="package-features">
+            <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Listing Photos</li>
+            <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Aerial Photos</li>
+            <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Social Media Reel</li>
+            <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>2D Floorplans</li>
+            <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Property Website</li>
+            <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Marketing Kit</li>
+          </ul>
+          <a href="https://redwards-media-llc.aryeo.com/order" class="package-cta package-cta-filled" target="_blank">Book Now</a>
+        </div>
+        <div class="package-card reveal">
+          <p class="package-name">Pro</p>
+          <p class="package-desc">The full experience for premium listings</p>
+          <ul class="package-features">
+            <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Listing Photos</li>
+            <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Aerial Photos</li>
+            <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Cinematic Video Tour</li>
+            <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Social Media Reel</li>
+            <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>3D Virtual Tour</li>
+            <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Interactive Floorplans</li>
+            <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Property Website</li>
+            <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Marketing Kit</li>
+          </ul>
+          <a href="https://redwards-media-llc.aryeo.com/order" class="package-cta package-cta-outline" target="_blank">Book Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO -->
+  <section class="video-section">
+    <div class="section-inner">
+      <div class="reveal">
+        <p class="section-tag">Cinematic Video</p>
+        <h2 class="section-title">More Than a Walkthrough —<br>It's a Story</h2>
+        <p class="section-desc">A great video creates an emotional connection with buyers, giving them the feeling of walking through the space before they ever schedule a showing.</p>
+      </div>
+      <div class="video-grid">
+        <div class="video-card reveal">
+          <div class="play-btn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="8,5 20,12 8,19"/></svg>
+          </div>
+          <span class="video-label">Luxury Listing with Realtor</span>
+        </div>
+        <div class="video-card reveal">
+          <div class="play-btn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="8,5 20,12 8,19"/></svg>
+          </div>
+          <span class="video-label">Standard Listing Tour</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="gallery">
+    <div class="section-inner">
+      <div class="gallery-header reveal">
+        <div>
+          <p class="section-tag">Recent Work</p>
+          <h2 class="section-title">Modern Listing Photography</h2>
+          <p class="section-desc">Clean, bright, and true-to-life. No over-processed skies, no weird colors — just polished images that make buyers want to see more.</p>
+        </div>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item reveal"><div class="gallery-placeholder">Property Exterior</div></div>
+        <div class="gallery-item reveal"><div class="gallery-placeholder">Kitchen Interior</div></div>
+        <div class="gallery-item reveal"><div class="gallery-placeholder">Living Room</div></div>
+        <div class="gallery-item reveal"><div class="gallery-placeholder">Aerial Drone Shot</div></div>
+        <div class="gallery-item reveal"><div class="gallery-placeholder">Twilight Exterior</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-inner reveal">
+      <p class="section-tag">Let's Work Together</p>
+      <h2 class="section-title">Ready to Elevate Your Listings?</h2>
+      <p class="section-desc">Book a shoot in minutes through our scheduling tool, or reach out if you have questions — I'm always happy to chat.</p>
+      <a href="https://redwards-media-llc.aryeo.com/order" class="btn-primary" target="_blank">Book a Shoot</a>
+    </div>
+  </section>
+
+</div>
+
+<!-- ==================== ABOUT PAGE ==================== -->
+<div class="page-about" id="page-about">
+
+  <section class="about-hero">
+    <div class="about-hero-inner">
+      <div class="about-photo">
+        <span class="img-placeholder">Your headshot here</span>
+      </div>
+      <div class="about-text">
+        <p class="section-tag">About</p>
+        <h1>Hi, I'm Rohan.<br><em>Nice to meet you.</em></h1>
+        <div class="about-bio">
+          <p>I'm a real estate media specialist based in Cambridge, MA. I started Redwards Media because I saw how much of a difference great visuals make when it comes to selling a home.</p>
+          <p>What began as a passion for photography and video has grown into a full-service media business serving agents across Greater Boston.</p>
+          <p>My background in music and audio production shapes everything I do — from the rhythm of a video edit to the mood of a photo. Before going full-time with Redwards Media, I worked as a sound engineer, music video producer, and in-house videographer at a marketing agency.</p>
+          <p>These days, I'm focused on one thing: helping you market your listings and grow your brand with media that actually stands out.</p>
+          <p style="margin-top: 1.5rem;">I'm always up for a coffee and a conversation — reach out anytime.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-values">
+    <div class="section-inner">
+      <div style="text-align: center;" class="reveal">
+        <p class="section-tag">Why Agents Choose Redwards</p>
+        <h2 class="section-title">Built for How You Work</h2>
+      </div>
+      <div class="values-grid">
+        <div class="value-item reveal">
+          <p class="value-num">24hr</p>
+          <p class="value-label">Fast Turnaround</p>
+          <p class="value-desc">Most photo sets delivered within 24 hours. Your listing doesn't wait, and neither should you.</p>
+        </div>
+        <div class="value-item reveal">
+          <p class="value-num">Easy</p>
+          <p class="value-label">Simple Booking</p>
+          <p class="value-desc">Book online in under a minute. Pick your package, choose your time, and you're set.</p>
+        </div>
+        <div class="value-item reveal">
+          <p class="value-num">MLS</p>
+          <p class="value-label">Ready to List</p>
+          <p class="value-desc">Every image is edited and formatted for MLS. Download, upload, done — no extra steps.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-contact">
+    <div class="contact-inner reveal">
+      <p class="section-tag">Get in Touch</p>
+      <h2 class="section-title">Let's Chat</h2>
+      <p class="section-desc" style="margin: 0.75rem auto 0;">Have a question or want to talk about a project? I'd love to hear from you.</p>
+      <div class="contact-links">
+        <a href="mailto:rohan@redwardsmedia.com" class="contact-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,6 12,13 2,6"/></svg>
+          rohan@redwardsmedia.com
+        </a>
+        <a href="tel:6175289713" class="contact-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 01-2.18 2A19.86 19.86 0 013.09 5.18 2 2 0 015.11 3h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 11.91a16 16 0 006 6l2.27-2.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          (617) 528-9713
+        </a>
+        <a href="https://www.instagram.com/redwardsmedia/" class="contact-link" target="_blank">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+          @redwardsmedia
+        </a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Redwards <span>Media</span></div>
+    <p class="footer-text">Real estate media in Greater Boston.<br>&copy; 2026 Redwards Media. All Rights Reserved.</p>
+    <div class="footer-socials">
+      <a href="https://www.instagram.com/redwardsmedia/" target="_blank" title="Instagram">IG</a>
+      <a href="https://www.youtube.com/channel/UCgxD4SHmvDHA0GFN430Fq9A" target="_blank" title="YouTube">YT</a>
+      <a href="https://www.linkedin.com/company/salad-days-creative/" target="_blank" title="LinkedIn">LI</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Page navigation
+  function showPage(page) {
+    document.getElementById('page-home').style.display = page === 'home' ? 'block' : 'none';
+    document.getElementById('page-about').style.display = page === 'about' ? 'block' : 'none';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // Re-trigger reveal animations
+    setTimeout(() => {
+      document.querySelectorAll('.reveal').forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 60) {
+          el.classList.add('visible');
+        }
+      });
+    }, 100);
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
