@@ -1,0 +1,73 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.85rem 2rem;
+  border-radius: var(--radius-sm);
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+/* Primary — charcoal bg */
+.btn--primary {
+  background: var(--color-charcoal);
+  color: var(--color-warm-white);
+}
+.btn--primary:hover {
+  background: var(--color-redwood);
+  transform: translateY(-1px);
+}
+
+/* CTA Filled — redwood bg */
+.btn--cta {
+  background: var(--color-redwood);
+  color: var(--color-warm-white);
+}
+.btn--cta:hover {
+  background: var(--color-redwood-soft);
+  transform: translateY(-2px);
+}
+
+/* Outline */
+.btn--outline {
+  background: transparent;
+  border: 1.5px solid var(--color-charcoal);
+  color: var(--color-charcoal);
+}
+.btn--outline:hover {
+  background: var(--color-charcoal);
+  color: var(--color-warm-white);
+}
+
+/* Text / Secondary */
+.btn--text {
+  background: transparent;
+  color: var(--color-charcoal);
+  padding: 0;
+  text-transform: none;
+  letter-spacing: normal;
+  font-size: 0.92rem;
+}
+.btn--text:hover {
+  color: var(--color-redwood);
+}
+
+/* Nav CTA — smaller Primary */
+.btn--nav {
+  background: var(--color-charcoal);
+  color: var(--color-warm-white);
+  padding: 0.6rem 1.4rem;
+  font-size: 0.8rem;
+}
+.btn--nav:hover {
+  background: var(--color-redwood);
+  transform: translateY(-1px);
+}
