@@ -5,7 +5,7 @@ import './Footer.css';
 const FOOTER_LINKS = [
   { label: 'Home', href: '#home' },
   { label: 'Services', href: '#services' },
-  { label: 'Packages', href: '#packages' },
+  { label: 'About', href: '#about' },
   { label: 'Reel Scripter', href: '/reelscripter/' },
   { label: 'Book a Shoot', href: 'https://book.aryeo.com/order/redwards-media' },
 ];

@@ -7,7 +7,6 @@ import './Nav.css';
 const NAV_LINKS = [
   { label: 'Home', href: '#home' },
   { label: 'Services', href: '#services' },
-  { label: 'Packages', href: '#packages' },
   { label: 'About', href: '#about' },
   { label: 'Reel Scripter', href: '/reelscripter/' },
 ];
