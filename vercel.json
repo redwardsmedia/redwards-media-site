@@ -2,9 +2,12 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "rewrites": [
+    { "source": "/api/:path*", "destination": "/api/:path*" },
     { "source": "/reelscripter/api/:path*", "destination": "/api/:path*" },
-    { "source": "/reelscripter", "destination": "/reelscripter/index.html" },
-    { "source": "/reelscripter/(.*)", "destination": "/reelscripter/$1" }
+    { "source": "/reelscripter/manifest.json", "destination": "/reelscripter/manifest.json" },
+    { "source": "/reelscripter/sw.js", "destination": "/reelscripter/sw.js" },
+    { "source": "/reelscripter/icon-192.png", "destination": "/reelscripter/icon-192.png" },
+    { "source": "/(.*)", "destination": "/index.html" }
   ],
   "headers": [
     {
