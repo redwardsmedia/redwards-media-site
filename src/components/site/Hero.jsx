@@ -1,12 +1,14 @@
 import { ArrowRight } from 'lucide-react';
 import { Button } from '../shared/Button';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
+import { useParallax } from '../../hooks/useParallax';
 import './Hero.css';
 
 const BOOKING_URL = 'https://book.aryeo.com/order/redwards-media';
 
 export function Hero() {
   const ref = useScrollReveal();
+  const parallaxRef = useParallax(0.15);
 
   return (
     <section className="hero" id="home" ref={ref}>
@@ -27,7 +29,7 @@ export function Hero() {
           </div>
         </div>
         <div className="hero__image reveal">
-          <img src="/images/hero-exterior.jpg" alt="Premium property exterior photography by Redwards Media" loading="eager" />
+          <img ref={parallaxRef} src="/images/hero-exterior.jpg" alt="Premium property exterior photography by Redwards Media" loading="eager" />
           <div className="hero__stat-badge">
             <span className="hero__stat-number">500+</span>
             <span className="hero__stat-label">Properties Delivered</span>
