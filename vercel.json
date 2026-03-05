@@ -1,0 +1,17 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "rewrites": [
+    { "source": "/reelscripter/api/:path*", "destination": "/api/:path*" },
+    { "source": "/reelscripter", "destination": "/reelscripter/index.html" },
+    { "source": "/reelscripter/(.*)", "destination": "/reelscripter/$1" }
+  ],
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-store" }
+      ]
+    }
+  ]
+}

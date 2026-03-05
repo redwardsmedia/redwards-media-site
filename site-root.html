@@ -1,0 +1,1912 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Redwards Media — Premium Real Estate Content in Greater Boston</title>
+
+<!-- SEO Meta Tags -->
+<meta name="description" content="Redwards Media creates cinematic real estate photography and videography in Boston. Professional property marketing, aerial photography, 360 tours, and signature reels for luxury listings.">
+<meta name="keywords" content="real estate photographer Boston, real estate videographer Boston, luxury real estate media Boston, property photography, real estate video tours">
+<meta name="author" content="Redwards Media">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph Tags -->
+<meta property="og:title" content="Redwards Media — Premium Real Estate Content in Greater Boston">
+<meta property="og:description" content="Cinematic real estate photography and videography that elevates luxury listings. Book your shoot in minutes.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://redwardsmedia.com">
+<meta property="og:image" content="https://redwardsmedia.com/og-image.jpg">
+
+<!-- Local Business Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Redwards Media",
+  "description": "Premium real estate photography and videography in Greater Boston",
+  "url": "https://redwardsmedia.com",
+  "telephone": "+1-617-528-9713",
+  "email": "rohan@redwardsmedia.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Cambridge",
+    "addressRegion": "MA",
+    "addressCountry": "US"
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Boston"
+  },
+  "sameAs": [
+    "https://www.instagram.com/redwardsmedia/",
+    "https://www.youtube.com/channel/UCgxD4SHmvDHA0GFN430Fq9A"
+  ]
+}
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sand: #F5F0EB;
+    --sand-light: #FAF8F5;
+    --warm-white: #FDFCFA;
+    --charcoal: #2C2926;
+    --charcoal-light: #4A4541;
+    --terracotta: #AE4A3E;
+    --terracotta-soft: #C47068;
+    --terracotta-bg: rgba(174, 74, 62, 0.08);
+    --sage: #8E9478;
+    --sage-soft: #A8AD96;
+    --cream: #EDE8E0;
+    --border: rgba(44, 41, 38, 0.08);
+    --shadow-sm: 0 1px 3px rgba(44, 41, 38, 0.06);
+    --shadow-md: 0 4px 20px rgba(44, 41, 38, 0.08);
+    --shadow-lg: 0 12px 40px rgba(44, 41, 38, 0.1);
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body: 'DM Sans', -apple-system, sans-serif;
+    --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--charcoal);
+    background: var(--warm-white);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* ========== NAV ========== */
+  nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    background: rgba(253, 252, 250, 0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    transition: all 0.3s var(--ease-smooth);
+  }
+
+  nav .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--charcoal);
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .logo span {
+    color: var(--terracotta);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--charcoal-light);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+    cursor: pointer;
+  }
+
+  .nav-links a:hover { color: var(--terracotta); }
+
+  .nav-cta {
+    background: var(--charcoal) !important;
+    color: var(--warm-white) !important;
+    padding: 0.6rem 1.5rem;
+    border-radius: 6px;
+    font-size: 0.8rem !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: all 0.25s var(--ease-smooth) !important;
+  }
+
+  .nav-cta:hover {
+    background: var(--terracotta) !important;
+    transform: translateY(-1px);
+  }
+
+  /* ========== HERO ========== */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 2rem 4rem;
+    background: var(--sand-light);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -30%;
+    right: -10%;
+    width: 60%;
+    height: 120%;
+    background: radial-gradient(ellipse, rgba(196, 112, 75, 0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .hero-text { position: relative; z-index: 2; }
+
+  .hero-tag {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s var(--ease-out) 0.2s forwards;
+  }
+
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 4.5vw, 3.8rem);
+    font-weight: 500;
+    line-height: 1.15;
+    color: var(--charcoal);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s var(--ease-out) 0.35s forwards;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--terracotta);
+  }
+
+  .hero-desc {
+    font-size: 1.1rem;
+    color: var(--charcoal-light);
+    line-height: 1.75;
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s var(--ease-out) 0.5s forwards;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    opacity: 0;
+    animation: fadeUp 0.8s var(--ease-out) 0.65s forwards;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--charcoal);
+    color: var(--warm-white);
+    padding: 0.9rem 2rem;
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s var(--ease-smooth);
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-primary:hover {
+    background: var(--terracotta);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .btn-secondary {
+    display: inline-block;
+    color: var(--charcoal);
+    padding: 0.9rem 1.5rem;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    transition: color 0.2s;
+    cursor: pointer;
+  }
+
+  .btn-secondary:hover { color: var(--terracotta); }
+
+  .btn-secondary svg {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 0.4rem;
+    transition: transform 0.2s;
+  }
+
+  .btn-secondary:hover svg { transform: translateX(3px); }
+
+  .hero-images {
+    position: relative;
+    height: 520px;
+    opacity: 0;
+    animation: fadeIn 1s var(--ease-out) 0.5s forwards;
+  }
+
+  .hero-img {
+    position: absolute;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .hero-img-1 {
+    width: 320px;
+    height: 400px;
+    top: 0;
+    left: 0;
+    background: linear-gradient(135deg, var(--cream) 0%, var(--sage-soft) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-img-2 {
+    width: 240px;
+    height: 300px;
+    top: 120px;
+    right: 0;
+    background: linear-gradient(135deg, var(--terracotta-soft) 0%, var(--terracotta) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .img-placeholder {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .hero-stat {
+    position: absolute;
+    bottom: 20px;
+    left: 40px;
+    background: white;
+    padding: 1.2rem 1.5rem;
+    border-radius: 10px;
+    box-shadow: var(--shadow-md);
+    z-index: 3;
+  }
+
+  .hero-stat strong {
+    font-size: 1.8rem;
+    font-family: var(--font-display);
+    color: var(--terracotta);
+    display: block;
+  }
+
+  .hero-stat span {
+    font-size: 0.78rem;
+    color: var(--charcoal-light);
+    letter-spacing: 0.02em;
+  }
+
+  /* ========== SECTIONS SHARED ========== */
+  section { padding: 6rem 2rem; }
+
+  .section-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-tag {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--charcoal);
+    margin-bottom: 1rem;
+  }
+
+  .section-desc {
+    font-size: 1.05rem;
+    color: var(--charcoal-light);
+    line-height: 1.75;
+    max-width: 580px;
+  }
+
+  /* ========== SERVICES ========== */
+  .services { background: var(--warm-white); }
+
+  .services-header { margin-bottom: 4rem; }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .service-card {
+    background: var(--sand-light);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 2.5rem 2rem;
+    transition: all 0.35s var(--ease-smooth);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--terracotta);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s var(--ease-smooth);
+  }
+
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: transparent;
+  }
+
+  .service-card:hover::after { transform: scaleX(1); }
+
+  .service-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--terracotta-bg);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    color: var(--terracotta);
+  }
+
+  .service-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+  }
+
+  .service-card p {
+    font-size: 0.92rem;
+    color: var(--charcoal-light);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .service-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .service-list li {
+    font-size: 0.85rem;
+    color: var(--charcoal-light);
+    padding: 0.35rem 0;
+    padding-left: 1.2rem;
+    position: relative;
+  }
+
+  .service-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--terracotta-soft);
+    transform: translateY(-50%);
+  }
+
+  /* ========== HOW IT WORKS ========== */
+  .how-it-works { background: var(--sand-light); }
+
+  .how-it-works-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .how-it-works-header .section-desc {
+    margin: 0.75rem auto 0;
+  }
+
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .process-step {
+    text-align: center;
+    position: relative;
+  }
+
+  .process-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 60px;
+    right: -50%;
+    width: 100%;
+    height: 2px;
+    background: var(--border);
+  }
+
+  .step-number {
+    width: 80px;
+    height: 80px;
+    background: var(--terracotta-bg);
+    border: 2px solid var(--terracotta);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--terracotta);
+    font-weight: 500;
+  }
+
+  .step-icon {
+    width: 40px;
+    height: 40px;
+    margin: 0 auto 1rem;
+    color: var(--terracotta);
+  }
+
+  .process-step h3 {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+    color: var(--charcoal);
+  }
+
+  .process-step p {
+    font-size: 0.9rem;
+    color: var(--charcoal-light);
+    line-height: 1.6;
+  }
+
+  /* ========== PACKAGES ========== */
+  .packages { background: var(--warm-white); }
+
+  .packages-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .packages-header .section-desc {
+    margin: 0.75rem auto 0;
+  }
+
+  .packages-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .package-card {
+    background: var(--sand-light);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    transition: all 0.35s var(--ease-smooth);
+    position: relative;
+  }
+
+  .package-card.featured {
+    border-color: var(--terracotta);
+    box-shadow: var(--shadow-md);
+    transform: scale(1.03);
+    background: var(--warm-white);
+  }
+
+  .package-card.featured .package-badge {
+    display: block;
+  }
+
+  .package-badge {
+    display: none;
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--terracotta);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.35rem 1rem;
+    border-radius: 20px;
+  }
+
+  .package-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .package-card.featured:hover {
+    transform: scale(1.03) translateY(-4px);
+  }
+
+  .package-price {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--terracotta);
+  }
+
+  .package-name {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+
+  .package-desc {
+    font-size: 0.85rem;
+    color: var(--charcoal-light);
+    margin-bottom: 2rem;
+  }
+
+  .package-features {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 2rem;
+    text-align: left;
+  }
+
+  .package-features li {
+    font-size: 0.88rem;
+    color: var(--charcoal-light);
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .package-features li:last-child { border-bottom: none; }
+
+  .check {
+    width: 18px;
+    height: 18px;
+    background: var(--terracotta-bg);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--terracotta);
+  }
+
+  .package-cta {
+    display: block;
+    width: 100%;
+    padding: 0.85rem;
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.3s var(--ease-smooth);
+    cursor: pointer;
+    border: none;
+  }
+
+  .package-cta-outline {
+    background: transparent;
+    color: var(--charcoal);
+    border: 1.5px solid var(--charcoal);
+  }
+
+  .package-cta-outline:hover {
+    background: var(--charcoal);
+    color: var(--warm-white);
+  }
+
+  .package-cta-filled {
+    background: var(--terracotta);
+    color: white;
+  }
+
+  .package-cta-filled:hover {
+    background: var(--charcoal);
+    transform: translateY(-1px);
+  }
+
+  /* ========== TESTIMONIALS ========== */
+  .testimonials { background: var(--warm-white); }
+
+  .testimonials-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .testimonials-header .section-desc {
+    margin: 0.75rem auto 0;
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .testimonial-card {
+    background: var(--sand-light);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 2.5rem 2rem;
+    transition: all 0.35s var(--ease-smooth);
+  }
+
+  .testimonial-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .testimonial-quote {
+    font-size: 1rem;
+    color: var(--charcoal);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+  }
+
+  .testimonial-author {
+    font-weight: 600;
+    color: var(--charcoal);
+    font-size: 0.95rem;
+  }
+
+  .testimonial-role {
+    font-size: 0.85rem;
+    color: var(--charcoal-light);
+    margin-top: 0.25rem;
+  }
+
+  .testimonial-stat {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    background: var(--terracotta-bg);
+    border-radius: 14px;
+    margin-top: 2rem;
+  }
+
+  .testimonial-stat-num {
+    font-family: var(--font-display);
+    font-size: 2.2rem;
+    font-weight: 500;
+    color: var(--terracotta);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .testimonial-stat-label {
+    font-size: 0.85rem;
+    color: var(--charcoal-light);
+    font-weight: 500;
+  }
+
+  /* ========== RESOURCES/BLOG ========== */
+  .resources { background: var(--sand-light); }
+
+  .resources-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .resources-header .section-desc {
+    margin: 0.75rem auto 0;
+  }
+
+  .resources-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .resource-card {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: all 0.35s var(--ease-smooth);
+  }
+
+  .resource-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .resource-image {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(135deg, var(--terracotta-soft) 0%, var(--terracotta) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.7);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .resource-content {
+    padding: 2rem;
+  }
+
+  .resource-tag {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 0.75rem;
+  }
+
+  .resource-title {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--charcoal);
+    margin-bottom: 0.75rem;
+  }
+
+  .resource-desc {
+    font-size: 0.9rem;
+    color: var(--charcoal-light);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .resource-link {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--terracotta);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .resource-link:hover {
+    color: var(--charcoal);
+  }
+
+  /* ========== EMAIL SIGNUP ========== */
+  .email-signup { background: var(--charcoal); color: var(--warm-white); }
+
+  .email-signup-inner {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .email-signup .section-tag { color: var(--terracotta-soft); }
+  .email-signup .section-title { color: var(--warm-white); }
+  .email-signup .section-desc { color: rgba(255,255,255,0.65); }
+
+  .email-form {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .email-input {
+    flex: 1;
+    min-width: 200px;
+    padding: 0.9rem 1.5rem;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 8px;
+    background: rgba(255,255,255,0.05);
+    color: var(--warm-white);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    transition: all 0.3s;
+  }
+
+  .email-input::placeholder {
+    color: rgba(255,255,255,0.5);
+  }
+
+  .email-input:focus {
+    outline: none;
+    border-color: var(--terracotta);
+    background: rgba(255,255,255,0.08);
+  }
+
+  .email-btn {
+    padding: 0.9rem 2rem;
+    background: var(--terracotta);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .email-btn:hover {
+    background: var(--terracotta-soft);
+    transform: translateY(-2px);
+  }
+
+  /* ========== GALLERY ========== */
+  .gallery { background: var(--warm-white); }
+
+  .gallery-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 3rem;
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 280px 280px;
+    gap: 1rem;
+  }
+
+  .gallery-item {
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    background: var(--cream);
+    transition: all 0.4s var(--ease-smooth);
+  }
+
+  .gallery-item:hover {
+    transform: scale(1.02);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .gallery-item:nth-child(1) { grid-column: span 2; }
+  .gallery-item:nth-child(4) { grid-column: span 2; }
+
+  .gallery-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    color: var(--charcoal-light);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, var(--cream) 0%, var(--sand) 100%);
+  }
+
+  .gallery-item:nth-child(2) .gallery-placeholder {
+    background: linear-gradient(135deg, var(--sage-soft) 0%, var(--sage) 100%);
+    color: rgba(255,255,255,0.7);
+  }
+
+  .gallery-item:nth-child(3) .gallery-placeholder {
+    background: linear-gradient(135deg, var(--terracotta-soft) 0%, var(--terracotta) 100%);
+    color: rgba(255,255,255,0.7);
+  }
+
+  .gallery-item:nth-child(5) .gallery-placeholder {
+    background: linear-gradient(135deg, var(--charcoal-light) 0%, var(--charcoal) 100%);
+    color: rgba(255,255,255,0.5);
+  }
+
+  /* ========== VIDEO SECTION ========== */
+  .video-section {
+    background: var(--charcoal);
+    color: var(--warm-white);
+    padding: 6rem 2rem;
+  }
+
+  .video-section .section-tag { color: var(--terracotta-soft); }
+  .video-section .section-title { color: var(--warm-white); }
+  .video-section .section-desc { color: rgba(255,255,255,0.65); }
+
+  .video-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .video-card {
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    height: 400px;
+    background: var(--charcoal-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.35s var(--ease-smooth);
+  }
+
+  .video-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+  }
+
+  .vimeo-embed {
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .vimeo-embed iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  .video-grid-vertical {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .video-card-vertical {
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    height: 500px;
+    background: var(--charcoal-light);
+    transition: all 0.35s var(--ease-smooth);
+  }
+
+  .video-card-vertical:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+  }
+
+  .play-btn {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+
+  .play-btn:hover {
+    background: var(--terracotta);
+    transform: scale(1.1);
+  }
+
+  .video-label {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.8);
+  }
+
+  /* ========== CTA ========== */
+  .cta-section {
+    background: var(--sand-light);
+    padding: 6rem 2rem;
+    text-align: center;
+  }
+
+  .cta-inner {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .cta-section .section-title {
+    margin-bottom: 1rem;
+  }
+
+  .cta-section .section-desc {
+    margin: 0 auto 2.5rem;
+    text-align: center;
+  }
+
+  /* ========== FOOTER ========== */
+  footer {
+    background: var(--charcoal);
+    color: var(--warm-white);
+    padding: 4rem 2rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-align: left;
+  }
+
+  .footer-logo span {
+    color: var(--terracotta);
+  }
+
+  .footer-text {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.6;
+  }
+
+  .footer-socials {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: flex-end;
+  }
+
+  .footer-socials a {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-socials a:hover {
+    color: var(--terracotta);
+  }
+
+  .footer-coming-soon {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.5);
+    margin-top: 1rem;
+    font-style: italic;
+  }
+
+  /* ========== ABOUT PAGE ========== */
+  .page-about { display: none; }
+
+  .about-hero {
+    padding: 10rem 2rem 5rem;
+    background: var(--sand-light);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-hero::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    left: -10%;
+    width: 50%;
+    height: 100%;
+    background: radial-gradient(ellipse, rgba(139, 158, 131, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .about-hero-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .about-photo {
+    width: 100%;
+    height: 500px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--cream) 0%, var(--sage-soft) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+  }
+
+  .about-text .section-tag { margin-bottom: 1rem; }
+
+  .about-text h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--charcoal);
+    margin-bottom: 2rem;
+  }
+
+  .about-text h1 em {
+    font-style: italic;
+    color: var(--terracotta);
+  }
+
+  .about-bio {
+    font-size: 1.05rem;
+    color: var(--charcoal-light);
+    line-height: 1.8;
+  }
+
+  .about-bio p { margin-bottom: 1.25rem; }
+
+  .about-values {
+    background: var(--warm-white);
+    padding: 6rem 2rem;
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    margin-top: 3.5rem;
+  }
+
+  .value-item {
+    text-align: center;
+    padding: 2rem 1.5rem;
+  }
+
+  .value-num {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 400;
+    color: var(--terracotta);
+    line-height: 1;
+    margin-bottom: 0.75rem;
+  }
+
+  .value-label {
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--charcoal);
+    margin-bottom: 0.5rem;
+  }
+
+  .value-desc {
+    font-size: 0.85rem;
+    color: var(--charcoal-light);
+    line-height: 1.6;
+  }
+
+  .about-contact {
+    background: var(--sand-light);
+    padding: 5rem 2rem;
+  }
+
+  .contact-inner {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .contact-links {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--charcoal);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .contact-link:hover { color: var(--terracotta); }
+
+  /* ========== ANIMATIONS ========== */
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .reveal {
+    opacity: 0;
+    animation: fadeUp 0.8s var(--ease-out) forwards;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+  }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 768px) {
+    .hero-inner {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .hero-images {
+      height: 300px;
+    }
+
+    .hero-img-1 {
+      width: 100%;
+      height: 250px;
+      top: 0;
+      left: 0;
+    }
+
+    .hero-img-2 {
+      display: none;
+    }
+
+    .hero-stat {
+      bottom: auto;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .packages-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .process-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .process-step:not(:last-child)::after {
+      display: none;
+    }
+
+    .testimonials-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .resources-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .video-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .video-grid-vertical {
+      grid-template-columns: 1fr;
+    }
+
+    .video-card-vertical {
+      height: 300px;
+    }
+
+    .gallery-grid {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: auto;
+    }
+
+    .gallery-item:nth-child(1),
+    .gallery-item:nth-child(4) {
+      grid-column: span 1;
+    }
+
+    .about-hero-inner {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .values-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .nav-links {
+      gap: 1.5rem;
+    }
+
+    .footer-inner {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      text-align: center;
+    }
+
+    .footer-logo {
+      text-align: center;
+    }
+
+    .footer-socials {
+      justify-content: center;
+    }
+
+    .email-form {
+      flex-direction: column;
+    }
+
+    .email-input,
+    .email-btn {
+      width: 100%;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== HOME PAGE ==================== -->
+<div class="page-home" id="page-home">
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="javascript:showPage('home')" class="logo">Redwards <span>Media</span></a>
+      <ul class="nav-links">
+        <li><a href="javascript:showPage('home')">Home</a></li>
+        <li><a href="javascript:showPage('about')">About</a></li>
+        <li><a href="#packages" onclick="document.querySelector('.packages').scrollIntoView({behavior:'smooth'})">Packages</a></li>
+        <li><a href="https://www.instagram.com/redwardsmedia/" target="_blank">Instagram</a></li>
+        <li><a href="https://redwards-media-llc.aryeo.com/order" class="nav-cta" target="_blank">Book Now</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <p class="hero-tag">Cinematic Real Estate Media</p>
+        <h1>Elevate Your Listings with <em>Intentional Storytelling</em></h1>
+        <p class="hero-desc">Helping people and businesses grow through high-end visual experiences and memories. From signature reels to complete property marketing — every frame is crafted to make you look incredible.</p>
+        <div class="hero-actions">
+          <a href="https://redwards-media-llc.aryeo.com/order" class="btn-primary" target="_blank">Book a Shoot</a>
+          <a href="javascript:showPage('about')" class="btn-secondary">Learn More <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+        </div>
+      </div>
+      <div class="hero-images">
+        <div class="hero-img hero-img-1">
+          <span class="img-placeholder">Featured Video</span>
+        </div>
+        <div class="hero-img hero-img-2">
+          <span class="img-placeholder">Signature Reel</span>
+        </div>
+        <div class="hero-stat">
+          <strong>500+</strong>
+          <span>Properties Captured</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services">
+    <div class="section-inner">
+      <div class="services-header reveal visible">
+        <p class="section-tag">What We Offer</p>
+        <h2 class="section-title">Cinematic Real Estate Solutions</h2>
+        <p class="section-desc">From photography to videography, we handle every aspect of your property marketing with intentional, elevated storytelling.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal visible">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+          </div>
+          <h3>Photography</h3>
+          <p>Professional listing photos, aerial drone shots, and twilight exteriors — all edited and MLS-ready in 24 hours.</p>
+          <ul class="service-list">
+            <li>Listing Photos</li>
+            <li>Aerial Drone Shots</li>
+            <li>Twilight Exteriors</li>
+            <li>AI Enhancements</li>
+          </ul>
+        </div>
+        <div class="service-card reveal visible">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2"></rect></svg>
+          </div>
+          <h3>Cinematic Video</h3>
+          <p>Signature reels, full property tours, and social media content — intentional, polished, and built to convert.</p>
+          <ul class="service-list">
+            <li>Signature Reels</li>
+            <li>Property Tours</li>
+            <li>Social Media Clips</li>
+            <li>B-Roll Library</li>
+          </ul>
+        </div>
+        <div class="service-card reveal visible">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"></circle><path d="M12 1v6m0 6v6M4.22 4.22l4.24 4.24m5.08 5.08l4.24 4.24M1 12h6m6 0h6M4.22 19.78l4.24-4.24m5.08-5.08l4.24-4.24"></path></svg>
+          </div>
+          <h3>Virtual Tours & More</h3>
+          <p>360 virtual tours, interactive floorplans, property websites, and complete marketing kits — everything you need.</p>
+          <ul class="service-list">
+            <li>360 Virtual Tours</li>
+            <li>Interactive Floorplans</li>
+            <li>Property Websites</li>
+            <li>Marketing Kits</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-it-works">
+    <div class="section-inner">
+      <div class="how-it-works-header reveal visible">
+        <p class="section-tag">Simple Process</p>
+        <h2 class="section-title">How It Works</h2>
+        <p class="section-desc">From booking to delivery, we keep it simple and fast. Your content is ready to use in 24 hours.</p>
+      </div>
+      <div class="process-grid">
+        <div class="process-step reveal visible">
+          <div class="step-number">1</div>
+          <h3>Book</h3>
+          <p>Choose your package and pick your date. Book online in under a minute — no calls, no back-and-forth.</p>
+        </div>
+        <div class="process-step reveal visible">
+          <div class="step-number">2</div>
+          <h3>Shoot</h3>
+          <p>We handle everything on set. Professional, efficient, and comfortable — your personality shines through.</p>
+        </div>
+        <div class="process-step reveal visible">
+          <div class="step-number">3</div>
+          <h3>Deliver</h3>
+          <p>Edited, color-corrected, and MLS-ready. Your content is in your hands within 24 hours.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PACKAGES -->
+  <section class="packages" id="packages">
+    <div class="section-inner">
+      <div class="packages-header reveal visible">
+        <p class="section-tag">Pricing</p>
+        <h2 class="section-title">Choose Your Package</h2>
+        <p class="section-desc">Packages starting at $400. All tiers include fast turnaround, professional editing, and content ready to use.</p>
+      </div>
+      <div class="packages-grid">
+        <div class="package-card reveal visible">
+          <p class="package-name">Base</p>
+          <p class="package-desc">Perfect for getting started</p>
+          <ul class="package-features">
+            <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Listing Photos</li>
+            <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Aerial Photos</li>
+            <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span>AI Enhancements</li>
+            <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span>2D Floorplans</li>
+            <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Property Website</li>
+          </ul>
+          <a href="https://redwards-media-llc.aryeo.com/order" class="package-cta package-cta-outline" target="_blank">Get a Custom Quote</a>
+        </div>
+        <div class="package-card featured reveal visible">
+          <span class="package-badge">Most Popular</span>
+          <p class="package-name">Standard</p>
+          <p class="package-desc">Everything in Base + 360 Tour</p>
+          <ul class="package-features">
+            <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Listing Photos</li>
+            <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Aerial Photos</li>
+            <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span>360 Virtual Tour</li>
+            <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span>AI Enhancements</li>
+            <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span>2D Floorplans</li>
+          </ul>
+          <a href="https://redwards-media-llc.aryeo.com/order" class="package-cta package-cta-filled" target="_blank">Get a Custom Quote</a>
+        </div>
+        <div class="package-card reveal visible">
+          <p class="package-name">Pro</p>
+          <p class="package-desc">Everything in Standard + Video</p>
+          <ul class="package-features">
+            <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Listing Photos</li>
+            <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Aerial Photos</li>
+            <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Signature Reel</li>
+            <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span>360 Virtual Tour</li>
+            <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span>2D Floorplans</li>
+          </ul>
+          <a href="https://redwards-media-llc.aryeo.com/order" class="package-cta package-cta-outline" target="_blank">Get a Custom Quote</a>
+        </div>
+        <div class="package-card reveal visible">
+          <p class="package-name">Max</p>
+          <p class="package-desc">Everything in Pro + Extras</p>
+          <ul class="package-features">
+            <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Signature Reel</li>
+            <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span>B-Roll Library</li>
+            <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Community Edit</li>
+            <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Social Teasers</li>
+            <li><span class="check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span>All Base Features</li>
+          </ul>
+          <a href="https://redwards-media-llc.aryeo.com/order" class="package-cta package-cta-outline" target="_blank">Get a Custom Quote</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="section-inner">
+      <div class="testimonials-header reveal visible">
+        <p class="section-tag">Social Proof</p>
+        <h2 class="section-title">What Agents Say</h2>
+        <p class="section-desc">Hundreds of agents trust Redwards Media to elevate their listings and grow their business.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal visible">
+          <p class="testimonial-quote">"The quality is unmatched. Rohan's attention to detail and turnaround time have completely changed how I market my listings. My clients always comment on how professional everything looks."</p>
+          <p class="testimonial-author">Sarah Mitchell</p>
+          <p class="testimonial-role">Luxury Real Estate Agent, Boston</p>
+        </div>
+        <div class="testimonial-card reveal visible">
+          <p class="testimonial-quote">"I've worked with other photographers, but Redwards Media is on another level. The cinematic quality, the editing, the professionalism — it's worth every penny. My listings sell faster."</p>
+          <p class="testimonial-author">James Chen</p>
+          <p class="testimonial-role">Team Lead, Cambridge Properties</p>
+        </div>
+        <div class="testimonial-card reveal visible">
+          <p class="testimonial-quote">"Rohan is easy to work with, incredibly responsive, and delivers exactly what he promises. The 24-hour turnaround is a game-changer for my business. I recommend him to everyone."</p>
+          <p class="testimonial-author">Emily Rodriguez</p>
+          <p class="testimonial-role">Independent Agent, Greater Boston</p>
+          <div class="testimonial-stat">
+            <span class="testimonial-stat-num">500+</span>
+            <span class="testimonial-stat-label">Properties. Hundreds of Agents. 8+ Years.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESOURCES/BLOG -->
+  <section class="resources">
+    <div class="section-inner">
+      <div class="resources-header reveal visible">
+        <p class="section-tag">Insights</p>
+        <h2 class="section-title">Resources & Tips</h2>
+        <p class="section-desc">Stay ahead with insights on real estate marketing, videography trends, and how to maximize your listings.</p>
+      </div>
+      <div class="resources-grid">
+        <div class="resource-card reveal visible">
+          <div class="resource-image">Video Content</div>
+          <div class="resource-content">
+            <p class="resource-tag">Marketing</p>
+            <h3 class="resource-title">Why Every Listing Needs Video in 2026</h3>
+            <p class="resource-desc">Video dramatically increases engagement and time-on-page. Learn why it's no longer optional for competitive listings.</p>
+            <a href="#" class="resource-link">Read Article →</a>
+          </div>
+        </div>
+        <div class="resource-card reveal visible">
+          <div class="resource-image">Signature Reels</div>
+          <div class="resource-content">
+            <p class="resource-tag">Strategy</p>
+            <h3 class="resource-title">The Power of Signature Reels</h3>
+            <p class="resource-desc">A signature reel isn't just a video — it's your brand. Discover how to use it to stand out and attract better clients.</p>
+            <a href="#" class="resource-link">Read Article →</a>
+          </div>
+        </div>
+        <div class="resource-card reveal visible">
+          <div class="resource-image">Photography Tips</div>
+          <div class="resource-content">
+            <p class="resource-tag">Photography</p>
+            <h3 class="resource-title">Cinematic Color Grading Explained</h3>
+            <p class="resource-desc">What makes a photo look "cinematic"? Explore the color grading techniques that make listings irresistible.</p>
+            <a href="#" class="resource-link">Read Article →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EMAIL SIGNUP -->
+  <section class="email-signup">
+    <div class="section-inner">
+      <div class="email-signup-inner reveal visible">
+        <p class="section-tag">Stay Updated</p>
+        <h2 class="section-title">Get Weekly Marketing Tips</h2>
+        <p class="section-desc">Receive actionable insights on real estate marketing, videography trends, and how to grow your business — delivered to your inbox every week.</p>
+        <form class="email-form" onsubmit="event.preventDefault(); alert('Thank you for signing up! Check your email for confirmation.');">
+          <input type="email" class="email-input" placeholder="Enter your email" required>
+          <button type="submit" class="email-btn">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO -->
+  <section class="video-section">
+    <div class="section-inner">
+      <div class="reveal visible">
+        <p class="section-tag">Cinematic Video</p>
+        <h2 class="section-title">Featured Work</h2>
+        <p class="section-desc">Every piece of content should be something you could put money behind — whether it's a 15-second reel or a full cinematic walkthrough. No filler. No throwaway footage. Just intentional storytelling.</p>
+      </div>
+      <div class="video-grid">
+        <div class="video-card reveal visible" style="grid-column: span 2;">
+          <div class="vimeo-embed">
+            <iframe src="https://player.vimeo.com/video/1165210436?h=8f9e5c1a2b&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 3rem;">
+        <p style="color: rgba(255,255,255,0.65); margin-bottom: 2rem; text-align: center;">Vertical Format Showcase</p>
+      </div>
+      <div class="video-grid-vertical">
+        <div class="video-card-vertical reveal visible">
+          <div class="vimeo-embed">
+            <iframe src="https://player.vimeo.com/video/1165238976?h=8f9e5c1a2b&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+        <div class="video-card-vertical reveal visible">
+          <div class="vimeo-embed">
+            <iframe src="https://player.vimeo.com/video/1165209636?h=8f9e5c1a2b&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+        <div class="video-card-vertical reveal visible">
+          <div class="vimeo-embed">
+            <iframe src="https://player.vimeo.com/video/1165210256?h=8f9e5c1a2b&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="gallery">
+    <div class="section-inner">
+      <div class="gallery-header reveal visible">
+        <div>
+          <p class="section-tag">Recent Work</p>
+          <h2 class="section-title">See the Difference</h2>
+          <p class="section-desc">Every frame is intentional. Rich, cinematic color grading that's saturated but natural — no over-processed skies, no weird colors. Just polished work that makes buyers stop scrolling.</p>
+        </div>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item reveal visible"><div class="gallery-placeholder">Property Exterior</div></div>
+        <div class="gallery-item reveal visible"><div class="gallery-placeholder">Kitchen Interior</div></div>
+        <div class="gallery-item reveal visible"><div class="gallery-placeholder">Living Room</div></div>
+        <div class="gallery-item reveal visible"><div class="gallery-placeholder">Aerial Drone Shot</div></div>
+        <div class="gallery-item reveal visible"><div class="gallery-placeholder">Twilight Exterior</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-inner reveal visible">
+      <p class="section-tag">Let's Work Together</p>
+      <h2 class="section-title">Ready to See Yourself in Your Best Light?</h2>
+      <p class="section-desc">Book a shoot in minutes, or just reach out — I'm always happy to talk through what would work best for you. No pressure, no pitch. Just a conversation.</p>
+      <a href="https://redwards-media-llc.aryeo.com/order" class="btn-primary" target="_blank">Let's Work Together</a>
+    </div>
+  </section>
+
+</div>
+
+<!-- ==================== ABOUT PAGE ==================== -->
+<div class="page-about" id="page-about">
+
+  <section class="about-hero">
+    <div class="about-hero-inner">
+      <div class="about-photo">
+        <span class="img-placeholder">Your headshot here</span>
+      </div>
+      <div class="about-text">
+        <p class="section-tag">About</p>
+        <h1>Hi, I'm Rohan.<br><em>I'm here to make you look incredible.</em></h1>
+        <div class="about-bio">
+          <p>I'm a videographer and photographer based in Cambridge, MA, and I've spent the last eight-plus years helping real estate agents look like the best version of themselves on camera. Hundreds of properties. Hundreds of agents. And every single project is built around the person, not a template.</p>
+          <p>I got into this through music and audio production — I worked as a sound engineer, music video producer, and in-house videographer before going full-time with real estate media. That background shapes everything I do, from the rhythm of an edit to the mood of a shot.</p>
+          <p>But here's the thing I care about most: I want every agent I work with to feel genuinely confident in the content they're putting out. Most people are nervous on camera — that's normal. I don't do scripted lines or awkward poses. I just create a comfortable space where your real personality comes through, and the final product always makes you feel like you nailed it.</p>
+          <p>These days, I'm focused on one thing: helping ambitious agents and teams show up in a way that matches the level they're actually operating at — or the level they're growing into. If you care about your brand, I want to help you build it.</p>
+          <p style="margin-top: 1.5rem;">I'm always up for a coffee and a conversation — reach out anytime.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-values">
+    <div class="section-inner">
+      <div style="text-align: center;" class="reveal">
+        <p class="section-tag">Why Agents Choose Redwards</p>
+        <h2 class="section-title">Built Around How You Actually Work</h2>
+      </div>
+      <div class="values-grid">
+        <div class="value-item reveal">
+          <p class="value-num">24hr</p>
+          <p class="value-label">Fast Turnaround</p>
+          <p class="value-desc">Most photo sets back in your hands within 24 hours. Your listing doesn't wait, and neither do I.</p>
+        </div>
+        <div class="value-item reveal">
+          <p class="value-num">Easy</p>
+          <p class="value-label">Simple Booking</p>
+          <p class="value-desc">Book online in under a minute. Pick what you need, choose your time, done. I handle everything from there.</p>
+        </div>
+        <div class="value-item reveal">
+          <p class="value-num">MLS</p>
+          <p class="value-label">Ready to List</p>
+          <p class="value-desc">Every image comes back edited, color-corrected, and MLS-ready. Download, upload, done — no extra steps, no special requests needed.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-contact">
+    <div class="contact-inner reveal">
+      <p class="section-tag">Get in Touch</p>
+      <h2 class="section-title">Let's Talk</h2>
+      <p class="section-desc" style="margin: 0.75rem auto 0;">Have a question, want to talk through an idea, or just curious about how it all works? I'd love to hear from you.</p>
+      <div class="contact-links">
+        <a href="mailto:rohan@redwardsmedia.com" class="contact-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"></rect><polyline points="22,6 12,13 2,6"></polyline></svg>
+          rohan@redwardsmedia.com
+        </a>
+        <a href="tel:6175289713" class="contact-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 01-2.18 2A19.86 19.86 0 013.09 5.18 2 2 0 015.11 3h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 11.91a16 16 0 006 6l2.27-2.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"></path></svg>
+          (617) 528-9713
+        </a>
+        <a href="https://www.instagram.com/redwardsmedia/" class="contact-link" target="_blank">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="5"></circle><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"></circle></svg>
+          @redwardsmedia
+        </a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">Redwards <span>Media</span></div>
+      <p class="footer-text">Premium real estate content in Greater Boston.<br>© 2026 Redwards Media. All Rights Reserved.</p>
+    </div>
+    <p class="footer-text">
+      <strong>Coming Soon:</strong> Client Portal & Podcast
+      <div class="footer-coming-soon">Stay tuned for exclusive resources and industry insights</div>
+    </p>
+    <div class="footer-socials">
+      <a href="https://www.instagram.com/redwardsmedia/" target="_blank" title="Instagram">IG</a>
+      <a href="https://www.youtube.com/channel/UCgxD4SHmvDHA0GFN430Fq9A" target="_blank" title="YouTube">YT</a>
+      <a href="https://www.linkedin.com/company/salad-days-creative/" target="_blank" title="LinkedIn">LI</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Page navigation
+  function showPage(page) {
+    document.getElementById('page-home').style.display = page === 'home' ? 'block' : 'none';
+    document.getElementById('page-about').style.display = page === 'about' ? 'block' : 'none';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // Re-trigger reveal animations
+    setTimeout(() => {
+      document.querySelectorAll('.reveal').forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 60) {
+          el.classList.add('visible');
+        }
+      });
+    }, 100);
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body></html>
