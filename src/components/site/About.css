@@ -1,6 +1,18 @@
 .about {
   background: var(--color-warm-white);
   background-image: radial-gradient(ellipse at top left, rgba(139, 158, 131, 0.08), transparent 70%);
+  position: relative;
+}
+
+.about::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 50px;
+  background: var(--color-warm-white);
+  clip-path: polygon(0 0, 100% 50%, 100% 100%, 0 100%);
 }
 
 .about__inner {

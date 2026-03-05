@@ -1,7 +1,20 @@
 .hero {
   padding: var(--space-3xl) 0;
+  padding-bottom: calc(var(--space-3xl) + 40px);
   background: var(--color-warm-white);
   background-image: radial-gradient(ellipse at top right, rgba(174, 74, 62, 0.06), transparent 70%);
+  position: relative;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: var(--color-sand-light);
+  clip-path: polygon(0 60%, 100% 0, 100% 100%, 0 100%);
 }
 
 .hero__inner {
