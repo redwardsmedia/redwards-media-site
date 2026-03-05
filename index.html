@@ -2,18 +2,53 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#2C2926" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="Reel Scripter" />
-  <meta name="description" content="AI-powered listing reel script writer by Redwards Media" />
+
+  <!-- Main site SEO meta (overridden by React for Reel Scripter) -->
+  <title>Redwards Media — Premium Real Estate Media in Greater Boston</title>
+  <meta name="description" content="Premium real estate photography, cinematic video, drone, virtual tours, and content creation for ambitious agents and teams in Greater Boston." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Redwards Media — Premium Real Estate Media" />
+  <meta property="og:description" content="Cinematic photography, video, and content that actually converts. Greater Boston." />
+  <meta property="og:image" content="/images/og-image.jpg" />
+  <meta property="og:url" content="https://redwardsmedia.com" />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Redwards Media — Premium Real Estate Media" />
+  <meta name="twitter:description" content="Cinematic photography, video, and content that actually converts." />
+  <meta name="twitter:image" content="/images/og-image.jpg" />
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Redwards Media",
+    "description": "Premium real estate media — photography, cinematic video, drone, virtual tours, and content creation in Greater Boston.",
+    "url": "https://redwardsmedia.com",
+    "telephone": "+1-617-921-8530",
+    "email": "rohan@redwardsmedia.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Cambridge",
+      "addressRegion": "MA"
+    },
+    "image": "https://redwardsmedia.com/images/og-image.jpg",
+    "priceRange": "$400-$1300+"
+  }
+  </script>
+
+  <!-- Reel Scripter PWA (only applies on /reelscripter/) -->
   <link rel="manifest" href="/reelscripter/manifest.json" />
   <link rel="apple-touch-icon" href="/reelscripter/icon-192.png" />
   <link rel="icon" type="image/png" href="/reelscripter/icon-192.png" />
-  <title>Reel Scripter — Redwards Media</title>
+
   <style>
-    body { margin: 0; background: #FAF8F5; -webkit-font-smoothing: antialiased; }
+    body { margin: 0; background: #FDFCFA; -webkit-font-smoothing: antialiased; }
   </style>
 </head>
 <body>
