@@ -89,11 +89,18 @@
     top: 0;
     width: 100%;
     z-index: 100;
-    background: rgba(253, 252, 250, 0.92);
+    background: rgba(253, 252, 250, 0);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    border-bottom: 1px solid transparent;
+    transition: all 0.4s var(--ease-smooth);
+  }
+
+  nav.scrolled {
+    background: rgba(253, 252, 250, 0.95);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border);
-    transition: all 0.3s var(--ease-smooth);
   }
 
   nav .nav-inner {
@@ -110,14 +117,20 @@
     font-size: 1.1rem;
     font-weight: 600;
     letter-spacing: 0.04em;
-    color: var(--charcoal);
+    color: #fff;
     text-decoration: none;
     text-transform: uppercase;
+    transition: color 0.4s;
   }
 
+  nav.scrolled .logo { color: var(--charcoal); }
+
   .logo span {
-    color: var(--terracotta);
+    color: var(--terracotta-soft);
+    transition: color 0.4s;
   }
+
+  nav.scrolled .logo span { color: var(--terracotta); }
 
   .nav-links {
     display: flex;
@@ -129,98 +142,121 @@
   .nav-links a {
     font-size: 0.875rem;
     font-weight: 500;
-    color: var(--charcoal-light);
+    color: rgba(255,255,255,0.85);
     text-decoration: none;
     letter-spacing: 0.02em;
-    transition: color 0.2s;
+    transition: color 0.3s;
     cursor: pointer;
   }
 
-  .nav-links a:hover { color: var(--terracotta); }
+  nav.scrolled .nav-links a { color: var(--charcoal-light); }
+  .nav-links a:hover { color: var(--terracotta-soft); }
+  nav.scrolled .nav-links a:hover { color: var(--terracotta); }
 
   .nav-cta {
-    background: var(--charcoal) !important;
-    color: var(--warm-white) !important;
+    background: rgba(255,255,255,0.15) !important;
+    color: #fff !important;
     padding: 0.6rem 1.5rem;
     border-radius: 6px;
     font-size: 0.8rem !important;
     font-weight: 500 !important;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    transition: all 0.25s var(--ease-smooth) !important;
+    transition: all 0.3s var(--ease-smooth) !important;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.2) !important;
+  }
+
+  nav.scrolled .nav-cta {
+    background: var(--charcoal) !important;
+    color: var(--warm-white) !important;
+    border-color: transparent !important;
+    backdrop-filter: none;
   }
 
   .nav-cta:hover {
     background: var(--terracotta) !important;
+    border-color: var(--terracotta) !important;
     transform: translateY(-1px);
   }
 
-  /* ========== HERO ========== */
+  /* ========== HERO (Full-bleed visual) ========== */
   .hero {
     min-height: 100vh;
-    display: flex;
-    align-items: center;
-    padding: 8rem 2rem 4rem;
-    background: var(--sand-light);
     position: relative;
+    display: flex;
+    align-items: flex-end;
     overflow: hidden;
   }
 
-  .hero::before {
-    content: '';
+  .hero-bg {
     position: absolute;
-    top: -30%;
-    right: -10%;
-    width: 60%;
-    height: 120%;
-    background: radial-gradient(ellipse, rgba(196, 112, 75, 0.06) 0%, transparent 70%);
-    pointer-events: none;
+    inset: 0;
+    z-index: 0;
   }
 
-  .hero-inner {
+  .hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 40%;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.15) 0%,
+      rgba(0,0,0,0.1) 35%,
+      rgba(0,0,0,0.55) 75%,
+      rgba(0,0,0,0.75) 100%
+    );
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
     max-width: 1200px;
     margin: 0 auto;
     width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
+    padding: 0 2rem 5rem;
   }
-
-  .hero-text { position: relative; z-index: 2; }
 
   .hero-tag {
     font-size: 0.8rem;
     font-weight: 500;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--terracotta);
-    margin-bottom: 1.5rem;
+    color: var(--terracotta-soft);
+    margin-bottom: 1.25rem;
     opacity: 0;
     animation: fadeUp 0.8s var(--ease-out) 0.2s forwards;
   }
 
   .hero h1 {
     font-family: var(--font-display);
-    font-size: clamp(2.5rem, 4.5vw, 3.8rem);
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
     font-weight: 500;
-    line-height: 1.15;
-    color: var(--charcoal);
-    margin-bottom: 1.5rem;
+    line-height: 1.12;
+    color: #fff;
+    margin-bottom: 1.25rem;
+    max-width: 700px;
     opacity: 0;
     animation: fadeUp 0.8s var(--ease-out) 0.35s forwards;
   }
 
   .hero h1 em {
     font-style: italic;
-    color: var(--terracotta);
+    color: var(--terracotta-soft);
   }
 
   .hero-desc {
-    font-size: 1.1rem;
-    color: var(--charcoal-light);
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.8);
     line-height: 1.75;
-    max-width: 480px;
+    max-width: 520px;
     margin-bottom: 2.5rem;
     opacity: 0;
     animation: fadeUp 0.8s var(--ease-out) 0.5s forwards;
@@ -232,6 +268,23 @@
     align-items: center;
     opacity: 0;
     animation: fadeUp 0.8s var(--ease-out) 0.65s forwards;
+  }
+
+  .hero .btn-primary {
+    background: var(--terracotta);
+  }
+
+  .hero .btn-primary:hover {
+    background: var(--warm-white);
+    color: var(--charcoal);
+  }
+
+  .hero .btn-secondary {
+    color: rgba(255,255,255,0.9);
+  }
+
+  .hero .btn-secondary:hover {
+    color: var(--terracotta-soft);
   }
 
   .btn-primary {
@@ -281,73 +334,74 @@
 
   .btn-secondary:hover svg { transform: translateX(3px); }
 
-  .hero-images {
-    position: relative;
-    height: 520px;
-    opacity: 0;
-    animation: fadeIn 1s var(--ease-out) 0.5s forwards;
-  }
-
-  .hero-img {
-    position: absolute;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: var(--shadow-lg);
-  }
-
-  .hero-img-1 {
-    width: 320px;
-    height: 400px;
-    top: 0;
-    left: 0;
-    background: linear-gradient(135deg, var(--cream) 0%, var(--sage-soft) 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .hero-img-2 {
-    width: 240px;
-    height: 300px;
-    top: 120px;
-    right: 0;
-    background: linear-gradient(135deg, var(--terracotta-soft) 0%, var(--terracotta) 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .img-placeholder {
-    color: rgba(255,255,255,0.7);
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    text-align: center;
-    padding: 1rem;
-  }
-
   .hero-stat {
     position: absolute;
-    bottom: 20px;
-    left: 40px;
-    background: white;
+    bottom: 3rem;
+    right: 3rem;
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     padding: 1.2rem 1.5rem;
     border-radius: 10px;
-    box-shadow: var(--shadow-md);
+    border: 1px solid rgba(255,255,255,0.15);
     z-index: 3;
+    opacity: 0;
+    animation: fadeIn 1s var(--ease-out) 0.8s forwards;
   }
 
   .hero-stat strong {
     font-size: 1.8rem;
     font-family: var(--font-display);
-    color: var(--terracotta);
+    color: #fff;
     display: block;
   }
 
   .hero-stat span {
     font-size: 0.78rem;
-    color: var(--charcoal-light);
+    color: rgba(255,255,255,0.7);
     letter-spacing: 0.02em;
+  }
+
+  /* ========== SHOWCASE STRIP ========== */
+  .showcase {
+    padding: 0;
+    overflow: hidden;
+    background: var(--charcoal);
+  }
+
+  .showcase-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+  }
+
+  .showcase-item {
+    height: 280px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .showcase-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s var(--ease-smooth);
+  }
+
+  .showcase-item:hover img {
+    transform: scale(1.06);
+  }
+
+  .showcase-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0);
+    transition: background 0.4s;
+  }
+
+  .showcase-item:hover::after {
+    background: rgba(0,0,0,0.08);
   }
 
   /* ========== SECTIONS SHARED ========== */
@@ -612,14 +666,6 @@
 
   .package-card.featured:hover {
     transform: scale(1.03) translateY(-4px);
-  }
-
-  .package-price {
-    font-family: var(--font-display);
-    font-size: 1.8rem;
-    font-weight: 500;
-    margin-bottom: 0.5rem;
-    color: var(--terracotta);
   }
 
   .package-price {
@@ -1212,14 +1258,17 @@
 
   .about-photo {
     width: 100%;
-    height: 500px;
-    border-radius: 14px;
+    max-width: 400px;
+    aspect-ratio: 1;
+    border-radius: 50%;
     background: linear-gradient(135deg, var(--cream) 0%, var(--sage-soft) 100%);
     display: flex;
     align-items: center;
     justify-content: center;
     box-shadow: var(--shadow-lg);
     position: relative;
+    overflow: hidden;
+    margin: 0 auto;
   }
 
   .about-text .section-tag { margin-bottom: 1rem; }
@@ -1345,31 +1394,30 @@
 
   /* ========== RESPONSIVE ========== */
   @media (max-width: 768px) {
-    .hero-inner {
-      grid-template-columns: 1fr;
-      gap: 2rem;
+    .hero h1 {
+      font-size: clamp(2rem, 8vw, 3rem);
     }
 
-    .hero-images {
-      height: 300px;
-    }
-
-    .hero-img-1 {
-      width: 100%;
-      height: 250px;
-      top: 0;
-      left: 0;
-    }
-
-    .hero-img-2 {
-      display: none;
+    .hero-content {
+      padding: 0 1.5rem 4rem;
     }
 
     .hero-stat {
-      bottom: auto;
-      top: 10px;
-      left: 50%;
-      transform: translateX(-50%);
+      bottom: 1.5rem;
+      right: 1.5rem;
+      padding: 0.9rem 1.2rem;
+    }
+
+    .hero-stat strong {
+      font-size: 1.4rem;
+    }
+
+    .showcase-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .showcase-item {
+      height: 180px;
     }
 
     .services-grid {
@@ -1458,47 +1506,51 @@
 </head>
 <body>
 
+<!-- NAV (always visible across all pages) -->
+<nav>
+  <div class="nav-inner">
+    <a href="javascript:showPage('home')" class="logo">Redwards <span>Media</span></a>
+    <ul class="nav-links">
+      <li><a href="javascript:showPage('home')">Home</a></li>
+      <li><a href="javascript:showPage('about')">About</a></li>
+      <li><a href="javascript:void(0)" onclick="showPage('home');setTimeout(()=>document.querySelector('.packages').scrollIntoView({behavior:'smooth'}),150)">Packages</a></li>
+      <li><a href="https://www.instagram.com/redwardsmedia/" target="_blank">Instagram</a></li>
+      <li><a href="https://redwards-media-llc.aryeo.com/order" class="nav-cta" target="_blank">Book Now</a></li>
+    </ul>
+  </div>
+</nav>
+
 <!-- ==================== HOME PAGE ==================== -->
 <div class="page-home" id="page-home">
 
-  <!-- NAV -->
-  <nav>
-    <div class="nav-inner">
-      <a href="javascript:showPage('home')" class="logo">Redwards <span>Media</span></a>
-      <ul class="nav-links">
-        <li><a href="javascript:showPage('home')">Home</a></li>
-        <li><a href="javascript:showPage('about')">About</a></li>
-        <li><a href="#packages" onclick="document.querySelector('.packages').scrollIntoView({behavior:'smooth'})">Packages</a></li>
-        <li><a href="https://www.instagram.com/redwardsmedia/" target="_blank">Instagram</a></li>
-        <li><a href="https://redwards-media-llc.aryeo.com/order" class="nav-cta" target="_blank">Book Now</a></li>
-      </ul>
-    </div>
-  </nav>
-
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-inner">
-      <div class="hero-text">
-        <p class="hero-tag">Cinematic Real Estate Media</p>
-        <h1>Elevate Your Listings with <em>Intentional Storytelling</em></h1>
-        <p class="hero-desc">Helping people and businesses grow through high-end visual experiences and memories. From signature reels to complete property marketing — every frame is crafted to make you look incredible.</p>
-        <div class="hero-actions">
-          <a href="https://redwards-media-llc.aryeo.com/order" class="btn-primary" target="_blank">Book a Shoot</a>
-          <a href="javascript:showPage('about')" class="btn-secondary">Learn More <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
-        </div>
+    <div class="hero-bg">
+      <img src="images/hero-bg.jpg" alt="Aerial twilight real estate photography — Greater Boston neighborhood captured by Redwards Media" loading="eager" />
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="hero-content">
+      <p class="hero-tag">Premium Real Estate Content — Greater Boston</p>
+      <h1>Every Frame, <em>Intentional.</em></h1>
+      <p class="hero-desc">Cinematic photography, signature reels, and elevated brand content for agents who care about how they show up. No templates. No filler. Just work you'd be proud to put money behind.</p>
+      <div class="hero-actions">
+        <a href="https://redwards-media-llc.aryeo.com/order" class="btn-primary" target="_blank">Book a Shoot</a>
+        <a href="javascript:showPage('about')" class="btn-secondary">Meet Rohan <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
       </div>
-      <div class="hero-images">
-        <div class="hero-img hero-img-1">
-          <img src="images/hero-exterior.jpg" alt="Victorian home exterior — professional real estate photography by Redwards Media" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;" loading="eager" />
-        </div>
-        <div class="hero-img hero-img-2">
-          <img src="images/hero-kitchen.jpg" alt="Luxury kitchen — real estate photography by Redwards Media" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;" loading="eager" />
-        </div>
-        <div class="hero-stat">
-          <strong>500+</strong>
-          <span>Properties Captured</span>
-        </div>
-      </div>
+    </div>
+    <div class="hero-stat">
+      <strong>500+</strong>
+      <span>Properties Captured</span>
+    </div>
+  </section>
+
+  <!-- SHOWCASE — lead with the work -->
+  <section class="showcase">
+    <div class="showcase-grid">
+      <div class="showcase-item"><img src="images/showcase-exterior.jpg" alt="Victorian home exterior — curb appeal photography" loading="lazy" /></div>
+      <div class="showcase-item"><img src="images/gallery-kitchen.jpg" alt="Luxury kitchen with marble island" loading="lazy" /></div>
+      <div class="showcase-item"><img src="images/showcase-living.jpg" alt="Living room with fireplace — staging photography" loading="lazy" /></div>
+      <div class="showcase-item"><img src="images/gallery-openplan.jpg" alt="Open concept interior — real estate media" loading="lazy" /></div>
     </div>
   </section>
 
@@ -1761,17 +1813,18 @@
   <section class="about-hero">
     <div class="about-hero-inner">
       <div class="about-photo">
-        <img src="images/hero-exterior.jpg" alt="Property photographed by Rohan Edwards — Redwards Media" style="width:100%;height:100%;object-fit:cover;border-radius:16px;" loading="lazy" />
+        <img src="images/headshot.jpg" alt="Rohan Edwards — Owner and Creative Director of Redwards Media" style="width:100%;height:100%;object-fit:cover;" loading="lazy" />
       </div>
       <div class="about-text">
         <p class="section-tag">About</p>
-        <h1>Hi, I'm Rohan.<br><em>I'm here to make you look incredible.</em></h1>
+        <h1>Hi, I'm Rohan.<br><em>I'm here to bring out your best.</em></h1>
         <div class="about-bio">
-          <p>I'm a videographer and photographer based in Cambridge, MA, and I've spent the last eight-plus years helping real estate agents look like the best version of themselves on camera. Hundreds of properties. Hundreds of agents. And every single project is built around the person, not a template.</p>
-          <p>I got into this through music and audio production — I worked as a sound engineer, music video producer, and in-house videographer before going full-time with real estate media. That background shapes everything I do, from the rhythm of an edit to the mood of a shot.</p>
-          <p>But here's the thing I care about most: I want every agent I work with to feel genuinely confident in the content they're putting out. Most people are nervous on camera — that's normal. I don't do scripted lines or awkward poses. I just create a comfortable space where your real personality comes through, and the final product always makes you feel like you nailed it.</p>
-          <p>These days, I'm focused on one thing: helping ambitious agents and teams show up in a way that matches the level they're actually operating at — or the level they're growing into. If you care about your brand, I want to help you build it.</p>
-          <p style="margin-top: 1.5rem;">I'm always up for a coffee and a conversation — reach out anytime.</p>
+          <p>I'm a videographer and photographer based in Cambridge, MA. For the past eight-plus years, I've been helping real estate agents discover and showcase the best version of themselves — on camera, on social, and in every piece of content they put out there. Over 500 properties. Hundreds of agents. And every single project is built around the person, not a template.</p>
+          <p>My background is in music and audio production — sound engineering, music videos, in-house video work. That creative foundation shapes everything I do, from the rhythm of an edit to the mood of a shot. It's why people say the work just feels different.</p>
+          <p>Here's what I care about most: I want you to feel genuinely confident in the content you're putting out. Most agents are nervous on camera — that's completely normal. I don't do scripted lines or forced poses. I create a space where your real personality comes through, and the final product always makes you feel like you nailed it.</p>
+          <p>My philosophy is simple — every video is an ad. No filler. No throwaway content. Every frame should have depth, personality, and lasting value. Whether it's a 15-second reel or a full brand film, it's something you'd be proud to put money behind.</p>
+          <p>I'm not just a vendor — I'm a brand partner. I think about your positioning, your audience, your goals, and I build content that serves the bigger picture. If you're an ambitious agent or team ready to show up at the level you're actually operating at, let's talk.</p>
+          <p style="margin-top: 1.5rem; font-style: italic; color: var(--terracotta);">Always up for a coffee and a conversation — reach out anytime.</p>
         </div>
       </div>
     </div>
@@ -1848,10 +1901,15 @@
 
 <script>
   // Page navigation
+  let currentPage = 'home';
   function showPage(page) {
+    currentPage = page;
     document.getElementById('page-home').style.display = page === 'home' ? 'block' : 'none';
     document.getElementById('page-about').style.display = page === 'about' ? 'block' : 'none';
     window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // Update nav state for About page (always show solid nav on About)
+    updateNavState();
 
     // Re-trigger reveal animations
     setTimeout(() => {
@@ -1863,6 +1921,19 @@
       });
     }, 100);
   }
+
+  // Nav scroll effect — transparent on hero, solid when scrolled
+  function updateNavState() {
+    const nav = document.querySelector('nav');
+    if (currentPage !== 'home' || window.scrollY > 80) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  }
+
+  window.addEventListener('scroll', updateNavState, { passive: true });
+  updateNavState();
 
   // Scroll reveal
   const observer = new IntersectionObserver((entries) => {
