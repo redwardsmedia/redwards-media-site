@@ -1,21 +1,23 @@
-import { Camera, Video, View } from 'lucide-react';
 import { SectionHeader } from '../shared/SectionHeader';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
 import './Services.css';
 
 const SERVICES = [
   {
-    icon: Camera,
+    image: '/images/gallery-kitchen.jpg',
+    alt: 'Professional kitchen real estate photo',
     title: 'Photography',
     description: "Clean, bright, true-to-life listing photos. Drone aerials. Twilight exteriors. Edited, color-corrected, and MLS-ready — usually back in your hands within 24 hours.",
   },
   {
-    icon: Video,
+    image: '/images/showcase-living.jpg',
+    alt: 'Cinematic video still of luxury living room',
     title: 'Cinematic Video',
-    description: "Signature reels built around you, not a template. Property tours, social clips, and content with real personality — every frame intentional, every edit polished.",
+    description: "Signature reels tailored to you, your brand, and the property — not a template. Property tours, social clips, and content with real personality. Every frame intentional, every edit polished.",
   },
   {
-    icon: View,
+    image: '/images/gallery-openplan.jpg',
+    alt: 'Wide-angle interior for virtual tour',
     title: 'Virtual Tours & More',
     description: "360 virtual tours, interactive floorplans, and property websites. The full digital package for listings that need to stand out online.",
   },
@@ -35,8 +37,8 @@ export function Services() {
         <div className="services__grid reveal" ref={ref}>
           {SERVICES.map((service) => (
             <div className="services__card" key={service.title}>
-              <div className="services__icon">
-                <service.icon size={24} strokeWidth={1.8} color="#FDFCFA" />
+              <div className="services__thumb">
+                <img src={service.image} alt={service.alt} loading="lazy" />
               </div>
               <h3 className="services__title">{service.title}</h3>
               <p className="services__desc">{service.description}</p>
