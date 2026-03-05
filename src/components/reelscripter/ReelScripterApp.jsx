@@ -8,19 +8,18 @@ import { useState, useRef, useCallback } from "react";
 // ============================================================
 
 const B = {
-  bg: "#FAF8F5", surface: "#FFFFFF", surfaceAlt: "#F3EFE9",
-  card: "#FFFFFF", cardHover: "#FEFDFB", cardBorder: "#E8E2DA",
-  charcoal: "#2C2926", charcoalSoft: "#4A4541",
-  redwood: "#AE4A3E", redwoodSoft: "#C47068",
+  bg: "var(--color-sand-light)", surface: "#FFFFFF", surfaceAlt: "var(--color-sand)",
+  card: "#FFFFFF", cardHover: "#FEFDFB", cardBorder: "var(--color-cream)",
+  charcoal: "var(--color-charcoal)", charcoalSoft: "var(--color-charcoal-light)",
+  redwood: "var(--color-redwood)", redwoodSoft: "var(--color-redwood-soft)",
   redwoodBg: "#AE4A3E0C", redwoodBorder: "#AE4A3E22",
-  sage: "#7A9468", gold: "#B8943E", sky: "#5A7F94",
-  textPri: "#2C2926", textSec: "#6B6560", textMut: "#A39E98", textLt: "#C4BFB8",
-  border: "#E8E2DA", borderFocus: "#D4CCC2",
+  sage: "var(--color-sage)", gold: "#B8943E", sky: "#5A7F94",
+  textPri: "var(--color-charcoal)", textSec: "#6B6560", textMut: "#A39E98", textLt: "#C4BFB8",
+  border: "var(--color-cream)", borderFocus: "#D4CCC2",
   shadow: "0 1px 3px rgba(44,41,38,0.04), 0 4px 12px rgba(44,41,38,0.03)",
   shadowLift: "0 4px 20px rgba(44,41,38,0.08)",
   r: 14, rs: 10,
-  sans: "'DM Sans', -apple-system, sans-serif",
-  serif: "'Playfair Display', Georgia, serif",
+  sans: "var(--font-body)", serif: "var(--font-display)",
   mono: "'JetBrains Mono', 'SF Mono', monospace",
 };
 
