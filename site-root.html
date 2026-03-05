@@ -237,12 +237,12 @@
 
   .hero h1 {
     font-family: var(--font-display);
-    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    font-size: clamp(2rem, 3.5vw, 3rem);
     font-weight: 500;
-    line-height: 1.12;
+    line-height: 1.18;
     color: #fff;
-    margin-bottom: 1.25rem;
-    max-width: 700px;
+    margin-bottom: 1rem;
+    max-width: 600px;
     opacity: 0;
     animation: fadeUp 0.8s var(--ease-out) 0.35s forwards;
   }
@@ -253,11 +253,11 @@
   }
 
   .hero-desc {
-    font-size: 1.05rem;
-    color: rgba(255,255,255,0.8);
-    line-height: 1.75;
-    max-width: 520px;
-    margin-bottom: 2.5rem;
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.7;
+    max-width: 480px;
+    margin-bottom: 2rem;
     opacity: 0;
     animation: fadeUp 0.8s var(--ease-out) 0.5s forwards;
   }
@@ -1395,7 +1395,7 @@
   /* ========== RESPONSIVE ========== */
   @media (max-width: 768px) {
     .hero h1 {
-      font-size: clamp(2rem, 8vw, 3rem);
+      font-size: clamp(1.6rem, 6vw, 2.2rem);
     }
 
     .hero-content {
@@ -1551,6 +1551,44 @@
       <div class="showcase-item"><img src="images/gallery-kitchen.jpg" alt="Luxury kitchen with marble island" loading="lazy" /></div>
       <div class="showcase-item"><img src="images/showcase-living.jpg" alt="Living room with fireplace — staging photography" loading="lazy" /></div>
       <div class="showcase-item"><img src="images/gallery-openplan.jpg" alt="Open concept interior — real estate media" loading="lazy" /></div>
+    </div>
+  </section>
+
+  <!-- VIDEO — featured work right up top -->
+  <section class="video-section">
+    <div class="section-inner">
+      <div class="reveal visible">
+        <p class="section-tag">Cinematic Video</p>
+        <h2 class="section-title">Featured Work</h2>
+        <p class="section-desc">Every piece of content should be something you could put money behind — whether it's a 15-second reel or a full cinematic walkthrough. No filler. No throwaway footage.</p>
+      </div>
+      <div class="video-grid">
+        <div class="video-card reveal visible" style="grid-column: span 2;">
+          <div class="vimeo-embed">
+            <iframe src="https://player.vimeo.com/video/1165210436?h=8f9e5c1a2b&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 3rem;">
+        <p style="color: rgba(255,255,255,0.65); margin-bottom: 2rem; text-align: center;">Vertical Format Showcase</p>
+      </div>
+      <div class="video-grid-vertical">
+        <div class="video-card-vertical reveal visible">
+          <div class="vimeo-embed">
+            <iframe src="https://player.vimeo.com/video/1165238976?h=8f9e5c1a2b&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+        <div class="video-card-vertical reveal visible">
+          <div class="vimeo-embed">
+            <iframe src="https://player.vimeo.com/video/1165209636?h=8f9e5c1a2b&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+        <div class="video-card-vertical reveal visible">
+          <div class="vimeo-embed">
+            <iframe src="https://player.vimeo.com/video/1165210256?h=8f9e5c1a2b&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1736,44 +1774,6 @@
 
   <!-- RESOURCES/BLOG — removed until real articles exist -->
   <!-- EMAIL SIGNUP — removed until real email service connected -->
-
-  <!-- VIDEO -->
-  <section class="video-section">
-    <div class="section-inner">
-      <div class="reveal visible">
-        <p class="section-tag">Cinematic Video</p>
-        <h2 class="section-title">Featured Work</h2>
-        <p class="section-desc">Every piece of content should be something you could put money behind — whether it's a 15-second reel or a full cinematic walkthrough. No filler. No throwaway footage. Just intentional storytelling.</p>
-      </div>
-      <div class="video-grid">
-        <div class="video-card reveal visible" style="grid-column: span 2;">
-          <div class="vimeo-embed">
-            <iframe src="https://player.vimeo.com/video/1165210436?h=8f9e5c1a2b&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div>
-      <div style="margin-top: 3rem;">
-        <p style="color: rgba(255,255,255,0.65); margin-bottom: 2rem; text-align: center;">Vertical Format Showcase</p>
-      </div>
-      <div class="video-grid-vertical">
-        <div class="video-card-vertical reveal visible">
-          <div class="vimeo-embed">
-            <iframe src="https://player.vimeo.com/video/1165238976?h=8f9e5c1a2b&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-          </div>
-        </div>
-        <div class="video-card-vertical reveal visible">
-          <div class="vimeo-embed">
-            <iframe src="https://player.vimeo.com/video/1165209636?h=8f9e5c1a2b&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-          </div>
-        </div>
-        <div class="video-card-vertical reveal visible">
-          <div class="vimeo-embed">
-            <iframe src="https://player.vimeo.com/video/1165210256?h=8f9e5c1a2b&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- GALLERY -->
   <section class="gallery">
