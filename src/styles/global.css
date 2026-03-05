@@ -1,0 +1,157 @@
+/* ==========================================================================
+   Global Styles — Redwards Media
+   Reset + Base + Scroll Reveal + Utilities
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap');
+
+/* Reset */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-charcoal);
+  background: var(--color-warm-white);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* Base Typography */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--color-charcoal);
+}
+
+h1 { font-size: clamp(2.5rem, 4.5vw, 3.8rem); }
+h2 { font-size: clamp(2rem, 3vw, 2.8rem); }
+h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
+
+p {
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--color-charcoal-light);
+}
+
+/* Scroll Reveal Animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s var(--ease-reveal), transform 0.7s var(--ease-reveal);
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delays for hero */
+.stagger-1 { transition-delay: 0.2s; }
+.stagger-2 { transition-delay: 0.35s; }
+.stagger-3 { transition-delay: 0.5s; }
+.stagger-4 { transition-delay: 0.65s; }
+
+/* Utility: Container */
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+/* Utility: Section padding */
+.section {
+  padding: var(--space-3xl) 0;
+}
+
+/* Utility: Section tag text */
+.section-tag {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-redwood);
+  margin-bottom: var(--space-sm);
+}
+
+/* Utility: Section title */
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  font-weight: 400;
+  color: var(--color-charcoal);
+  margin-bottom: var(--space-sm);
+}
+
+/* Utility: Section description */
+.section-desc {
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--color-charcoal-light);
+  max-width: 600px;
+}
+
+/* Dark section variant */
+.section-dark {
+  background: var(--color-charcoal);
+}
+
+.section-dark h2,
+.section-dark h3 {
+  color: var(--color-warm-white);
+}
+
+.section-dark p {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  :root {
+    --container-padding: 1.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --container-padding: 1rem;
+  }
+
+  .section {
+    padding: var(--space-2xl) 0;
+  }
+}
