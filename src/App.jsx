@@ -156,7 +156,7 @@ STEP 1 — DEEP ANALYSIS:
 - TWO SUPPORTING FEATURES from different categories (interior vs. exterior, lifestyle vs. investment, etc.)
 - TARGET BUYER: One specific person in one specific situation. Not "families" — "A couple with a toddler who just got priced out of Brookline."
 - WHAT TO SKIP: Identify which features are standard for this price point and should NOT appear in hooks.
-STEP 2 — 3 HOOKS:
+STEP 2 — 4 HOOKS:
 Each hook is 12-18 words spoken on camera + a separate text overlay optimized for muted viewers.
 A — CONTRARIAN: Challenge what people assume about this market, price point, town, or property type. The viewer thinks they know something — you show them they're wrong.
 Good contrarian hooks have TENSION. They set up an expectation and immediately subvert it.
@@ -170,6 +170,10 @@ C — DIRECT VALUE: The clearest, most complete value proposition in one line. P
 Good direct hooks stack 3-4 specific details that each independently attract attention.
 Examples of the pattern: "Two-family in Bedford. Live in one, rent the other. Nine thousand square feet of land." / "$785K. Four beds. Cul-de-sac. Framingham. Finished basement."
 BAD direct: Generic stacking. "Beautiful home, great location, amazing price" — no specifics.
+D — STORY: Open with a tiny narrative or emotional moment that puts the viewer IN the property. A story hook paints a scene — morning coffee, hosting a dinner, a kid running in the yard — then ties it to a real feature.
+Good story hooks are VIVID and SPECIFIC. They create a feeling, not just list features.
+Examples of the pattern: "Picture this — Saturday morning, floor-to-ceiling windows, coffee in hand, and the entire Boston skyline." / "Your kid runs through the back door, across 40 feet of grass, and straight into a treehouse you didn't know existed." / "You walk in at 6pm. The fireplace is already going. The kitchen island seats eight."
+BAD story: Too generic or cheesy. "Imagine living in your dream home" — no scene, no detail.
 ${t ? "\nTone: " + t.m : ""}
 HOOK QUALITY CHECKLIST (every hook must pass ALL of these):
 1. Contains at least one SPECIFIC detail from the listing (a number, a town name, a feature)
@@ -185,7 +189,7 @@ TEXT OVERLAY — this is NOT just a summary of the verbal hook. It's a separate 
 - Include the most magnetic detail: price, town, property type, or the surprise
 - Format options: "TOWN · PRICE · TYPE" / "THE [FEATURE] THAT CHANGES EVERYTHING" / a provocative short statement
 RESPOND:
-{"analysis":{"hook_seed":"...","features":["...","..."],"target_buyer":"...","skipped":"features that are standard for this price and NOT hook-worthy"},"hooks":[{"verbal":"...","text_overlay":"...","strategy":"contrarian","why":"What psychological trigger this uses and why it stops a scroll."},{"verbal":"...","text_overlay":"...","strategy":"curiosity","why":"..."},{"verbal":"...","text_overlay":"...","strategy":"direct","why":"..."}]}`,
+{"analysis":{"hook_seed":"...","features":["...","..."],"target_buyer":"...","skipped":"features that are standard for this price and NOT hook-worthy"},"hooks":[{"verbal":"...","text_overlay":"...","strategy":"contrarian","why":"What psychological trigger this uses and why it stops a scroll."},{"verbal":"...","text_overlay":"...","strategy":"curiosity","why":"..."},{"verbal":"...","text_overlay":"...","strategy":"direct","why":"..."},{"verbal":"...","text_overlay":"...","strategy":"story","why":"..."}]}`,
   };
 }
 
@@ -432,10 +436,12 @@ function S1({ data, setData, onGo, loading }) {
 // SCREEN 2 — HOOKS
 // ═══════════════════════════════════════
 
-function S2({ hooks, analysis, onPick, onRegen, loading }) {
+function S2({ hooks, analysis, onPick, onRegen, onUpdateAnalysis, loading }) {
   const [fb, setFb] = useState("");
-  const sc = { contrarian: B.redwood, curiosity: B.gold, direct: B.sage };
-  const sl = { contrarian: "Contrarian", curiosity: "Curiosity Gap", direct: "Direct Value" };
+  const [editFor, setEditFor] = useState(false);
+  const [forVal, setForVal] = useState(analysis?.target_buyer || "");
+  const sc = { contrarian: B.redwood, curiosity: B.gold, direct: B.sage, story: B.sky };
+  const sl = { contrarian: "Contrarian", curiosity: "Curiosity Gap", direct: "Direct Value", story: "Story Hook" };
 
   return (
     <div style={{ padding: "12px 20px 155px", animation: "fadeUp 0.25s ease" }}>
@@ -454,8 +460,22 @@ function S2({ hooks, analysis, onPick, onRegen, loading }) {
           <div style={{ fontFamily: B.sans, fontSize: 13, color: B.textSec, lineHeight: 1.45 }}>
             <strong style={{ color: B.charcoal }}>Lead:</strong> {analysis.hook_seed}
           </div>
-          <div style={{ fontFamily: B.sans, fontSize: 13, color: B.textSec, lineHeight: 1.45, marginTop: 2 }}>
-            <strong style={{ color: B.charcoal }}>For:</strong> {analysis.target_buyer}
+          <div style={{ fontFamily: B.sans, fontSize: 13, color: B.textSec, lineHeight: 1.45, marginTop: 2, display: "flex", alignItems: "flex-start", gap: 4 }}>
+            <strong style={{ color: B.charcoal, flexShrink: 0 }}>For:</strong>
+            {editFor ? (
+              <div style={{ flex: 1, display: "flex", gap: 6, alignItems: "center" }}>
+                <input
+                  value={forVal}
+                  onChange={(e) => setForVal(e.target.value)}
+                  autoFocus
+                  style={{ flex: 1, fontFamily: B.sans, fontSize: 13, color: B.textSec, border: `1px solid ${B.border}`, borderRadius: 6, padding: "4px 8px", background: B.surface, outline: "none" }}
+                  onKeyDown={(e) => { if (e.key === "Enter") { onUpdateAnalysis({ ...analysis, target_buyer: forVal }); setEditFor(false); } }}
+                />
+                <button onClick={() => { onUpdateAnalysis({ ...analysis, target_buyer: forVal }); setEditFor(false); }} style={{ background: B.sage, color: "#fff", border: "none", borderRadius: 6, padding: "4px 10px", fontSize: 11, fontWeight: 600, cursor: "pointer", fontFamily: B.sans }}>Save</button>
+              </div>
+            ) : (
+              <span onClick={() => setEditFor(true)} style={{ cursor: "pointer", borderBottom: `1px dashed ${B.textLt}` }} title="Tap to edit">{analysis.target_buyer}</span>
+            )}
           </div>
         </div>
       )}
@@ -487,13 +507,15 @@ function S2({ hooks, analysis, onPick, onRegen, loading }) {
                 </span>
               </div>
               <div style={{ padding: "14px 16px" }}>
-                <div style={{ fontFamily: B.serif, fontSize: 16, fontWeight: 500, color: B.charcoal, lineHeight: 1.45, marginBottom: 10 }}>
+                <div style={{ fontFamily: B.sans, fontSize: 17, fontWeight: 500, color: B.charcoal, lineHeight: 1.5, marginBottom: 10 }}>
                   &ldquo;{h.verbal}&rdquo;
                 </div>
-                <div style={{ background: B.surfaceAlt, borderRadius: 6, padding: "6px 10px", display: "inline-block", marginBottom: 10, border: `1px solid ${B.border}` }}>
-                  <span style={{ fontFamily: B.mono, fontSize: 10, fontWeight: 600, color: B.textSec }}>{h.text_overlay}</span>
+                <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                  <div style={{ background: B.surfaceAlt, borderRadius: 6, padding: "6px 10px", display: "inline-block", border: `1px solid ${B.border}` }}>
+                    <span style={{ fontFamily: B.mono, fontSize: 10, fontWeight: 600, color: B.textSec }}>{h.text_overlay}</span>
+                  </div>
+                  <span style={{ fontFamily: B.sans, fontSize: 9, fontWeight: 600, color: B.textMut, textTransform: "uppercase", letterSpacing: "0.06em" }}>Text Hook</span>
                 </div>
-                <div style={{ fontFamily: B.sans, fontSize: 12.5, color: B.textMut, lineHeight: 1.45 }}>{h.why}</div>
               </div>
             </button>
           );
@@ -913,7 +935,7 @@ function ReelScripter() {
       )}
 
       {sc === 0 && <S1 data={data} setData={setData} onGo={genH} loading={ld} />}
-      {sc === 1 && <S2 hooks={hooks} analysis={an} onPick={pickH} onRegen={reH} loading={ld} />}
+      {sc === 1 && <S2 hooks={hooks} analysis={an} onPick={pickH} onRegen={reH} onUpdateAnalysis={setAn} loading={ld} />}
       {sc === 2 && <S3 hook={hook} body={body} endings={ends} onBack={() => { setSc(1); setBody(""); setEnds([]); }} onReset={rst} onRegenBody={reB} loading={ld} />}
     </div>
   );
