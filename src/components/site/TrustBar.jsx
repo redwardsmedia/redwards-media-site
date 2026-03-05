@@ -4,7 +4,7 @@ import './TrustBar.css';
 const STATS = [
   { number: '500+', label: 'Properties Delivered' },
   { number: '24hr', label: 'Standard Turnaround' },
-  { number: '8+', label: 'Years in Real Estate Media' },
+  { number: '8+', label: 'Years as a Creative' },
 ];
 
 export function TrustBar() {
