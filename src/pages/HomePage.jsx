@@ -5,7 +5,7 @@ import { Services } from '../components/site/Services';
 import { FeaturedWork } from '../components/site/FeaturedWork';
 import { About } from '../components/site/About';
 import { Process } from '../components/site/Process';
-import { Packages } from '../components/site/Packages';
+import { ValueProposition } from '../components/site/ValueProposition';
 import { Testimonials } from '../components/site/Testimonials';
 import { Gallery } from '../components/site/Gallery';
 import { CTASection } from '../components/site/CTASection';
@@ -21,7 +21,7 @@ export function HomePage() {
       <FeaturedWork />
       <About />
       <Process />
-      <Packages />
+      <ValueProposition />
       <Testimonials />
       <Gallery />
       <CTASection />
