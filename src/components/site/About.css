@@ -29,6 +29,13 @@
   color: var(--color-charcoal-light);
 }
 
+.about__tease {
+  margin-top: var(--space-md);
+  font-style: italic;
+  color: var(--color-redwood);
+  font-weight: 500;
+}
+
 @media (max-width: 1024px) {
   .about__inner {
     grid-template-columns: 1fr;

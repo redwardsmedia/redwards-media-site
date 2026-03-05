@@ -14,13 +14,16 @@ export function About() {
           <span className="section-tag">Meet Rohan</span>
           <h2 className="section-title">I'm here to bring out <em>your best.</em></h2>
           <p>
-            I'm a videographer and photographer based in Cambridge, MA. For the past eight-plus years, I've been helping real estate agents discover and showcase the best version of themselves — on camera, on social, and in every piece of content they put out there.
+            Eight-plus years behind the camera as a videographer, marketer, and creative — three of those spent exclusively in real estate media. Every photo, every reel, every piece of content I produce is tailored to the client, the brand, and the property. No templates. No recycled edits. Just work that presents you in the best possible light.
           </p>
           <p>
-            My philosophy is simple — every video is an ad. No filler. No throwaway content. Every frame should have depth, personality, and lasting value.
+            I prioritize speed and efficiency on-site so your shoot is stress-free and won't eat your whole day. AI-powered editing, virtual staging, clutter removal, and twilight enhancements are all built into every package — problems get solved before you even think to ask.
           </p>
           <p>
-            Most agents are nervous on camera — that's normal. I don't do scripted lines or forced poses. I create a space where your real personality comes through, and the final product always makes you feel like you nailed it.
+            Most agents are nervous on camera — that's normal. I create a space where your real personality comes through, and the final product always makes you feel like you nailed it.
+          </p>
+          <p className="about__tease">
+            Beyond listing media, I help agents build brands that compound.
           </p>
         </div>
       </div>
