@@ -1,0 +1,57 @@
+/* ==========================================================================
+   Brand Design Tokens — Redwards Media
+   Source: brand-design-system.md Section 14
+   ========================================================================== */
+
+:root {
+  /* Colors — Primary */
+  --color-charcoal: #2C2926;
+  --color-redwood: #AE4A3E;
+  --color-warm-white: #FDFCFA;
+
+  /* Colors — Secondary */
+  --color-sage: #8B9E83;
+  --color-sage-soft: #A8B8A1;
+  --color-redwood-soft: #C47068;
+  --color-charcoal-light: #4A4541;
+
+  /* Colors — Neutrals */
+  --color-sand: #F5F0EB;
+  --color-sand-light: #FAF8F5;
+  --color-cream: #EDE8E0;
+
+  /* Typography */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 2.5rem;
+  --space-2xl: 4rem;
+  --space-3xl: 6rem;
+
+  /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-base: 10px;
+  --radius-lg: 12px;
+  --radius-xl: 14px;
+  --radius-pill: 20px;
+  --radius-full: 50%;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(44, 41, 38, 0.06);
+  --shadow-md: 0 4px 20px rgba(44, 41, 38, 0.08);
+  --shadow-lg: 0 12px 40px rgba(44, 41, 38, 0.1);
+
+  /* Easing */
+  --ease-reveal: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-interact: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Container */
+  --container-max: 1200px;
+  --container-padding: 2rem;
+}
