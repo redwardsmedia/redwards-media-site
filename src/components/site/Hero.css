@@ -47,10 +47,12 @@
 
 .hero__image {
   position: relative;
+  min-height: 300px;
 }
 
 .hero__image img {
   width: 100%;
+  aspect-ratio: 4 / 3;
   border-radius: var(--radius-lg);
   object-fit: cover;
   box-shadow: var(--shadow-lg);
