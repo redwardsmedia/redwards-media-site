@@ -1,6 +1,7 @@
 .trust-bar {
   background: var(--color-sand-light);
   padding: var(--space-xl) 0;
+  padding-top: calc(var(--space-xl) + 30px);
 }
 
 .trust-bar__inner {

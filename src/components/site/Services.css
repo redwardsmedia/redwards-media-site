@@ -1,5 +1,5 @@
 .services {
-  background: var(--color-warm-white);
+  background: linear-gradient(to bottom, var(--color-sand-light) 0%, var(--color-warm-white) 8%, var(--color-warm-white) 100%);
 }
 
 .services__grid {
