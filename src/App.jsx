@@ -71,6 +71,14 @@ EXAMPLES OF THE VIBE:
 "Step inside — warm, inviting, sun-splashed space. The first floor flows: living room to dining room to this generous kitchen. Seamless access to a newer deck that makes indoor-outdoor entertaining effortless."
 "Three levels of versatile living space, four-car parking, plus your own private backyard retreat — complete with inground pool. Minutes from bustling downtown shops, restaurants, and two commuter rail stops."
 "The main level is built for elevated living. Open-concept chef's kitchen with Thermador range, Sub-Zero refrigeration, a massive center island, and a full butler's pantry. Plus a rare main-level junior suite."
+FEATURE STACKING PATTERN — use this rhythm throughout the body:
+Feature → Lifestyle implication → Visual payoff.
+Example: "Chef's kitchen with a ten-foot island" → "this is where every holiday dinner happens" → "and it opens straight out to the deck."
+Don't just list features. Show how someone LIVES with them.
+PACING:
+- Ideal line length: 7-13 words. Max 15.
+- Vary the rhythm. Alternate short punches ("Nine thousand square feet. Flat.") with slightly longer descriptive lines ("The first floor flows from living room to dining to this generous kitchen.")
+- After a big reveal, a short line lets it land. Let a beautiful shot breathe without words on top.
 Rules for the body:
 - PACK IN THE FEATURES. Every line should deliver something specific and valuable. Don't waste words on vague reactions.
 - Lines sound like SPEECH but with ENERGY. Fragments. Contractions. Enthusiasm. Things a real person would say while walking someone through a house they're excited about.
@@ -79,7 +87,7 @@ Rules for the body:
 - One genuine agent opinion mid-body that builds trust — but keep the energy up. Not cool detachment, more "I was genuinely impressed by this."
 - Location and convenience are features. Always work in proximity to shops, transit, schools, downtown, highways when relevant.
 TONE OVERRIDE: If a PRICE TIER is provided, it takes priority over tone selection for voice and approach. A $4M listing always sounds cinematic regardless of tone choice. A $400K listing always leads with price energy. The tone selection adjusts WITHIN the tier — "casual" at $4M means relaxed confidence, not actually casual.
-THIN INPUT HANDLING: If the details are minimal (few features, shorthand, messy voice-to-text), work with what you have. Extract every usable detail. Lean harder on location, price, and property type to fill gaps. Do NOT invent features that aren't mentioned. If truly insufficient (just a town and price with nothing else), write a script focused on the agent's market knowledge and the area rather than specific property features, and note in the analysis what additional details would improve the script.
+THIN INPUT HANDLING: If the details are minimal (few features, shorthand, messy voice-to-text), work with what you have. Never comment on or mention the input quality — just write the best script possible from what's there. Extract every usable detail. You MAY interpret lifestyle implications from thin details ("large yard" → outdoor entertaining, kids playing, gardening space) but NEVER invent factual claims (don't add bedrooms, bathrooms, or features that aren't mentioned). When specs are thin, pivot hard to the ZIP CODE LIFESTYLE — the specific coffee shops, the commute time, the school district, the neighborhood vibe, what makes this block/town desirable. Make the location the star. If truly insufficient (just a town and price with nothing else), write a script focused on the agent's market knowledge and the area rather than specific property features, and note in the analysis what additional details would improve the script.
 GENERIC INPUT HANDLING: When details are bare-bones ("house in Newton 3 beds garage good location"), the TOWN becomes the differentiator. Use neighborhood knowledge as a feature: What is this town known for? Why do buyers choose it over neighboring towns? What's the lifestyle there? School reputation, walkability, commute, vibe, price relative to neighbors. Weave this into the hooks and body. The town IS the story when the property details are thin. Also lean on the price tier to set the approach — a $700K "house in Newton" is a very different script than a $1.3M "house in Newton."
 PRODUCTION FORMAT — write for this filming structure:
 The script has two modes: ON-CAMERA (agent talking directly to viewer) and VOICEOVER (agent's voice over B-roll of the property). The body is mostly voiceover.
@@ -88,6 +96,15 @@ The script has two modes: ON-CAMERA (agent talking directly to viewer) and VOICE
 - CLOSE [42-50s]: Agent ON-CAMERA again. Direct to viewer. This is where trust is built — a real person, looking at you, delivering the close.
 VISUAL DIRECTIONS: Only include [bracketed directions] when the agent needs to MOVE or CHANGE LOCATION — these are script beats, not shot suggestions. Examples: [Walk to the other unit], [Step outside], [Head upstairs], [On the roof]. Do NOT include generic cinematography like [gimbal push-in] or [hold on detail] or [drone shot] — the videographer knows how to shoot. The directions are for the AGENT performing the script, not the camera operator.
 VOICE: Energetic. Enthusiastic. Feature-rich. Fragments. Contractions. Em dashes. Action verbs. Written to be said out loud with excitement — like a walkthrough you can't wait to share.
+QUALITY CHECK — before outputting, verify:
+1. Total body word count is 80-100 words
+2. Every spoken line is ≤15 words
+3. At least 3 engagement triggers are present (shareability, save-worthy, open loop, contrast, specificity, callback)
+4. At least 2 pillars are activated (trust, value, credibility, entertainment)
+5. Hook opens a curiosity loop or tension — closing resolves it
+6. No banned words from the Anti-Generic list
+7. Script sounds human and energetic when read aloud, not formulaic
+If any check fails, revise before responding.
 OUTPUT: ONLY valid JSON. No markdown, no backticks, no preamble.`;
 
 const TONES = [
