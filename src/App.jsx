@@ -366,7 +366,8 @@ const BottomBar = ({ children }) => (
 // SCREEN 1 — INPUT
 // ═══════════════════════════════════════
 
-function S1({ data, setData, onGo, loading }) {
+function S1({ data, setData, onGo, loading, onScrape, scraping, scrapeErr }) {
+  const [url, setUrl] = useState("");
   const ready = data.details.trim().length >= 16;
   return (
     <div style={{ padding: "12px 20px 130px", animation: "fadeUp 0.25s ease" }}>
@@ -413,6 +414,46 @@ function S1({ data, setData, onGo, loading }) {
       {/* Details */}
       <div style={{ marginBottom: 16 }}>
         <label style={labelStyle}>Listing details</label>
+        <div style={{ display: "flex", gap: 8, marginBottom: 10 }}>
+          <input
+            value={url}
+            onChange={(e) => setUrl(e.target.value)}
+            placeholder="Paste a Zillow / Redfin / MLS link"
+            disabled={scraping}
+            style={{ ...inputBase, flex: 1, padding: "10px 14px", fontSize: 13, borderRadius: B.rs }}
+            {...focusRing}
+            onKeyDown={(e) => { if (e.key === "Enter" && url.trim()) { onScrape(url.trim()); } }}
+          />
+          <button
+            onClick={() => { if (url.trim()) onScrape(url.trim()); }}
+            disabled={scraping || !url.trim()}
+            style={{
+              background: scraping ? B.surfaceAlt : B.surface,
+              border: `1.5px solid ${B.border}`, borderRadius: B.rs,
+              padding: "10px 16px", cursor: scraping ? "wait" : "pointer",
+              fontFamily: B.sans, fontSize: 12, fontWeight: 600,
+              color: scraping ? B.textMut : B.textSec,
+              display: "flex", alignItems: "center", gap: 6,
+              transition: "all 0.2s", whiteSpace: "nowrap",
+            }}
+          >
+            {scraping ? (
+              <span style={{
+                width: 13, height: 13,
+                border: `2px solid ${B.border}`,
+                borderTopColor: B.redwood,
+                borderRadius: "50%",
+                animation: "spin 0.7s linear infinite",
+                display: "inline-block",
+              }} />
+            ) : "Pull"}
+          </button>
+        </div>
+        {scrapeErr && (
+          <div style={{ fontFamily: B.sans, fontSize: 12, color: B.redwood, marginBottom: 8, lineHeight: 1.4 }}>
+            {scrapeErr}
+          </div>
+        )}
         <div style={{ display: "flex", gap: 10, alignItems: "flex-end" }}>
           <textarea
             value={data.details}
@@ -873,6 +914,44 @@ function ReelScripter() {
   const [hook, setHook] = useState(null);
   const [body, setBody] = useState("");
   const [ends, setEnds] = useState([]);
+  const [scraping, setScraping] = useState(false);
+  const [scrapeErr, setScrapeErr] = useState("");
+
+  const scrapeUrl = async (url) => {
+    setScraping(true); setScrapeErr("");
+    try {
+      const r = await fetch("/api/scrape", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ url }),
+      });
+      const d = await r.json().catch(() => ({}));
+      if (!r.ok) throw new Error(d.error || "Couldn't pull from this URL");
+      // Auto-fill price if extracted and user hasn't set one
+      setData((prev) => {
+        const n = { ...prev };
+        if (d.price && !prev.price) n.price = String(d.price);
+        // Build details string
+        const parts = [];
+        if (d.address) parts.push(d.address);
+        if (d.beds || d.baths || d.sqft) {
+          const specs = [];
+          if (d.beds) specs.push(d.beds + " bed");
+          if (d.baths) specs.push(d.baths + " bath");
+          if (d.sqft) specs.push(Number(d.sqft).toLocaleString() + " sqft");
+          parts.push(specs.join(" · "));
+        }
+        if (d.description) parts.push(d.description);
+        if (d.features?.length) parts.push("Features: " + d.features.join(", "));
+        if (d.town && d.state) parts.push(d.town + ", " + d.state);
+        n.details = parts.join("\n");
+        return n;
+      });
+    } catch (e) {
+      setScrapeErr(e.message || "Couldn't pull from this URL — paste the details manually.");
+    }
+    setScraping(false);
+  };
 
   const go = async (fn) => {
     setLd(true); setEr("");
@@ -910,6 +989,7 @@ function ReelScripter() {
     setSc(0); setData({ details: "", tone: "", price: "" });
     setHooks([]); setAn(null); setHook(null);
     setBody(""); setEnds([]); setEr("");
+    setScrapeErr("");
   };
 
   return (
@@ -959,7 +1039,7 @@ function ReelScripter() {
         </div>
       )}
 
-      {sc === 0 && <S1 data={data} setData={setData} onGo={genH} loading={ld} />}
+      {sc === 0 && <S1 data={data} setData={setData} onGo={genH} loading={ld} onScrape={scrapeUrl} scraping={scraping} scrapeErr={scrapeErr} />}
       {sc === 1 && <S2 hooks={hooks} analysis={an} onPick={pickH} onRegen={reH} onUpdateAnalysis={setAn} loading={ld} />}
       {sc === 2 && <S3 hook={hook} body={body} endings={ends} onBack={() => { setSc(1); setBody(""); setEnds([]); }} onReset={rst} onRegenBody={reB} loading={ld} />}
     </div>
