@@ -1,14 +1,34 @@
+import { useRef, useState, useEffect } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '../shared/Button';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
-import { useParallax } from '../../hooks/useParallax';
 import './Hero.css';
 
 const BOOKING_URL = 'https://book.aryeo.com/order/redwards-media';
 
+// Drop your header video into public/videos/ and update this path
+const HERO_VIDEO_SRC = '/videos/hero-reel.mp4';
+
 export function Hero() {
   const ref = useScrollReveal();
-  const parallaxRef = useParallax(0.15);
+  const videoRef = useRef(null);
+  const [videoLoaded, setVideoLoaded] = useState(false);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const onCanPlay = () => setVideoLoaded(true);
+    const onError = () => setVideoLoaded(false);
+
+    video.addEventListener('canplay', onCanPlay);
+    video.addEventListener('error', onError);
+
+    return () => {
+      video.removeEventListener('canplay', onCanPlay);
+      video.removeEventListener('error', onError);
+    };
+  }, []);
 
   return (
     <section className="hero" id="home" ref={ref}>
@@ -28,8 +48,25 @@ export function Hero() {
             </Button>
           </div>
         </div>
-        <div className="hero__image reveal">
-          <img ref={parallaxRef} src="/images/hero-exterior.jpg" alt="Premium property exterior photography by Redwards Media" loading="eager" />
+        <div className="hero__media reveal">
+          <video
+            ref={videoRef}
+            className={`hero__video ${videoLoaded ? 'hero__video--loaded' : ''}`}
+            src={HERO_VIDEO_SRC}
+            poster="/images/hero-exterior.jpg"
+            autoPlay
+            muted
+            loop
+            playsInline
+          />
+          {!videoLoaded && (
+            <img
+              className="hero__fallback-img"
+              src="/images/hero-exterior.jpg"
+              alt="Premium property exterior photography by Redwards Media"
+              loading="eager"
+            />
+          )}
           <div className="hero__stat-badge">
             <span className="hero__stat-number">500+</span>
             <span className="hero__stat-label">Properties Delivered</span>

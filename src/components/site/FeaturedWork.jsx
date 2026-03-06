@@ -6,7 +6,7 @@ import './FeaturedWork.css';
 
 const FEATURED_VIDEO = {
   thumbnail: '/images/showcase-living.jpg',
-  embedUrl: 'https://www.youtube.com/embed/YOUR_VIDEO_ID',
+  embedUrl: 'https://player.vimeo.com/video/1170881128',
   alt: 'Featured property tour by Redwards Media',
 };
 
@@ -20,12 +20,13 @@ function VideoCard({ video, aspect = 'landscape' }) {
   const [playing, setPlaying] = useState(false);
 
   if (playing && video.embedUrl) {
+    const separator = video.embedUrl.includes('?') ? '&' : '?';
     return (
       <div className={`featured-work__video featured-work__video--${aspect}`}>
         <iframe
-          src={`${video.embedUrl}?autoplay=1`}
+          src={`${video.embedUrl}${separator}autoplay=1&title=0&byline=0&portrait=0`}
           title={video.alt}
-          allow="autoplay; encrypted-media"
+          allow="autoplay; fullscreen; encrypted-media"
           allowFullScreen
           loading="lazy"
         />
