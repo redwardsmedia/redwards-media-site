@@ -8,22 +8,22 @@ export function About() {
     <section className="about section" id="about">
       <div className="about__inner container reveal" ref={ref}>
         <div className="about__image">
-          <img src="/images/headshot.jpg" alt="Rohan Edwards — Redwards Media founder" loading="lazy" />
+          <img src="/images/headshot.jpg" alt="Rohan and Sahn Edwards — the Edwards Brothers, Redwards Media" loading="lazy" />
         </div>
         <div className="about__text">
-          <span className="section-tag">Meet Rohan</span>
-          <h2 className="section-title">I'm here to bring out <em>your best.</em></h2>
+          <span className="section-tag">The Edwards Brothers</span>
+          <h2 className="section-title">We're here to bring out <em>your best.</em></h2>
           <p>
-            Eight-plus years behind the camera as a videographer, marketer, and creative — three of those spent exclusively in real estate media. Every photo, every reel, every piece of content I produce is tailored to the client, the brand, and the property. No templates. No recycled edits. Just work that presents you in the best possible light.
+            <strong>Rohan</strong> brings eight-plus years behind the camera as a videographer, marketer, and creative — three spent exclusively in real estate media. He leads every shoot, directing the on-site experience so it's stress-free, efficient, and built around you.
           </p>
           <p>
-            I prioritize speed and efficiency on-site so your shoot is stress-free and won't eat your whole day. AI-powered editing, virtual staging, clutter removal, and twilight enhancements are all built into every package — problems get solved before you even think to ask.
+            <strong>Sahn</strong> runs post-production — color grading, editing, AI enhancements, virtual staging, and everything that turns raw footage into the polished final product. Together, we've streamlined the pipeline so your content lands faster without cutting corners.
           </p>
           <p>
-            Most agents are nervous on camera — that's normal. I create a space where your real personality comes through, and the final product always makes you feel like you nailed it.
+            Every photo, every reel, every piece of content is tailored to the client, the brand, and the property. No templates. No recycled edits. Just work that presents you in the best possible light.
           </p>
           <p className="about__tease">
-            Beyond listing media, I help agents build brands that compound.
+            Beyond listing media, we help agents build brands that compound.
           </p>
         </div>
       </div>
