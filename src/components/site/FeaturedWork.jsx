@@ -28,7 +28,8 @@ const REELS = [
 const FEATURED_VIDEO = {
   thumbnail: '/images/showcase-living.jpg',
   linkUrl: 'https://vimeo.com/showcase/12111453',
-  alt: 'Lifestyle cinematic real estate video by Redwards Media',
+  label: 'Luxury House Film',
+  alt: 'Luxury house film by Redwards Media',
 };
 
 function VideoCard({ video, aspect = 'landscape' }) {
