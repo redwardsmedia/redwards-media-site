@@ -12,7 +12,7 @@ export function CTASection() {
       <div className="cta-section__inner container">
         <h2 className="cta-section__title">Ready to see yourself in your best light?</h2>
         <p className="cta-section__desc">
-          Book a shoot in minutes, or just reach out — I'm always happy to talk through what would work best for you. No pressure, no pitch. Just a conversation.
+          Book a shoot in minutes, or just reach out — we're always happy to talk through what would work best for you. No pressure, no pitch. Just a conversation.
         </p>
         <Button variant="cta" href={BOOKING_URL}>Book a Shoot</Button>
       </div>

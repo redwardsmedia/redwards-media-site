@@ -1,0 +1,55 @@
+.trust-logos {
+  padding: var(--space-lg) 0;
+  border-top: 1px solid var(--color-cream);
+  background: var(--color-sand-light);
+}
+
+.trust-logos__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.trust-logos__label {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-charcoal-light);
+  opacity: 0.7;
+}
+
+.trust-logos__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-lg) var(--space-xl);
+}
+
+.trust-logos__name {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--color-charcoal);
+  opacity: 0.45;
+  transition: opacity 0.3s var(--ease-interact);
+  white-space: nowrap;
+}
+
+.trust-logos__name:hover {
+  opacity: 0.8;
+}
+
+@media (max-width: 640px) {
+  .trust-logos__row {
+    gap: var(--space-md) var(--space-lg);
+  }
+
+  .trust-logos__name {
+    font-size: 0.78rem;
+  }
+}

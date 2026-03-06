@@ -22,7 +22,7 @@ export function ValueProposition() {
           <span className="section-tag">All-Inclusive Packages</span>
           <h2 className="section-title">Everything you need. Nothing extra to stress about.</h2>
           <p className="value__desc">
-            Every package comes loaded — AI editing, virtual staging, clutter removal, twilight enhancements, and drone aerials are all built in. No add-on menus, no a-la-carte surprises. You book, I handle the rest.
+            Every package comes loaded — AI editing, virtual staging, clutter removal, twilight enhancements, and drone aerials are all built in. No add-on menus, no a-la-carte surprises. You book, we handle the rest.
           </p>
           <ul className="value__list">
             {INCLUSIONS.map((item) => (

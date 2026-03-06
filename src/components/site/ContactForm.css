@@ -1,0 +1,119 @@
+.contact__wrap {
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.contact__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+
+.contact__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.contact__label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-charcoal);
+}
+
+.contact__input {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  padding: 12px 16px;
+  border: 1px solid var(--color-cream);
+  border-radius: var(--radius-md);
+  background: var(--color-warm-white);
+  color: var(--color-charcoal);
+  transition: border-color 0.2s var(--ease-interact), box-shadow 0.2s var(--ease-interact);
+  outline: none;
+}
+
+.contact__input::placeholder {
+  color: var(--color-charcoal-light);
+  opacity: 0.5;
+}
+
+.contact__input:focus {
+  border-color: var(--color-redwood);
+  box-shadow: 0 0 0 3px rgba(174, 74, 62, 0.08);
+}
+
+.contact__textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.contact__submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  align-self: flex-start;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 14px 32px;
+  background: var(--color-charcoal);
+  color: var(--color-warm-white);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background 0.25s var(--ease-interact), transform 0.2s var(--ease-interact);
+}
+
+.contact__submit:hover {
+  background: var(--color-redwood);
+  transform: translateY(-1px);
+}
+
+.contact__submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.contact__success {
+  text-align: center;
+  padding: var(--space-2xl) var(--space-lg);
+  background: var(--color-sand-light);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-cream);
+}
+
+.contact__success-text {
+  font-size: 0.95rem;
+  color: var(--color-charcoal);
+  line-height: 1.7;
+}
+
+.contact__success-text a {
+  color: var(--color-redwood);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 640px) {
+  .contact__row {
+    grid-template-columns: 1fr;
+  }
+
+  .contact__submit {
+    width: 100%;
+  }
+}
