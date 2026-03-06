@@ -39,7 +39,7 @@ export function Hero() {
             Your listings deserve content that matches the level you're operating at.
           </h1>
           <p className="hero__desc reveal stagger-3">
-            Cinematic photography, video, and content tailored to you, your brand, and your listings — with every AI enhancement built in. No add-ons, no stress, no wasted time.
+            No stress, no friction, high quality every time.
           </p>
           <div className="hero__ctas reveal stagger-4">
             <Button variant="primary" href={BOOKING_URL}>Book a Shoot</Button>
