@@ -39,6 +39,22 @@
   left: 0;
 }
 
+.featured-work__label {
+  position: absolute;
+  bottom: var(--space-sm);
+  left: var(--space-sm);
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-warm-white);
+  background: rgba(44, 41, 38, 0.7);
+  backdrop-filter: blur(8px);
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+}
+
 .featured-work__play {
   position: absolute;
   top: 50%;
