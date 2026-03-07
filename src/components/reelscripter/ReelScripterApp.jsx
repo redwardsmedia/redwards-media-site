@@ -37,22 +37,33 @@ PRIORITY ORDER:
 SCRIPT FORMATTING:
 No labels, headings, timestamps, or bullets inside the script content. No "HOOK:", "BODY:", "CLOSE:", brackets, stage directions, or camera notes — ever. Body lines in 2-3 breath groups separated by blank lines. Every spoken line: 15 words max, one idea, natural to say aloud in one breath.
 LENGTH TARGETS:
-Total runtime: 45-50 seconds. Body word count: 80-105 words. Ideal line length: 7-13 words. Hard line max: 15 words.
+Total runtime: 45-50 seconds. Body spoken word count: 55-70 words. Ideal line length: 4-8 words. Hard line max: 15 words.
 OPEN (0-10s) — Agent on camera:
 Goal: Stop the scroll. Open a curiosity loop you will close at the end. The first 3 seconds decide stay or scroll.
 Never open with: "Are you looking for...", "Welcome to...", "Step into...", or any generic question.
 Start with one of: Bold claim ("This backyard is why people move to [area]."), Broken expectation ("From the street, you'd never guess what's under this roof."), Mid-story ("I wasn't ready for what's behind that front door."), Surprising fact/number (only use if provided — never invent), "Wait, what?" twist ("This 'condo' has a private yard I've never seen at this price.").
 Rules: Anchor the hook to this property, block, or neighborhood — not a generic type. The hook must open a loop you can close in the final 8 seconds. The on-screen text overlay is a separate visual — the agent does not read it aloud.
 BODY (10-42s) — Voiceover over B-roll:
-Walk the viewer through a lived experience of the home. Natural order: main living, kitchen, bedrooms/baths, unique/bonus spaces, exterior, neighborhood context.
-Feature stacking pattern (required): Feature, then lifestyle meaning, then visual payoff. "Ten-foot kitchen island" then "so you're actually hosting Thanksgiving here" then "and it opens straight out to the deck." Each line contains one main idea: feature OR meaning OR payoff — not all three crammed together.
+BODY RULES:
+- Select 3–4 features MAX. Do not speak every detail from the listing — save secondary specs for [VISUALS ONLY] beats.
+- Mark camera-only beats as [VISUALS ONLY] with a 2-3 word description. These are not spoken. [VISUALS ONLY] must appear at least once — let the camera carry a moment.
+- Every [CUT] introduces a new idea. Never continue or expand the previous line after a cut.
+- Lines should be 4-8 words. Fragments over full sentences.
+- Do not stack features. Choose the 1-2 that hit hardest and give each one line.
+- The close must reframe the hook's exact premise — not a CTA. If the hook asked a question, the close answers it. If the hook made a claim, the close proves it.
+- Total spoken word count: 55-70 words. If you exceed this, you are listing, not scripting.
+- Features are curated, not catalogued. Make an editorial decision about what to say vs. what to show.
+HOW THE BODY SHOULD SOUND:
+The body is a narrative with a beginning, middle, and payoff — not a feature walkthrough. The viewer should feel like the agent is taking them through a story, not reading a spec sheet. Energy comes from specificity and rhythm, not volume of information.
 Required body beats (write them naturally — never label them):
-First reward (10-18s): Deliver the most visual, lifestyle-rich feature immediately. If a viewer leaves at 15 seconds, they should feel it was worth staying.
+First reward (10-18s): Deliver the most visual, lifestyle-rich feature immediately.
 Retention reset (18-22s): One short line that shifts the scene and reopens curiosity. Rotate through: Location shift ("Then I walked out back."), Reveal tease ("The listing photos missed this part."), Perspective flip ("Here's what you can't see on Zillow."), Emotional beat ("This is where I actually stopped for a second."). Never default to "But honestly."
-Contrast moment (22-32s): Show a different category of value from the first feature — interior to exterior, polished to potential, quiet retreat to walkable lifestyle. Include one "DM-worthy" detail: hyper-specific enough that a viewer sends this Reel to a house-hunting friend. ("Three minutes to the commuter rail." / "HOA covers heat and hot water." / "Walk to [landmark]." — only use if provided.)
-Save trigger (32-42s): One insight useful beyond this listing. Choose one: Price-to-value framing ("This is what $X gets you in [ZIP]."), Layout insight ("This is why this layout works day-to-day."), Market rarity ("Finding X at this price in [area] almost never happens."), Buyer strategy ("Here's what I'd look for if you tour this."). Only use true-to-input facts. Never invent stats.
-One trust moment (required, place naturally in body): One honest agent POV — a real preference, reaction, or tradeoff: "I'd honestly take this yard over an extra bedroom." / "This layout is why entertaining actually works here." / "This is the kind of street people try to time perfectly." Not negative. Just real.
-Body voice: High-energy, conversational, fragment-friendly. Contractions, occasional one-word lines, action verbs: open, spill out, tuck away, slide, wake up to, end the day here. Address the viewer directly: "You're looking at..." / "This is where you..." Specs become lifestyle: "Updated mechanicals" becomes "You're not thinking about a furnace bill this winter."
+Contrast moment (22-32s): Show a different category of value from the first feature. Include one "DM-worthy" detail specific enough that a viewer sends this Reel to a friend.
+Save trigger (32-42s): One insight useful beyond this listing. Only use true-to-input facts. Never invent stats.
+One trust moment (required, place naturally in body): One honest agent POV — a real preference, reaction, or tradeoff. Not negative. Just real.
+CALLBACK RULE (enforced):
+Before writing the body, identify the hook's core premise (the question it asks or the claim it makes). The final line of the script must resolve that premise directly. This is non-negotiable — it is what creates rewatch loops.
+Body voice: Conversational, fragment-friendly. Contractions, occasional one-word lines. Address the viewer directly. Specs become lifestyle benefits.
 CLOSE (42-50s) — Agent on camera:
 Goal: Resolve the hook's open loop. Trigger rewatches through circular structure. Directly or indirectly close what you opened in the first lines. End with a callback to the hook's word, idea, or phrase — this creates the rewatch loop. Keep energy up. Avoid stiff CTAs. Use natural agent lines: "If this feels like your place, you know where to find me." / "Want to see it in person? Let's make it happen."
 ENGAGEMENT TRIGGERS (use at least 3, woven naturally):
@@ -82,7 +93,7 @@ Step 4 — Plan the Callback Before Writing: Decide how the hook resolves before
 Step 5 — Map the Retention Curve: 0-3s tension (hook creates unresolved curiosity), 10-15s payoff (first reward lands), ~20s reset (new curiosity opens), 25-35s contrast + DM detail, 35-42s save trigger (useful insight), 42-50s loop closure (callback resolves hook).
 Step 6 — Set Your "Do Not Invent" Guard: From risk_flags, list every fact you must not state. Keep this active as you write. When locality flavor is needed but facts are missing, use safe-but-vivid generic language only.
 FINAL SELF-CHECK (silent, before outputting):
-1. Body is 80-105 words
+1. Body is 55-70 spoken words
 2. Every spoken line is 15 words or fewer
 3. At least 3 engagement triggers are present
 4. At least 2 pillars activated: Trust / Value / Credibility / Entertainment
@@ -211,7 +222,7 @@ function promptScript(details, tone, hook, analysis, fb, price) {
   const tier = priceTier(price);
   return {
     system: SYS,
-    user: `Write a COMPLETE Instagram Reel listing tour script.\n\nHOOK: "${hook.verbal}"\nTEXT: "${hook.text_overlay}"\nSTRATEGY: ${hook.strategy}\n\nFEATURES: ${analysis.hook_seed} | ${analysis.features.join(", ")} | For: ${analysis.target_buyer}\n\nDETAILS: ${details}${tier}${n}\n${t ? "Tone: " + t.m : ""}\n\nHOOK is already written (agent delivers it ON-CAMERA).\n\nWrite the BODY as VOICEOVER (80-100 words, ~35s). This plays over B-roll of the property. Write it with ENERGY and ENTHUSIASM — like a high-energy listing tour that packs in features and sells the lifestyle. Walk the viewer through the home with excitement:\n\n1. Start inside the main living area / kitchen — the visual heart. Lead with an action verb that MOVES the viewer in: "Step inside to..." / "The first floor flows..." Then stack the standout features with energy.\n2. Retention line around the midpoint — reopen curiosity. Use a FRESH approach each time. NOT "But honestly." Try: location shift ("Step outside for a second"), reveal tease ("The listing sheet doesn't mention this"), perspective flip ("Here's what the photos don't show you"), excitement beat ("And then there's this"). Match to the property.\n3. Move to a contrasting space — different category (interior→exterior, finished→raw, upstairs→yard). Sell the LIFESTYLE and what's POSSIBLE, not just what exists.\n4. Peak moment — energy peaks. Market context, location convenience, a surprising number, or the wow feature. Tie in proximity to shops, transit, schools, downtown when relevant.\n5. Setup the close — one line that hands it back to the agent on camera.\n\nPack in the features. Every line should deliver something specific and valuable. Lines should sound like enthusiastic speech — someone excited to show you what they found.\n\nNO brackets or stage directions — just the spoken words. Separate the body into 2-3 breath groups with blank lines between them. Max 15 words per spoken line.\n\nIf input is thin/messy, work with what exists. Do NOT invent features.\n\nWrite 3 ENDINGS (agent is back ON-CAMERA, 15-25 words each):\nA — PAYOFF: Strong close. No ask. Value IS the ending.\nB — SOFT: Light nudge. "Full details on my page." / "You know where to find me."\nC — DIRECT: "DM me [KEYWORD]" with urgency. Unless luxury tier — then invitation language.\n\nRESPOND:\n{"body":"...","endings":[{"closing":"...","cta":"","text_overlay":"...","type":"payoff"},{"closing":"...","cta":"...","text_overlay":"...","type":"soft"},{"closing":"...","cta":"...","text_overlay":"...","type":"direct"}]}`,
+    user: `Write a COMPLETE Instagram Reel listing tour script.\n\nHOOK: "${hook.verbal}"\nTEXT: "${hook.text_overlay}"\nSTRATEGY: ${hook.strategy}\n\nFEATURES: ${analysis.hook_seed} | ${analysis.features.join(", ")} | For: ${analysis.target_buyer}\n\nDETAILS: ${details}${tier}${n}\n${t ? "Tone: " + t.m : ""}\n\nHOOK is already written (agent delivers it ON-CAMERA).\n\nWrite the BODY as VOICEOVER (55-70 spoken words, ~30s). This plays over B-roll of the property. The body is a NARRATIVE with a beginning, middle, and payoff — not a feature walkthrough.\n\nBODY RULES:\n- Select 3-4 features MAX. Save secondary specs for [VISUALS ONLY] beats.\n- Mark camera-only beats as [VISUALS ONLY] with a 2-3 word description. These are NOT spoken. Include at least one — let the camera carry a moment.\n- Lines should be 4-8 words. Fragments over full sentences.\n- Do not stack features. Choose the 1-2 that hit hardest and give each one line.\n- Every [CUT] introduces a new idea. Never continue the previous line after a cut.\n- Features are curated, not catalogued. Make an editorial decision about what to say vs. what to show.\n\nFLOW:\n1. Start in the main living area / kitchen. Lead with a reaction, then the key feature.\n2. Retention line at midpoint — reopen curiosity. NOT "But honestly." Try: location shift ("Step outside"), reveal tease ("The listing sheet doesn't mention this"), perspective flip ("Here's what the photos don't show you"), emotional beat ("This room changed the whole showing").\n3. Contrasting space — different category. Include a detail specific enough someone would share this Reel.\n4. Peak moment — market context, surprising number, or wow feature.\n5. Setup the close — one line handing it back to the agent on camera.\n\nCALLBACK RULE: Before writing, identify the hook's core premise. The final line MUST resolve that premise. If the hook asked a question, the close answers it. If the hook made a claim, the close proves it. This creates rewatch loops.\n\nNO brackets or stage directions except [VISUALS ONLY] beats. Separate the body into 2-3 breath groups with blank lines between them.\n\nIf input is thin/messy, work with what exists. Do NOT invent features.\n\nWrite 3 ENDINGS (agent is back ON-CAMERA, 15-25 words each):\nA — PAYOFF: Strong close. No ask. Value IS the ending.\nB — SOFT: Light nudge. "Full details on my page." / "You know where to find me."\nC — DIRECT: "DM me [KEYWORD]" with urgency. Unless luxury tier — then invitation language.\n\nRESPOND:\n{"body":"...","endings":[{"closing":"...","cta":"","text_overlay":"...","type":"payoff"},{"closing":"...","cta":"...","text_overlay":"...","type":"soft"},{"closing":"...","cta":"...","text_overlay":"...","type":"direct"}]}`,
   };
 }
 
@@ -230,7 +241,7 @@ FIX THESE PROBLEMS:
 KEEP:
 - The same features, structure, and breath groups
 - The same overall arc and story flow
-- 80-105 word body length
+- 55-70 spoken word body length
 - Max 15 words per line
 - 2-3 breath groups separated by blank lines
 - High energy, conversational, fragment-friendly voice
