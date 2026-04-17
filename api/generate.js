@@ -13,7 +13,7 @@
 
 import * as listingHooks from "../prompts/listingHooks.js";
 import * as listingBody from "../prompts/listingBody.js";
-import { BANNED_WORDS } from "../src/constants/bannedWords.js";
+import { DISCOURAGED_WORDS } from "../src/constants/discouragedWords.js";
 
 const PROMPTS = {
   "listing-hooks": listingHooks,
@@ -132,7 +132,7 @@ export default async function handler(req) {
       return json({ error: "Failed to parse script. Try again." }, 502);
     }
 
-    const warnings = scanBannedWords(parsed);
+    const warnings = scanDiscouragedWords(parsed);
     const payload = warnings.length ? { ...parsed, warnings } : parsed;
     return json(payload, 200);
   } catch (err) {
@@ -148,14 +148,15 @@ function json(payload, status) {
   });
 }
 
-// Walk every string in the parsed response and flag banned-word matches.
-// Returns a deduped array of the banned phrases that were found.
-function scanBannedWords(parsed) {
+// Walk every string in the parsed response and flag discouraged-word matches.
+// Not a hard block — these words are just overused real-estate filler that the
+// UI surfaces as a soft heads-up. Returns a deduped array of the hits found.
+function scanDiscouragedWords(parsed) {
   const hits = new Set();
   const visit = (v) => {
     if (typeof v === "string") {
       const lower = v.toLowerCase();
-      for (const word of BANNED_WORDS) {
+      for (const word of DISCOURAGED_WORDS) {
         if (lower.includes(word.toLowerCase())) hits.add(word);
       }
     } else if (Array.isArray(v)) {

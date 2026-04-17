@@ -15,7 +15,7 @@ SCRIPT RULES (hard):
 - Close resolves the hook's loop (callback = rewatch trigger). Mention the town. Soft CTA only.
 - Agent NEVER says their own name or brokerage on camera — hard rule.
 - Never fabricate facts. If price/specs are missing, use [PLACEHOLDER] inline.
-- No banned words: stunning, gorgeous, dream home, nestled, boasts, charming, turnkey, sought-after, breathtaking, meticulously, gem, endless potential. Avoid "Welcome to this beautiful…", "Step into…", "Are you looking for…", "thrilled/honored/blessed/excited to share".
+- Prefer specific, lived-in language over stock real-estate adjectives. These are overused — use sparingly, only when they genuinely fit the agent's voice: stunning, gorgeous, dream home, nestled, boasts, charming, turnkey, sought-after, breathtaking, meticulously, gem, endless potential. Same applies to generic openers and social clichés: "Welcome to this beautiful…", "Step into…", "Are you looking for…", "thrilled/honored/blessed/excited to share".
 
 WRITE FOR THE EAR (polish rules, integrated):
 - Every line must pass the "would an agent actually say this while walking through?" test.

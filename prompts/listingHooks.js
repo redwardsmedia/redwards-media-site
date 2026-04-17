@@ -18,7 +18,7 @@ HOOK RULES (hard):
 - Never open with "Are you looking for..." or lead with a negative.
 - Read it out loud — does it sound like ONE natural sentence a person would say?
 - Keep it concise. Cut filler. One punchy sentence beats two long ones.
-- No generic real estate words: stunning, gorgeous, dream home, nestled, boasts, turnkey, sought-after, breathtaking, meticulously, gem, endless potential.
+- Prefer specific, concrete language over stock real-estate adjectives. These words are overused — use only when they genuinely fit the agent's voice, never as default filler: stunning, gorgeous, dream home, nestled, boasts, turnkey, sought-after, breathtaking, meticulously, gem, endless potential.
 - Agent NEVER says their own name or brokerage.
 - Match hook archetype to price tier: Value Market favors Price Anchor, Warm Invite, Contrast/Tension. Upper/Luxury favors Curiosity Gap, Bold Claim, Neighborhood Lead.
 - Never fabricate facts. If a detail is missing (price, address, features), don't invent one.

@@ -408,7 +408,7 @@ function WarningsBanner({ warnings }) {
       background: "#FFF6EC", border: "1px solid #F0D9B8", borderRadius: B.rs,
       fontFamily: B.sans, fontSize: 12, color: "#7A5A1A", lineHeight: 1.45,
     }}>
-      <strong style={{ fontWeight: 600 }}>Heads up:</strong> the output slipped in some generic real-estate language — {warnings.map((w) => `"${w}"`).join(", ")}. Re-generate with a note if you want a cleaner pass.
+      <strong style={{ fontWeight: 600 }}>Heads up:</strong> leans on some overused real-estate phrases — {warnings.map((w) => `"${w}"`).join(", ")}. Fine if they fit the vibe; regenerate with a note if you want something more specific.
     </div>
   );
 }
