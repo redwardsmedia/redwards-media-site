@@ -1,5 +1,28 @@
-// Vercel Edge Function — proxies Claude API with rate limiting
-// 30 requests/hour per IP (in-memory, resets on cold start)
+// Vercel Edge Function — proxies Claude API with rate limiting.
+// 30 requests/hour per IP (in-memory, resets on cold start).
+//
+// Contract (scripter-v2):
+//   POST { projectType, step, input, selectedHook? }
+//   projectType: "listing" (v1 parity). "neighborhood" + "sold-story" land in later commits.
+//   step: "hooks" | "body" | "polish"
+//   input: the variable portion of the prompt (built client-side)
+//   selectedHook: required for step="body", formatted hook string
+//
+// Prompt files live in /prompts/*.js and expose { SYSTEM, USER_TEMPLATE }.
+// USER_TEMPLATE placeholders: {userInput}, {selectedHook}.
+
+import * as listingHooks from "../prompts/listingHooks.js";
+import * as listingBody from "../prompts/listingBody.js";
+import * as listingPolish from "../prompts/listingPolish.js";
+
+const PROMPTS = {
+  "listing-hooks": listingHooks,
+  "listing-body": listingBody,
+  "listing-polish": listingPolish,
+};
+
+const MODEL = "claude-sonnet-4-6";
+const MAX_TOKENS = 2048;
 
 const RATE_LIMIT = 30;
 const RATE_WINDOW = 60 * 60 * 1000; // 1 hour
@@ -17,7 +40,6 @@ function rateCheck(ip) {
   return true;
 }
 
-// Periodic cleanup to prevent memory leak on long-lived instances
 setInterval(() => {
   const now = Date.now();
   for (const [ip, entry] of hits) {
@@ -33,37 +55,47 @@ export default async function handler(req) {
   }
 
   if (req.method !== "POST") {
-    return new Response(JSON.stringify({ error: "Method not allowed" }), {
-      status: 405,
-      headers: { ...corsHeaders(), "Content-Type": "application/json" },
-    });
+    return json({ error: "Method not allowed" }, 405);
   }
 
   const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
   if (!rateCheck(ip)) {
-    return new Response(JSON.stringify({ error: "Rate limit exceeded. Try again in a few minutes." }), {
-      status: 429,
-      headers: { ...corsHeaders(), "Content-Type": "application/json" },
-    });
+    return json({ error: "Rate limit exceeded. Try again in a few minutes." }, 429);
   }
 
   const apiKey = process.env.ANTHROPIC_API_KEY;
   if (!apiKey) {
-    return new Response(JSON.stringify({ error: "Server misconfigured" }), {
-      status: 500,
-      headers: { ...corsHeaders(), "Content-Type": "application/json" },
-    });
+    return json({ error: "Server misconfigured" }, 500);
   }
 
+  let body;
   try {
-    const { system, user } = await req.json();
-    if (!system || !user) {
-      return new Response(JSON.stringify({ error: "Missing system or user prompt" }), {
-        status: 400,
-        headers: { ...corsHeaders(), "Content-Type": "application/json" },
-      });
-    }
+    body = await req.json();
+  } catch {
+    return json({ error: "Invalid JSON body" }, 400);
+  }
 
+  const { projectType, step, input, selectedHook } = body;
+  if (!projectType || !step) {
+    return json({ error: "Missing projectType or step" }, 400);
+  }
+
+  const promptKey = `${projectType}-${step}`;
+  const prompt = PROMPTS[promptKey];
+  if (!prompt) {
+    return json({ error: `Unknown prompt: ${promptKey}` }, 400);
+  }
+
+  if (step === "body" && !selectedHook) {
+    return json({ error: "selectedHook is required for step=body" }, 400);
+  }
+
+  const system = prompt.SYSTEM;
+  const user = prompt.USER_TEMPLATE
+    .split("{userInput}").join(input || "")
+    .split("{selectedHook}").join(selectedHook || "");
+
+  try {
     const res = await fetch("https://api.anthropic.com/v1/messages", {
       method: "POST",
       headers: {
@@ -72,8 +104,8 @@ export default async function handler(req) {
         "anthropic-version": "2023-06-01",
       },
       body: JSON.stringify({
-        model: "claude-sonnet-4-20250514",
-        max_tokens: 2048,
+        model: MODEL,
+        max_tokens: MAX_TOKENS,
         system,
         messages: [{ role: "user", content: user }],
       }),
@@ -82,16 +114,12 @@ export default async function handler(req) {
     if (!res.ok) {
       const errText = await res.text().catch(() => "");
       console.error("Anthropic API error:", res.status, errText);
-      return new Response(JSON.stringify({ error: "AI service error" }), {
-        status: 502,
-        headers: { ...corsHeaders(), "Content-Type": "application/json" },
-      });
+      return json({ error: "AI service error" }, 502);
     }
 
     const data = await res.json();
     const text = data.content?.[0]?.text || "";
 
-    // Parse the JSON from Claude's response — strip markdown fences if present
     let cleaned = text.trim();
     if (cleaned.startsWith("```")) {
       cleaned = cleaned.replace(/^```(?:json)?\s*/, "").replace(/\s*```$/, "");
@@ -102,23 +130,21 @@ export default async function handler(req) {
       parsed = JSON.parse(cleaned);
     } catch {
       console.error("Failed to parse Claude response as JSON:", cleaned.slice(0, 500));
-      return new Response(JSON.stringify({ error: "Failed to parse script. Try again." }), {
-        status: 502,
-        headers: { ...corsHeaders(), "Content-Type": "application/json" },
-      });
+      return json({ error: "Failed to parse script. Try again." }, 502);
     }
 
-    return new Response(JSON.stringify(parsed), {
-      status: 200,
-      headers: { ...corsHeaders(), "Content-Type": "application/json" },
-    });
+    return json(parsed, 200);
   } catch (err) {
     console.error("Generate handler error:", err);
-    return new Response(JSON.stringify({ error: "Internal server error" }), {
-      status: 500,
-      headers: { ...corsHeaders(), "Content-Type": "application/json" },
-    });
+    return json({ error: "Internal server error" }, 500);
   }
+}
+
+function json(payload, status) {
+  return new Response(JSON.stringify(payload), {
+    status,
+    headers: { ...corsHeaders(), "Content-Type": "application/json" },
+  });
 }
 
 function corsHeaders() {
