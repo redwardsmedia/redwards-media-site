@@ -1,47 +1,34 @@
-// Listing Reel — BODY pass.
+// Listing Reel — BODY pass. v2 prompt: 115–125 flowing words, no labels, polish rules folded in.
 // Placeholders: {userInput}, {selectedHook}
-// v1 prompt content preserved verbatim for scripter-v2 Commit 1.
-// Commit 2 rewrites this file + folds the polish pass into the body prompt.
 
-import { SYSTEM as SHARED_SYSTEM } from "./listingHooks.js";
+export const SYSTEM = `You are writing the full voiceover script for a 45–60 second Instagram listing Reel. The agent has already picked the hook. Write the body + close that flows from this hook.
 
-export const SYSTEM = SHARED_SYSTEM;
+SCRIPT RULES (hard):
+- Output the voiceover ONLY. No section labels like [HOOK] or [CLOSE]. Just flowing spoken words.
+- Total length (including the hook) = 115–125 words. Count before returning.
+- The hook opens the script. Do NOT rewrite the hook; use it verbatim as the first line.
+- First line of the body advances the script — never restates what the hook said.
+- Body is 2–3 breath groups of connected sentences. NEVER bullet points or fragmented one-liners.
+- Structure adapts to the property: Hook → Highlight → Specs → Neighborhood → Close (reorder based on what's strongest). For a small/modest property, lead with town/lifestyle/value. For a large/standout home, lead with the main living area.
+- Specs become lived experience: not "three bedrooms" but "everyone gets their own real room."
+- Include ONE honest agent opinion somewhere in the body for trust.
+- Close resolves the hook's loop (callback = rewatch trigger). Mention the town. Soft CTA only.
+- Agent NEVER says their own name or brokerage on camera — hard rule.
+- Never fabricate facts. If price/specs are missing, use [PLACEHOLDER] inline.
+- No banned words: stunning, gorgeous, dream home, nestled, boasts, charming, turnkey, sought-after, breathtaking, meticulously, gem, endless potential. Avoid "Welcome to this beautiful…", "Step into…", "Are you looking for…", "thrilled/honored/blessed/excited to share".
 
-export const USER_TEMPLATE = `Write a COMPLETE Instagram Reel listing tour script.
+WRITE FOR THE EAR (polish rules, integrated):
+- Every line must pass the "would an agent actually say this while walking through?" test.
+- Avoid unnatural phrasing nobody says out loud ("granite countertops meet cherry cabinets").
+- Avoid generic filler transitions: "Then there's this.", "But honestly.", "And it gets better."
+- Rewrite for flow — every sentence pulls into the next.
+- Prioritize good writing that sounds natural spoken out loud. Rhythm matters more than clever phrases.
 
+Return JSON ONLY, no preamble, no markdown fences:
+{ "script": "<full flowing voiceover, hook verbatim as opening, 115–125 words total>", "wordCount": <integer>, "endCard": "<Agent Name> · <Brokerage> · <Phone> · Presented by Redwards Media" }`;
+
+export const USER_TEMPLATE = `SELECTED HOOK:
 {selectedHook}
 
-{userInput}
-
-HOOK is already written (agent delivers it ON-CAMERA).
-
-Write the BODY as VOICEOVER (55-70 spoken words, ~30s). This plays over B-roll of the property. The body is a NARRATIVE with a beginning, middle, and payoff — not a feature walkthrough.
-
-BODY RULES:
-- Select 3-4 features MAX. Save secondary specs for [VISUALS ONLY] beats.
-- Mark camera-only beats as [VISUALS ONLY] with a 2-3 word description. These are NOT spoken. Include at least one — let the camera carry a moment.
-- Lines should be 4-8 words. Fragments over full sentences.
-- Do not stack features. Choose the 1-2 that hit hardest and give each one line.
-- Every [CUT] introduces a new idea. Never continue the previous line after a cut.
-- Features are curated, not catalogued. Make an editorial decision about what to say vs. what to show.
-
-FLOW:
-1. Start in the main living area / kitchen. Lead with a reaction, then the key feature.
-2. Retention line at midpoint — reopen curiosity. NOT "But honestly." Try: location shift ("Step outside"), reveal tease ("The listing sheet doesn't mention this"), perspective flip ("Here's what the photos don't show you"), emotional beat ("This room changed the whole showing").
-3. Contrasting space — different category. Include a detail specific enough someone would share this Reel.
-4. Peak moment — market context, surprising number, or wow feature.
-5. Setup the close — one line handing it back to the agent on camera.
-
-CALLBACK RULE: Before writing, identify the hook's core premise. The final line MUST resolve that premise. If the hook asked a question, the close answers it. If the hook made a claim, the close proves it. This creates rewatch loops.
-
-NO brackets or stage directions except [VISUALS ONLY] beats. Separate the body into 2-3 breath groups with blank lines between them.
-
-If input is thin/messy, work with what exists. Do NOT invent features.
-
-Write 3 ENDINGS (agent is back ON-CAMERA, 15-25 words each):
-A — PAYOFF: Strong close. No ask. Value IS the ending.
-B — SOFT: Light nudge. "Full details on my page." / "You know where to find me."
-C — DIRECT: "DM me [KEYWORD]" with urgency. Unless luxury tier — then invitation language.
-
-RESPOND:
-{"body":"...","endings":[{"closing":"...","cta":"","text_overlay":"...","type":"payoff"},{"closing":"...","cta":"...","text_overlay":"...","type":"soft"},{"closing":"...","cta":"...","text_overlay":"...","type":"direct"}]}`;
+PROPERTY & AGENT CONTEXT:
+{userInput}`;

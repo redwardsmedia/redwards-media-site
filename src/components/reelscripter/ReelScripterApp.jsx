@@ -95,26 +95,15 @@ ${cleanDetails(data.details)}
 """${priceTier(data.price)}${notesBlock(fb)}${toneBlock(data.tone)}`;
 }
 
-function buildListingBodyInput(data, analysis, fb) {
-  return `${addressBlock(data)}FEATURES: ${analysis.hook_seed} | ${analysis.features.join(", ")} | For: ${analysis.target_buyer}
-
-DETAILS: ${cleanDetails(data.details)}${priceTier(data.price)}${notesBlock(fb)}${toneBlock(data.tone)}`;
-}
-
-function buildListingPolishInput(details, hookVerbal, body) {
-  return `ORIGINAL DETAILS:
-${details}
-
-HOOK (for context, don't rewrite): "${hookVerbal}"
-
-DRAFT BODY TO REWRITE:
-${body}`;
+function buildListingBodyInput(data, fb) {
+  return `${addressBlock(data)}LISTING DETAILS:
+"""
+${cleanDetails(data.details)}
+"""${priceTier(data.price)}${notesBlock(fb)}${toneBlock(data.tone)}`;
 }
 
 function formatSelectedHook(hook) {
-  return `HOOK: "${hook.verbal}"
-TEXT: "${hook.text_overlay}"
-STRATEGY: ${hook.strategy}`;
+  return `"${hook.text}" (archetype: ${hook.archetype})`;
 }
 
 async function callAI(projectType, step, input, selectedHook = null) {
@@ -398,53 +387,49 @@ function S1({ data, setData, onGo, loading, onScrape, scraping, scrapeErr }) {
 // SCREEN 2 — HOOKS
 // ═══════════════════════════════════════
 
-function S2({ hooks, analysis, onPick, onRegen, onUpdateAnalysis, loading }) {
+const archetypeColor = (a) => {
+  const map = {
+    "Price Anchor": B.sage,
+    "Warm Invite": B.redwood,
+    "Contrast/Tension": B.gold,
+    "Curiosity Gap": B.sky,
+    "Bold Claim": B.redwood,
+    "POV/Scenario": B.gold,
+    "Neighborhood Lead": B.sage,
+  };
+  return map[a] || B.redwood;
+};
+
+function WarningsBanner({ warnings }) {
+  if (!warnings?.length) return null;
+  return (
+    <div style={{
+      marginBottom: 14, padding: "10px 12px",
+      background: "#FFF6EC", border: "1px solid #F0D9B8", borderRadius: B.rs,
+      fontFamily: B.sans, fontSize: 12, color: "#7A5A1A", lineHeight: 1.45,
+    }}>
+      <strong style={{ fontWeight: 600 }}>Heads up:</strong> the output slipped in some generic real-estate language — {warnings.map((w) => `"${w}"`).join(", ")}. Re-generate with a note if you want a cleaner pass.
+    </div>
+  );
+}
+
+function S2({ hooks, warnings, onPick, onRegen, loading }) {
   const [fb, setFb] = useState("");
-  const [editFor, setEditFor] = useState(false);
-  const [forVal, setForVal] = useState(analysis?.target_buyer || "");
-  const sc = { contrarian: B.redwood, curiosity: B.gold, direct: B.sage, story: B.sky };
-  const sl = { contrarian: "Contrarian", curiosity: "Curiosity Gap", direct: "Direct Value", story: "Story Hook" };
 
   return (
-    <div style={{ padding: "12px 20px 155px", animation: "fadeUp 0.25s ease" }}>
-      <h2 style={{ fontFamily: B.serif, fontSize: 24, fontWeight: 500, color: B.charcoal, margin: "0 0 6px" }}>
+    <div style={{ padding: "24px 20px 155px", animation: "fadeUp 0.25s ease" }}>
+      <h2 style={{ fontFamily: B.serif, fontSize: 26, fontWeight: 500, color: B.charcoal, margin: "0 0 8px", letterSpacing: "-0.01em" }}>
         Pick your hook
       </h2>
-      <p style={{ fontFamily: B.sans, fontSize: 13.5, color: B.textSec, margin: "0 0 16px", lineHeight: 1.5 }}>
-        Tap the one you'd say on camera. I'll build the full script around it.
+      <p style={{ fontFamily: B.sans, fontSize: 13.5, color: B.textSec, margin: "0 0 20px", lineHeight: 1.55 }}>
+        {"Tap the one you\u2019d say on camera. I\u2019ll build the full script around it."}
       </p>
 
-      {analysis && (
-        <div style={{ background: B.surfaceAlt, borderRadius: B.rs, padding: "12px 14px", marginBottom: 16, border: `1px solid ${B.border}` }}>
-          <div style={{ fontFamily: B.sans, fontSize: 11, fontWeight: 600, color: B.sky, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 4 }}>
-            Identified
-          </div>
-          <div style={{ fontFamily: B.sans, fontSize: 13, color: B.textSec, lineHeight: 1.45 }}>
-            <strong style={{ color: B.charcoal }}>Lead:</strong> {analysis.hook_seed}
-          </div>
-          <div style={{ fontFamily: B.sans, fontSize: 13, color: B.textSec, lineHeight: 1.45, marginTop: 2, display: "flex", alignItems: "flex-start", gap: 4 }}>
-            <strong style={{ color: B.charcoal, flexShrink: 0 }}>For:</strong>
-            {editFor ? (
-              <div style={{ flex: 1, display: "flex", gap: 6, alignItems: "center" }}>
-                <input
-                  value={forVal}
-                  onChange={(e) => setForVal(e.target.value)}
-                  autoFocus
-                  style={{ flex: 1, fontFamily: B.sans, fontSize: 13, color: B.textSec, border: `1px solid ${B.border}`, borderRadius: 6, padding: "4px 8px", background: B.surface, outline: "none" }}
-                  onKeyDown={(e) => { if (e.key === "Enter") { onUpdateAnalysis({ ...analysis, target_buyer: forVal }); setEditFor(false); } }}
-                />
-                <button onClick={() => { onUpdateAnalysis({ ...analysis, target_buyer: forVal }); setEditFor(false); }} style={{ background: B.sage, color: "#fff", border: "none", borderRadius: 6, padding: "4px 10px", fontSize: 11, fontWeight: 600, cursor: "pointer", fontFamily: B.sans }}>Save</button>
-              </div>
-            ) : (
-              <span onClick={() => setEditFor(true)} style={{ cursor: "pointer", borderBottom: `1px dashed ${B.textLt}` }} title="Tap to edit">{analysis.target_buyer}</span>
-            )}
-          </div>
-        </div>
-      )}
+      <WarningsBanner warnings={warnings} />
 
       <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
         {hooks.map((h, i) => {
-          const c = sc[h.strategy] || B.redwood;
+          const c = archetypeColor(h.archetype);
           return (
             <button
               key={i}
@@ -462,21 +447,15 @@ function S2({ hooks, analysis, onPick, onRegen, onUpdateAnalysis, loading }) {
             >
               <div style={{ padding: "10px 16px", borderBottom: `1px solid ${B.border}`, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                 <span style={{ fontFamily: B.sans, fontSize: 11, fontWeight: 700, color: c, textTransform: "uppercase", letterSpacing: "0.06em" }}>
-                  {sl[h.strategy]}
+                  {h.archetype}
                 </span>
                 <span style={{ fontFamily: B.sans, fontSize: 11, color: B.textMut }}>
                   {loading ? "building\u2026" : "tap for full script \u2192"}
                 </span>
               </div>
               <div style={{ padding: "14px 16px" }}>
-                <div style={{ fontFamily: B.sans, fontSize: 17, fontWeight: 500, color: B.charcoal, lineHeight: 1.5, marginBottom: 10 }}>
-                  &ldquo;{h.verbal}&rdquo;
-                </div>
-                <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                  <div style={{ background: B.surfaceAlt, borderRadius: 6, padding: "6px 10px", display: "inline-block", border: `1px solid ${B.border}` }}>
-                    <span style={{ fontFamily: B.mono, fontSize: 10, fontWeight: 600, color: B.textSec }}>{h.text_overlay}</span>
-                  </div>
-                  <span style={{ fontFamily: B.sans, fontSize: 9, fontWeight: 600, color: B.textMut, textTransform: "uppercase", letterSpacing: "0.06em" }}>Text Hook</span>
+                <div style={{ fontFamily: B.serif, fontSize: 17, fontWeight: 500, color: B.charcoal, lineHeight: 1.5 }}>
+                  &ldquo;{h.text}&rdquo;
                 </div>
               </div>
             </button>
@@ -489,7 +468,7 @@ function S2({ hooks, analysis, onPick, onRegen, onUpdateAnalysis, loading }) {
           <input
             value={fb}
             onChange={(e) => setFb(e.target.value)}
-            placeholder="more urgent\u2026 focus on the yard\u2026 less clickbaity\u2026"
+            placeholder={"more urgent\u2026 focus on the yard\u2026 less clickbaity\u2026"}
             style={{ ...inputBase, flex: 1, borderRadius: 24, padding: "10px 16px", fontSize: 13 }}
             onFocus={(e) => (e.target.style.borderColor = B.redwood)}
             onBlur={(e) => (e.target.style.borderColor = B.border)}
@@ -508,31 +487,20 @@ function S2({ hooks, analysis, onPick, onRegen, onUpdateAnalysis, loading }) {
 // SCREEN 3 — SCRIPT
 // ═══════════════════════════════════════
 
-function S3({ hook, body, endings, onBack, onReset, onRegenBody, loading }) {
-  const [ei, setEi] = useState(0);
+function S3({ hook, script, endCard, wordCount, warnings, onBack, onReset, onRegenBody, loading }) {
   const [editing, setEditing] = useState(false);
-  const [et, setEt] = useState(body);
+  const [et, setEt] = useState(script);
   const [copied, setCopied] = useState(false);
   const [bn, setBn] = useState("");
   const [saved, setSaved] = useState(false);
 
-  const end = endings[ei] || endings[0];
-  const ec = { payoff: B.gold, soft: B.sage, direct: B.redwood };
-  const el = { payoff: "Payoff Close", soft: "Soft CTA", direct: "Direct CTA" };
-  const db = editing ? et : body;
+  const displayScript = editing ? et : script;
 
   const buildFull = useCallback(() => {
-    return [
-      `"${hook.verbal}"`,
-      `TEXT: ${hook.text_overlay}`,
-      "",
-      db,
-      "",
-      `"${end.closing}"`,
-      end.cta ? `"${end.cta}"` : "",
-      end.text_overlay ? `TEXT: ${end.text_overlay}` : "",
-    ].filter(Boolean).join("\n");
-  }, [hook, db, end]);
+    const parts = [displayScript.trim()];
+    if (endCard) parts.push("", `— END CARD (graphic, not spoken) —`, endCard);
+    return parts.join("\n");
+  }, [displayScript, endCard]);
 
   const copyScript = () => {
     navigator.clipboard.writeText(buildFull());
@@ -548,36 +516,42 @@ function S3({ hook, body, endings, onBack, onReset, onRegenBody, loading }) {
     setSaved(true);
   };
 
+  const wordCountColor = wordCount >= 115 && wordCount <= 125 ? B.sage : B.gold;
+
   return (
-    <div style={{ padding: "12px 20px 110px", animation: "fadeUp 0.25s ease" }}>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14 }}>
-        <h2 style={{ fontFamily: B.serif, fontSize: 24, fontWeight: 500, color: B.charcoal, margin: 0 }}>Your script</h2>
+    <div style={{ padding: "24px 20px 110px", animation: "fadeUp 0.25s ease" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
+        <h2 style={{ fontFamily: B.serif, fontSize: 26, fontWeight: 500, color: B.charcoal, margin: 0, letterSpacing: "-0.01em" }}>Your script</h2>
         <button onClick={onBack} style={{ background: "none", border: "none", fontFamily: B.sans, fontSize: 12, fontWeight: 500, color: B.redwood, cursor: "pointer" }}>
-          \u2190 Different hook
+          {"\u2190 Different hook"}
         </button>
       </div>
 
-      {/* Hook */}
-      <div style={{ background: B.redwoodBg, border: `1px solid ${B.redwoodBorder}`, borderRadius: B.r, padding: "14px 16px", marginBottom: 10 }}>
+      <WarningsBanner warnings={warnings} />
+
+      {/* Hook (context) */}
+      <div style={{ background: B.redwoodBg, border: `1px solid ${B.redwoodBorder}`, borderRadius: B.r, padding: "14px 16px", marginBottom: 12 }}>
         <div style={{ fontFamily: B.sans, fontSize: 11, fontWeight: 700, color: B.redwood, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 6 }}>
-          Hook
+          Hook \u00B7 {hook.archetype}
         </div>
         <div style={{ fontFamily: B.serif, fontSize: 16, fontWeight: 500, color: B.charcoal, lineHeight: 1.45 }}>
-          &ldquo;{hook.verbal}&rdquo;
-        </div>
-        <div style={{ marginTop: 8 }}>
-          <span style={{ background: B.surface, borderRadius: 6, padding: "4px 10px", fontFamily: B.mono, fontSize: 10, fontWeight: 600, color: B.textSec, border: `1px solid ${B.border}` }}>
-            {hook.text_overlay}
-          </span>
+          &ldquo;{hook.text}&rdquo;
         </div>
       </div>
 
-      {/* Body */}
-      <div style={{ background: B.card, border: `1.5px solid ${B.cardBorder}`, borderRadius: B.r, overflow: "hidden", marginBottom: 10, boxShadow: B.shadow }}>
+      {/* Script */}
+      <div style={{ background: B.card, border: `1.5px solid ${B.cardBorder}`, borderRadius: B.r, overflow: "hidden", marginBottom: 12, boxShadow: B.shadow }}>
         <div style={{ padding: "10px 16px", borderBottom: `1px solid ${B.border}`, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <span style={{ fontFamily: B.sans, fontSize: 11, fontWeight: 700, color: B.gold, textTransform: "uppercase", letterSpacing: "0.06em" }}>Body</span>
+          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+            <span style={{ fontFamily: B.sans, fontSize: 11, fontWeight: 700, color: B.gold, textTransform: "uppercase", letterSpacing: "0.06em" }}>Script</span>
+            {wordCount > 0 && (
+              <span style={{ fontFamily: B.mono, fontSize: 10, fontWeight: 600, color: wordCountColor, background: wordCountColor + "0D", border: `1px solid ${wordCountColor}22`, padding: "2px 8px", borderRadius: 6 }}>
+                {wordCount} words
+              </span>
+            )}
+          </div>
           <button
-            onClick={() => { if (editing) setEditing(false); else { setEt(body); setEditing(true); } }}
+            onClick={() => { if (editing) setEditing(false); else { setEt(script); setEditing(true); } }}
             style={{ background: "none", border: "none", fontFamily: B.sans, fontSize: 12, fontWeight: 500, color: editing ? B.redwood : B.textMut, cursor: "pointer" }}
           >
             {editing ? "Done editing" : "Edit"}
@@ -588,7 +562,7 @@ function S3({ hook, body, endings, onBack, onReset, onRegenBody, loading }) {
             <input
               value={bn}
               onChange={(e) => setBn(e.target.value)}
-              placeholder="shorter\u2026 more energy\u2026 skip the basement\u2026"
+              placeholder={"shorter\u2026 more energy\u2026 skip the basement\u2026"}
               style={{ ...inputBase, flex: 1, borderRadius: 20, padding: "8px 14px", fontSize: 12, background: B.surfaceAlt, border: `1px solid ${B.border}` }}
               onKeyDown={(e) => { if (e.key === "Enter" && !loading) { onRegenBody(bn); setBn(""); } }}
             />
@@ -613,54 +587,27 @@ function S3({ hook, body, endings, onBack, onReset, onRegenBody, loading }) {
             style={{
               width: "100%", boxSizing: "border-box", background: B.surfaceAlt,
               border: "none", padding: "14px 16px", fontFamily: B.sans, fontSize: 14,
-              lineHeight: 1.65, color: B.charcoal, resize: "vertical", outline: "none",
+              lineHeight: 1.7, color: B.charcoal, resize: "vertical", outline: "none",
             }}
           />
         ) : (
-          <div style={{ padding: "14px 16px", fontFamily: B.sans, fontSize: 14, lineHeight: 1.7, color: B.charcoal, whiteSpace: "pre-wrap" }}>
-            {db}
+          <div style={{ padding: "14px 16px", fontFamily: B.sans, fontSize: 15, lineHeight: 1.75, color: B.charcoal, whiteSpace: "pre-wrap" }}>
+            {displayScript}
           </div>
         )}
       </div>
 
-      {/* Ending */}
-      <div style={{ background: B.card, border: `1.5px solid ${B.cardBorder}`, borderRadius: B.r, overflow: "hidden", marginBottom: 10, boxShadow: B.shadow }}>
-        <div style={{ padding: "10px 16px", borderBottom: `1px solid ${B.border}` }}>
-          <span style={{ fontFamily: B.sans, fontSize: 11, fontWeight: 700, color: ec[end.type] || B.sage, textTransform: "uppercase", letterSpacing: "0.06em" }}>
-            {el[end.type] || "Ending"}
-          </span>
-        </div>
-        <div style={{ padding: "14px 16px" }}>
-          <div style={{ fontFamily: B.serif, fontSize: 15, color: B.charcoal, lineHeight: 1.5, marginBottom: end.cta ? 8 : 0 }}>
-            &ldquo;{end.closing}&rdquo;
+      {/* End card */}
+      {endCard && (
+        <div style={{ background: B.surfaceAlt, border: `1px solid ${B.border}`, borderRadius: B.r, padding: "12px 16px", marginBottom: 12 }}>
+          <div style={{ fontFamily: B.sans, fontSize: 10, fontWeight: 700, color: B.textMut, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 4 }}>
+            End card graphic \u00B7 not spoken
           </div>
-          {end.cta && <div style={{ fontFamily: B.sans, fontSize: 13, color: B.textSec, lineHeight: 1.45 }}>{end.cta}</div>}
-          {end.text_overlay && (
-            <div style={{ marginTop: 8 }}>
-              <span style={{ background: B.surfaceAlt, borderRadius: 6, padding: "4px 10px", fontFamily: B.mono, fontSize: 10, fontWeight: 600, color: B.textMut, border: `1px solid ${B.border}` }}>
-                {end.text_overlay}
-              </span>
-            </div>
-          )}
+          <div style={{ fontFamily: B.sans, fontSize: 13, color: B.charcoal, lineHeight: 1.5 }}>
+            {endCard}
+          </div>
         </div>
-        <div style={{ padding: "8px 16px 12px", borderTop: `1px solid ${B.border}`, display: "flex", gap: 8 }}>
-          {endings.map((e, i) => (
-            <button
-              key={i}
-              onClick={() => setEi(i)}
-              style={{
-                flex: 1, padding: "8px 0", borderRadius: 8, cursor: "pointer",
-                background: i === ei ? (ec[e.type] || B.sage) + "0D" : "transparent",
-                border: `1.5px solid ${i === ei ? (ec[e.type] || B.sage) : B.border}`,
-                fontFamily: B.sans, fontSize: 11, fontWeight: 600,
-                color: i === ei ? B.charcoal : B.textMut, transition: "all 0.2s",
-              }}
-            >
-              {el[e.type]}
-            </button>
-          ))}
-        </div>
-      </div>
+      )}
 
       <button onClick={onReset} style={{ background: "none", border: "none", fontFamily: B.sans, fontSize: 12, color: B.textMut, cursor: "pointer", padding: "4px 0" }}>
         Start a new script
@@ -670,7 +617,7 @@ function S3({ hook, body, endings, onBack, onReset, onRegenBody, loading }) {
       {!saved ? (
         <div style={{ marginTop: 10, padding: "10px 14px", background: B.surfaceAlt, borderRadius: B.rs, border: `1px solid ${B.border}` }}>
           <div style={{ fontFamily: B.sans, fontSize: 11.5, color: B.textSec, marginBottom: 8 }}>
-            Send yourself a copy so you don't lose it:
+            {"Send yourself a copy so you don\u2019t lose it:"}
           </div>
           <div style={{ display: "flex", gap: 8 }}>
             {[["email", "Email it"], ["sms", "Text it"]].map(([m, label]) => (
@@ -691,7 +638,7 @@ function S3({ hook, body, endings, onBack, onReset, onRegenBody, loading }) {
         </div>
       ) : (
         <div style={{ marginTop: 10, fontFamily: B.sans, fontSize: 11.5, color: B.sage, textAlign: "center" }}>
-          Script saved. You're good to go.
+          {"Script saved. You\u2019re good to go."}
         </div>
       )}
 
@@ -806,10 +753,11 @@ function ReelScripter() {
   const [er, setEr] = useState("");
   const [data, setData] = useState({ details: "", tone: "", price: "", addressText: "", address: null });
   const [hooks, setHooks] = useState([]);
-  const [an, setAn] = useState(null);
   const [hook, setHook] = useState(null);
-  const [body, setBody] = useState("");
-  const [ends, setEnds] = useState([]);
+  const [script, setScript] = useState("");
+  const [endCard, setEndCard] = useState("");
+  const [wordCount, setWordCount] = useState(0);
+  const [warnings, setWarnings] = useState([]);
   const [scraping, setScraping] = useState(false);
   const [scrapeErr, setScrapeErr] = useState("");
 
@@ -858,36 +806,32 @@ function ReelScripter() {
 
   const genH = () => go(async () => {
     const r = await callAI("listing", "hooks", buildListingHooksInput(data, null));
-    setHooks(r.hooks); setAn(r.analysis); setSc(1);
+    setHooks(r.hooks || []); setWarnings(r.warnings || []); setSc(1);
   });
 
   const pickH = (h) => go(async () => {
     setHook(h);
-    const cd = cleanDetails(data.details);
-    const r = await callAI("listing", "body", buildListingBodyInput(data, an, null), formatSelectedHook(h));
-    // Polish pass — editor rewrites the body for natural speech
-    const pr = await callAI("listing", "polish", buildListingPolishInput(cd, h.verbal, r.body));
-    setBody(pr.body || r.body); setEnds(r.endings || []); setSc(2);
+    const r = await callAI("listing", "body", buildListingBodyInput(data, null), formatSelectedHook(h));
+    setScript(r.script || ""); setEndCard(r.endCard || ""); setWordCount(r.wordCount || 0);
+    setWarnings(r.warnings || []); setSc(2);
   });
 
   const reH = (fb) => go(async () => {
     const r = await callAI("listing", "hooks", buildListingHooksInput(data, fb));
-    setHooks(r.hooks); setAn(r.analysis);
+    setHooks(r.hooks || []); setWarnings(r.warnings || []);
   });
 
   const reB = (fb) => go(async () => {
-    const cd = cleanDetails(data.details);
-    const r = await callAI("listing", "body", buildListingBodyInput(data, an, fb), formatSelectedHook(hook));
-    // Polish pass — editor rewrites the body for natural speech
-    const pr = await callAI("listing", "polish", buildListingPolishInput(cd, hook.verbal, r.body));
-    setBody(pr.body || r.body); setEnds(r.endings || []);
+    const r = await callAI("listing", "body", buildListingBodyInput(data, fb), formatSelectedHook(hook));
+    setScript(r.script || ""); setEndCard(r.endCard || ""); setWordCount(r.wordCount || 0);
+    setWarnings(r.warnings || []);
   });
 
   const rst = () => {
     setSc(0); setData({ details: "", tone: "", price: "", addressText: "", address: null });
-    setHooks([]); setAn(null); setHook(null);
-    setBody(""); setEnds([]); setEr("");
-    setScrapeErr("");
+    setHooks([]); setHook(null);
+    setScript(""); setEndCard(""); setWordCount(0); setWarnings([]);
+    setEr(""); setScrapeErr("");
   };
 
   return (
@@ -938,8 +882,8 @@ function ReelScripter() {
       )}
 
       {sc === 0 && <S1 data={data} setData={setData} onGo={genH} loading={ld} onScrape={scrapeUrl} scraping={scraping} scrapeErr={scrapeErr} />}
-      {sc === 1 && <S2 hooks={hooks} analysis={an} onPick={pickH} onRegen={reH} onUpdateAnalysis={setAn} loading={ld} />}
-      {sc === 2 && <S3 hook={hook} body={body} endings={ends} onBack={() => { setSc(1); setBody(""); setEnds([]); }} onReset={rst} onRegenBody={reB} loading={ld} />}
+      {sc === 1 && <S2 hooks={hooks} warnings={warnings} onPick={pickH} onRegen={reH} loading={ld} />}
+      {sc === 2 && <S3 hook={hook} script={script} endCard={endCard} wordCount={wordCount} warnings={warnings} onBack={() => { setSc(1); setScript(""); setEndCard(""); setWordCount(0); }} onReset={rst} onRegenBody={reB} loading={ld} />}
     </div>
   );
 }

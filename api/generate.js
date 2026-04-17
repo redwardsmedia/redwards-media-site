@@ -3,22 +3,21 @@
 //
 // Contract (scripter-v2):
 //   POST { projectType, step, input, selectedHook? }
-//   projectType: "listing" (v1 parity). "neighborhood" + "sold-story" land in later commits.
-//   step: "hooks" | "body" | "polish"
+//   projectType: "listing". "neighborhood" + "sold-story" land in later commits.
+//   step: "hooks" | "body"
 //   input: the variable portion of the prompt (built client-side)
 //   selectedHook: required for step="body", formatted hook string
 //
+// Response always includes a `warnings` array when banned words slip into the output.
 // Prompt files live in /prompts/*.js and expose { SYSTEM, USER_TEMPLATE }.
-// USER_TEMPLATE placeholders: {userInput}, {selectedHook}.
 
 import * as listingHooks from "../prompts/listingHooks.js";
 import * as listingBody from "../prompts/listingBody.js";
-import * as listingPolish from "../prompts/listingPolish.js";
+import { BANNED_WORDS } from "../src/constants/bannedWords.js";
 
 const PROMPTS = {
   "listing-hooks": listingHooks,
   "listing-body": listingBody,
-  "listing-polish": listingPolish,
 };
 
 const MODEL = "claude-sonnet-4-6";
@@ -133,7 +132,9 @@ export default async function handler(req) {
       return json({ error: "Failed to parse script. Try again." }, 502);
     }
 
-    return json(parsed, 200);
+    const warnings = scanBannedWords(parsed);
+    const payload = warnings.length ? { ...parsed, warnings } : parsed;
+    return json(payload, 200);
   } catch (err) {
     console.error("Generate handler error:", err);
     return json({ error: "Internal server error" }, 500);
@@ -145,6 +146,26 @@ function json(payload, status) {
     status,
     headers: { ...corsHeaders(), "Content-Type": "application/json" },
   });
+}
+
+// Walk every string in the parsed response and flag banned-word matches.
+// Returns a deduped array of the banned phrases that were found.
+function scanBannedWords(parsed) {
+  const hits = new Set();
+  const visit = (v) => {
+    if (typeof v === "string") {
+      const lower = v.toLowerCase();
+      for (const word of BANNED_WORDS) {
+        if (lower.includes(word.toLowerCase())) hits.add(word);
+      }
+    } else if (Array.isArray(v)) {
+      v.forEach(visit);
+    } else if (v && typeof v === "object") {
+      Object.values(v).forEach(visit);
+    }
+  };
+  visit(parsed);
+  return [...hits];
 }
 
 function corsHeaders() {
