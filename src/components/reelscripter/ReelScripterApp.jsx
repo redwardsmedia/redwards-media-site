@@ -1,5 +1,7 @@
 import { useState, useRef, useCallback } from "react";
 import { AddressInput } from "./AddressInput";
+import { ProjectTypePicker } from "./ProjectTypePicker";
+import { NeighborhoodForm } from "./NeighborhoodForm";
 
 // ============================================================
 // Reel Scripter by Redwards Media
@@ -100,6 +102,17 @@ function buildListingBodyInput(data, fb) {
 """
 ${cleanDetails(data.details)}
 """${priceTier(data.price)}${notesBlock(fb)}${toneBlock(data.tone)}`;
+}
+
+function buildNeighborhoodHooksInput(data, fb) {
+  const town = data.townName?.trim() ? `TOWN: ${data.townName.trim()}\n\n` : "";
+  const context = `LOCAL CONTEXT:\n"""\n${cleanDetails(data.details)}\n"""`;
+  const tied = data.addressText?.trim() ? `\n\nTIED LISTING (optional): ${data.addressText.trim()}` : "";
+  return `${town}${context}${tied}${notesBlock(fb)}${toneBlock(data.tone)}`;
+}
+
+function buildNeighborhoodBodyInput(data, fb) {
+  return buildNeighborhoodHooksInput(data, fb);
 }
 
 function formatSelectedHook(hook) {
@@ -751,7 +764,8 @@ function ReelScripter() {
   const [sc, setSc] = useState(0);
   const [ld, setLd] = useState(false);
   const [er, setEr] = useState("");
-  const [data, setData] = useState({ details: "", tone: "", price: "", addressText: "", address: null });
+  const [projectType, setProjectType] = useState(null);
+  const [data, setData] = useState({ details: "", tone: "", price: "", addressText: "", address: null, townName: "" });
   const [hooks, setHooks] = useState([]);
   const [hook, setHook] = useState(null);
   const [script, setScript] = useState("");
@@ -804,31 +818,39 @@ function ReelScripter() {
     setLd(false);
   };
 
+  const hooksInput = (fb) => projectType === "neighborhood"
+    ? buildNeighborhoodHooksInput(data, fb)
+    : buildListingHooksInput(data, fb);
+  const bodyInput = (fb) => projectType === "neighborhood"
+    ? buildNeighborhoodBodyInput(data, fb)
+    : buildListingBodyInput(data, fb);
+
   const genH = () => go(async () => {
-    const r = await callAI("listing", "hooks", buildListingHooksInput(data, null));
-    setHooks(r.hooks || []); setWarnings(r.warnings || []); setSc(1);
+    const r = await callAI(projectType, "hooks", hooksInput(null));
+    setHooks(r.hooks || []); setWarnings(r.warnings || []); setSc(2);
   });
 
   const pickH = (h) => go(async () => {
     setHook(h);
-    const r = await callAI("listing", "body", buildListingBodyInput(data, null), formatSelectedHook(h));
+    const r = await callAI(projectType, "body", bodyInput(null), formatSelectedHook(h));
     setScript(r.script || ""); setEndCard(r.endCard || ""); setWordCount(r.wordCount || 0);
-    setWarnings(r.warnings || []); setSc(2);
+    setWarnings(r.warnings || []); setSc(3);
   });
 
   const reH = (fb) => go(async () => {
-    const r = await callAI("listing", "hooks", buildListingHooksInput(data, fb));
+    const r = await callAI(projectType, "hooks", hooksInput(fb));
     setHooks(r.hooks || []); setWarnings(r.warnings || []);
   });
 
   const reB = (fb) => go(async () => {
-    const r = await callAI("listing", "body", buildListingBodyInput(data, fb), formatSelectedHook(hook));
+    const r = await callAI(projectType, "body", bodyInput(fb), formatSelectedHook(hook));
     setScript(r.script || ""); setEndCard(r.endCard || ""); setWordCount(r.wordCount || 0);
     setWarnings(r.warnings || []);
   });
 
   const rst = () => {
-    setSc(0); setData({ details: "", tone: "", price: "", addressText: "", address: null });
+    setSc(0); setProjectType(null);
+    setData({ details: "", tone: "", price: "", addressText: "", address: null, townName: "" });
     setHooks([]); setHook(null);
     setScript(""); setEndCard(""); setWordCount(0); setWarnings([]);
     setEr(""); setScrapeErr("");
@@ -881,9 +903,11 @@ function ReelScripter() {
         </div>
       )}
 
-      {sc === 0 && <S1 data={data} setData={setData} onGo={genH} loading={ld} onScrape={scrapeUrl} scraping={scraping} scrapeErr={scrapeErr} />}
-      {sc === 1 && <S2 hooks={hooks} warnings={warnings} onPick={pickH} onRegen={reH} loading={ld} />}
-      {sc === 2 && <S3 hook={hook} script={script} endCard={endCard} wordCount={wordCount} warnings={warnings} onBack={() => { setSc(1); setScript(""); setEndCard(""); setWordCount(0); }} onReset={rst} onRegenBody={reB} loading={ld} />}
+      {sc === 0 && <ProjectTypePicker onPick={(pt) => { setProjectType(pt); setSc(1); }} brand={B} />}
+      {sc === 1 && projectType === "listing" && <S1 data={data} setData={setData} onGo={genH} loading={ld} onScrape={scrapeUrl} scraping={scraping} scrapeErr={scrapeErr} />}
+      {sc === 1 && projectType === "neighborhood" && <NeighborhoodForm data={data} setData={setData} onGo={genH} loading={ld} brand={B} styles={{ inputBase, labelStyle, focusRing, Btn, BottomBar, Mic }} />}
+      {sc === 2 && <S2 hooks={hooks} warnings={warnings} onPick={pickH} onRegen={reH} loading={ld} />}
+      {sc === 3 && <S3 hook={hook} script={script} endCard={endCard} wordCount={wordCount} warnings={warnings} onBack={() => { setSc(2); setScript(""); setEndCard(""); setWordCount(0); }} onReset={rst} onRegenBody={reB} loading={ld} />}
     </div>
   );
 }
