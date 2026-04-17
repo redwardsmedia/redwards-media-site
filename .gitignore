@@ -4,3 +4,6 @@ dist
 portfolio-raw/
 *.zip
 .claude/
+.env
+.env.local
+.env.*.local

@@ -1,4 +1,5 @@
 import { useState, useRef, useCallback } from "react";
+import { AddressInput } from "./AddressInput";
 
 // ============================================================
 // Reel Scripter by Redwards Media
@@ -91,16 +92,22 @@ const toneBlock = (toneId) => {
   const t = TONES.find(x => x.id === toneId);
   return t ? `\nTone: ${t.m}` : "";
 };
+const addressBlock = (data) => {
+  const addr = data.address;
+  if (addr?.formatted) return `ADDRESS: ${addr.formatted}\n\n`;
+  if (data.addressText && data.addressText.trim()) return `ADDRESS: ${data.addressText.trim()}\n\n`;
+  return "";
+};
 
 function buildListingHooksInput(data, fb) {
-  return `LISTING DETAILS:
+  return `${addressBlock(data)}LISTING DETAILS:
 """
 ${cleanDetails(data.details)}
 """${priceTier(data.price)}${notesBlock(fb)}${toneBlock(data.tone)}`;
 }
 
 function buildListingBodyInput(data, analysis, fb) {
-  return `FEATURES: ${analysis.hook_seed} | ${analysis.features.join(", ")} | For: ${analysis.target_buyer}
+  return `${addressBlock(data)}FEATURES: ${analysis.hook_seed} | ${analysis.features.join(", ")} | For: ${analysis.target_buyer}
 
 DETAILS: ${cleanDetails(data.details)}${priceTier(data.price)}${notesBlock(fb)}${toneBlock(data.tone)}`;
 }
@@ -267,8 +274,28 @@ function S1({ data, setData, onGo, loading, onScrape, scraping, scrapeErr }) {
         What are we filming?
       </h2>
       <p style={{ fontFamily: B.sans, fontSize: 13.5, color: B.textSec, margin: "0 0 20px", lineHeight: 1.5 }}>
-        Price shapes the whole approach. Then paste or describe the listing.
+        {"Start with the address — we\u2019ll confirm the town from Google. Price and details come next."}
       </p>
+
+      {/* Address */}
+      <div style={{ marginBottom: 16 }}>
+        <label style={labelStyle}>Listing address</label>
+        <AddressInput
+          value={data.addressText || ""}
+          onChange={(t) => setData((d) => ({ ...d, addressText: t }))}
+          onSelect={(addr) => setData((d) => ({ ...d, address: addr }))}
+          inputStyle={{ ...inputBase, width: "100%", padding: "14px 16px", fontSize: 15, fontWeight: 500 }}
+          inputProps={focusRing}
+        />
+        {data.address?.town && data.address?.state && (
+          <div style={{ display: "flex", alignItems: "center", gap: 8, marginTop: 8 }}>
+            <span style={{ fontFamily: B.sans, fontSize: 11, fontWeight: 600, color: B.sage, background: B.sage + "0D", border: `1px solid ${B.sage}22`, padding: "3px 10px", borderRadius: 6 }}>
+              {data.address.town}, {data.address.state}
+            </span>
+            <span style={{ fontFamily: B.sans, fontSize: 11.5, color: B.textMut }}>verified</span>
+          </div>
+        )}
+      </div>
 
       {/* Price */}
       <div style={{ marginBottom: 16 }}>
@@ -800,7 +827,7 @@ function ReelScripter() {
   const [sc, setSc] = useState(0);
   const [ld, setLd] = useState(false);
   const [er, setEr] = useState("");
-  const [data, setData] = useState({ details: "", tone: "", price: "" });
+  const [data, setData] = useState({ details: "", tone: "", price: "", addressText: "", address: null });
   const [hooks, setHooks] = useState([]);
   const [an, setAn] = useState(null);
   const [hook, setHook] = useState(null);
@@ -880,7 +907,7 @@ function ReelScripter() {
   });
 
   const rst = () => {
-    setSc(0); setData({ details: "", tone: "", price: "" });
+    setSc(0); setData({ details: "", tone: "", price: "", addressText: "", address: null });
     setHooks([]); setAn(null); setHook(null);
     setBody(""); setEnds([]); setEr("");
     setScrapeErr("");
