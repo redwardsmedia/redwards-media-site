@@ -27,14 +27,6 @@ const B = {
 // Prompts live server-side in /prompts/*.js (see scripter-v2 Commit 1).
 // This file builds the variable input blob that the server substitutes into the template.
 
-const TONES = [
-  { id: "confident", label: "Confident", m: "Authoritative. Short declaratives. No hedging." },
-  { id: "warm", label: "Warm", m: "Friendly, genuine. Like advice over coffee." },
-  { id: "urgent", label: "Urgent", m: "Time pressure. This is happening NOW." },
-  { id: "casual", label: "Casual", m: "Off-the-cuff. Walking through, talking to camera." },
-  { id: "expert", label: "Expert", m: "Data-forward. The market authority." },
-];
-
 // ═══════════════════════════════════════
 // PRICE PARSER
 // ═══════════════════════════════════════
@@ -88,10 +80,7 @@ function priceTier(price) {
 const cleanDetails = (d) => d.replace(/https?:\/\/[^\s]+/gi, "").replace(/www\.[^\s]+/gi, "").trim();
 
 const notesBlock = (fb) => fb && fb.trim() ? `\n\nAGENT NOTES: "${fb.trim()}" — incorporate this.` : "";
-const toneBlock = (toneId) => {
-  const t = TONES.find(x => x.id === toneId);
-  return t ? `\nTone: ${t.m}` : "";
-};
+const toneBlock = (tone) => tone && tone.trim() ? `\nAgent voice: ${tone.trim()}` : "";
 const addressBlock = (data) => {
   const addr = data.address;
   if (addr?.formatted) return `ADDRESS: ${addr.formatted}\n\n`;
@@ -172,18 +161,6 @@ const labelStyle = {
 // ═══════════════════════════════════════
 // COMPONENTS
 // ═══════════════════════════════════════
-
-const Pill = ({ sel, onClick, children }) => (
-  <button onClick={onClick} style={{
-    background: sel ? B.redwoodBg : B.surface,
-    border: `1.5px solid ${sel ? B.redwood : B.border}`,
-    borderRadius: 24, padding: "8px 18px", cursor: "pointer", transition: "all 0.2s",
-  }}>
-    <span style={{ fontFamily: B.sans, fontSize: 13, fontWeight: 500, color: sel ? B.redwood : B.textSec }}>
-      {children}
-    </span>
-  </button>
-);
 
 const Btn = ({ onClick, disabled, loading, children, secondary }) => (
   <button onClick={onClick} disabled={disabled || loading} style={{
@@ -269,16 +246,16 @@ function S1({ data, setData, onGo, loading, onScrape, scraping, scrapeErr }) {
   const [url, setUrl] = useState("");
   const ready = data.details.trim().length >= 16;
   return (
-    <div style={{ padding: "12px 20px 130px", animation: "fadeUp 0.25s ease" }}>
-      <h2 style={{ fontFamily: B.serif, fontSize: 24, fontWeight: 500, color: B.charcoal, margin: "0 0 6px" }}>
+    <div style={{ padding: "24px 20px 140px", animation: "fadeUp 0.25s ease" }}>
+      <h2 style={{ fontFamily: B.serif, fontSize: 26, fontWeight: 500, color: B.charcoal, margin: "0 0 8px", letterSpacing: "-0.01em" }}>
         What are we filming?
       </h2>
-      <p style={{ fontFamily: B.sans, fontSize: 13.5, color: B.textSec, margin: "0 0 20px", lineHeight: 1.5 }}>
-        {"Start with the address — we\u2019ll confirm the town from Google. Price and details come next."}
+      <p style={{ fontFamily: B.sans, fontSize: 13.5, color: B.textSec, margin: "0 0 28px", lineHeight: 1.55 }}>
+        {"Start with the address \u2014 we\u2019ll confirm the town from Google. Price and details come next."}
       </p>
 
       {/* Address */}
-      <div style={{ marginBottom: 16 }}>
+      <div style={{ marginBottom: 20 }}>
         <label style={labelStyle}>Listing address</label>
         <AddressInput
           value={data.addressText || ""}
@@ -298,7 +275,7 @@ function S1({ data, setData, onGo, loading, onScrape, scraping, scrapeErr }) {
       </div>
 
       {/* Price */}
-      <div style={{ marginBottom: 16 }}>
+      <div style={{ marginBottom: 20 }}>
         <label style={labelStyle}>List price</label>
         <input
           value={data.price || ""}
@@ -331,7 +308,7 @@ function S1({ data, setData, onGo, loading, onScrape, scraping, scrapeErr }) {
       </div>
 
       {/* Details */}
-      <div style={{ marginBottom: 16 }}>
+      <div style={{ marginBottom: 20 }}>
         <label style={labelStyle}>Listing details</label>
         <div style={{ display: "flex", gap: 8, marginBottom: 10 }}>
           <input
@@ -386,18 +363,18 @@ function S1({ data, setData, onGo, loading, onScrape, scraping, scrapeErr }) {
         </div>
       </div>
 
-      {/* Tone */}
+      {/* Agent voice */}
       <div style={{ marginBottom: 24 }}>
         <label style={labelStyle}>
-          Tone <span style={{ fontWeight: 400 }}>\u00B7 optional</span>
+          {"Agent voice \u00B7 optional"}
         </label>
-        <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-          {TONES.map((t) => (
-            <Pill key={t.id} sel={data.tone === t.id} onClick={() => setData((d) => ({ ...d, tone: d.tone === t.id ? "" : t.id }))}>
-              {t.label}
-            </Pill>
-          ))}
-        </div>
+        <input
+          value={data.tone || ""}
+          onChange={(e) => setData((d) => ({ ...d, tone: e.target.value }))}
+          placeholder="e.g. warm and confident, like a knowledgeable friend"
+          style={{ ...inputBase, width: "100%", padding: "12px 16px", fontSize: 14 }}
+          {...focusRing}
+        />
       </div>
 
       <BottomBar>
