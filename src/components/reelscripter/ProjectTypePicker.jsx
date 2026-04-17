@@ -21,9 +21,7 @@ const OPTIONS = [
     emoji: "\u2705", // check mark ✅
     title: "Sold Story",
     subtitle: "Post-close package",
-    body: "Social caption + testimonial email + Just Sold reel.",
-    disabled: true,
-    disabledLabel: "Coming soon",
+    body: "Social caption + testimonial email + Just Sold reel. One pass.",
   },
 ];
 

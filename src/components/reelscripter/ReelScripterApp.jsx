@@ -2,6 +2,8 @@ import { useState, useRef, useCallback } from "react";
 import { AddressInput } from "./AddressInput";
 import { ProjectTypePicker } from "./ProjectTypePicker";
 import { NeighborhoodForm } from "./NeighborhoodForm";
+import { SoldStoryForm } from "./SoldStoryForm";
+import { SoldStoryOutput } from "./SoldStoryOutput";
 
 // ============================================================
 // Reel Scripter by Redwards Media
@@ -113,6 +115,22 @@ function buildNeighborhoodHooksInput(data, fb) {
 
 function buildNeighborhoodBodyInput(data, fb) {
   return buildNeighborhoodHooksInput(data, fb);
+}
+
+function buildSoldStoryInput(data) {
+  const lines = [];
+  if (data.addressText?.trim()) lines.push(`ADDRESS: ${data.addressText.trim()}`);
+  if (data.side) lines.push(`SIDE: ${data.side}`);
+  if (data.listPrice?.toString().trim()) lines.push(`LIST PRICE: ${data.listPrice.toString().trim()}`);
+  if (data.salePrice?.toString().trim()) lines.push(`SALE PRICE: ${data.salePrice.toString().trim()}`);
+  if (data.dom?.toString().trim()) lines.push(`DAYS ON MARKET: ${data.dom.toString().trim()}`);
+  if (data.offers?.toString().trim()) lines.push(`OFFERS: ${data.offers.toString().trim()}`);
+  if (data.agentName?.trim()) lines.push(`AGENT: ${data.agentName.trim()}`);
+  if (data.brokerage?.trim()) lines.push(`BROKERAGE: ${data.brokerage.trim()}`);
+  lines.push("");
+  lines.push(`STRATEGY NOTES:\n"""\n${cleanDetails(data.details)}\n"""`);
+  if (data.tone?.trim()) lines.push(`\nAgent voice: ${data.tone.trim()}`);
+  return lines.join("\n");
 }
 
 function formatSelectedHook(hook) {
@@ -765,13 +783,17 @@ function ReelScripter() {
   const [ld, setLd] = useState(false);
   const [er, setEr] = useState("");
   const [projectType, setProjectType] = useState(null);
-  const [data, setData] = useState({ details: "", tone: "", price: "", addressText: "", address: null, townName: "" });
+  const [data, setData] = useState({
+    details: "", tone: "", price: "", addressText: "", address: null, townName: "",
+    listPrice: "", salePrice: "", dom: "", offers: "", side: "seller", agentName: "", brokerage: "",
+  });
   const [hooks, setHooks] = useState([]);
   const [hook, setHook] = useState(null);
   const [script, setScript] = useState("");
   const [endCard, setEndCard] = useState("");
   const [wordCount, setWordCount] = useState(0);
   const [warnings, setWarnings] = useState([]);
+  const [soldResult, setSoldResult] = useState(null);
   const [scraping, setScraping] = useState(false);
   const [scrapeErr, setScrapeErr] = useState("");
 
@@ -826,6 +848,18 @@ function ReelScripter() {
     : buildListingBodyInput(data, fb);
 
   const genH = () => go(async () => {
+    if (projectType === "sold-story") {
+      const r = await callAI("sold-story", "generate", buildSoldStoryInput(data));
+      setSoldResult({
+        socialPost: r.socialPost || "",
+        testimonialEmail: r.testimonialEmail || { subject: "", body: "" },
+        reelScript: r.reelScript || "",
+        wordCount: r.wordCount || {},
+      });
+      setWarnings(r.warnings || []);
+      setSc(3);
+      return;
+    }
     const r = await callAI(projectType, "hooks", hooksInput(null));
     setHooks(r.hooks || []); setWarnings(r.warnings || []); setSc(2);
   });
@@ -850,9 +884,13 @@ function ReelScripter() {
 
   const rst = () => {
     setSc(0); setProjectType(null);
-    setData({ details: "", tone: "", price: "", addressText: "", address: null, townName: "" });
+    setData({
+      details: "", tone: "", price: "", addressText: "", address: null, townName: "",
+      listPrice: "", salePrice: "", dom: "", offers: "", side: "seller", agentName: "", brokerage: "",
+    });
     setHooks([]); setHook(null);
     setScript(""); setEndCard(""); setWordCount(0); setWarnings([]);
+    setSoldResult(null);
     setEr(""); setScrapeErr("");
   };
 
@@ -906,8 +944,10 @@ function ReelScripter() {
       {sc === 0 && <ProjectTypePicker onPick={(pt) => { setProjectType(pt); setSc(1); }} brand={B} />}
       {sc === 1 && projectType === "listing" && <S1 data={data} setData={setData} onGo={genH} loading={ld} onScrape={scrapeUrl} scraping={scraping} scrapeErr={scrapeErr} />}
       {sc === 1 && projectType === "neighborhood" && <NeighborhoodForm data={data} setData={setData} onGo={genH} loading={ld} brand={B} styles={{ inputBase, labelStyle, focusRing, Btn, BottomBar, Mic }} />}
+      {sc === 1 && projectType === "sold-story" && <SoldStoryForm data={data} setData={setData} onGo={genH} loading={ld} brand={B} styles={{ inputBase, labelStyle, focusRing, Btn, BottomBar, Mic }} />}
       {sc === 2 && <S2 hooks={hooks} warnings={warnings} onPick={pickH} onRegen={reH} loading={ld} />}
-      {sc === 3 && <S3 hook={hook} script={script} endCard={endCard} wordCount={wordCount} warnings={warnings} onBack={() => { setSc(2); setScript(""); setEndCard(""); setWordCount(0); }} onReset={rst} onRegenBody={reB} loading={ld} />}
+      {sc === 3 && projectType !== "sold-story" && <S3 hook={hook} script={script} endCard={endCard} wordCount={wordCount} warnings={warnings} onBack={() => { setSc(2); setScript(""); setEndCard(""); setWordCount(0); }} onReset={rst} onRegenBody={reB} loading={ld} />}
+      {sc === 3 && projectType === "sold-story" && soldResult && <SoldStoryOutput {...soldResult} warnings={warnings} onBack={() => setSc(1)} onReset={rst} brand={B} styles={{ BottomBar, WarningsBanner }} />}
     </div>
   );
 }

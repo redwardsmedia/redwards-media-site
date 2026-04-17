@@ -15,6 +15,7 @@ import * as listingHooks from "../prompts/listingHooks.js";
 import * as listingBody from "../prompts/listingBody.js";
 import * as neighborhoodHooks from "../prompts/neighborhoodHooks.js";
 import * as neighborhoodBody from "../prompts/neighborhoodBody.js";
+import * as soldStory from "../prompts/soldStory.js";
 import { DISCOURAGED_WORDS } from "../src/constants/discouragedWords.js";
 
 const PROMPTS = {
@@ -22,6 +23,7 @@ const PROMPTS = {
   "listing-body": listingBody,
   "neighborhood-hooks": neighborhoodHooks,
   "neighborhood-body": neighborhoodBody,
+  "sold-story-generate": soldStory,
 };
 
 const MODEL = "claude-sonnet-4-6";
