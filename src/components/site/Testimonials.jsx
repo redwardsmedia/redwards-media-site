@@ -6,7 +6,7 @@ const TESTIMONIALS = [
   {
     quote: "Rohan made me feel like I actually knew what I was doing on camera. The content he creates isn't just good — it's me, but better.",
     name: 'Charlotte',
-    title: 'Real Estate Agent',
+    title: 'The Wilson Group',
   },
   {
     quote: "24 hours. That's all it took to get back the most incredible listing photos I've ever had. I send every single listing to Redwards now.",
@@ -16,7 +16,7 @@ const TESTIMONIALS = [
   {
     quote: "The Signature Reel changed everything for my brand. People recognize me from my videos before I even introduce myself.",
     name: 'Karina',
-    title: 'Luxury Real Estate Agent',
+    title: 'Legacy Group',
   },
 ];
 

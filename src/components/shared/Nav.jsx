@@ -8,6 +8,7 @@ const NAV_LINKS = [
   { label: 'Home', href: '#home' },
   { label: 'Services', href: '#services' },
   { label: 'About', href: '#about' },
+  { label: 'Pricing', href: '#pricing' },
   { label: 'Reel Scripter', href: '/reelscripter/' },
 ];
 
