@@ -923,11 +923,31 @@ function ReelScripter() {
               by Redwards Media
             </span>
           </div>
-          {sc > 0 && (
-            <button onClick={rst} style={{ background: "none", border: "none", cursor: "pointer", fontFamily: B.sans, fontSize: 12, fontWeight: 500, color: B.textMut }}>
-              New
-            </button>
-          )}
+          <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+            <a
+              href="/"
+              aria-label="Back to Redwards Media home"
+              title="Back to Redwards Media"
+              style={{
+                display: "flex", alignItems: "center", gap: 5,
+                color: B.textMut, textDecoration: "none",
+                fontFamily: B.sans, fontSize: 12, fontWeight: 500,
+                transition: "color 0.2s",
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.color = B.redwood; }}
+              onMouseLeave={(e) => { e.currentTarget.style.color = B.textMut; }}
+            >
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M19 12H5M12 19l-7-7 7-7" />
+              </svg>
+              <span>Home</span>
+            </a>
+            {sc > 0 && (
+              <button onClick={rst} style={{ background: "none", border: "none", cursor: "pointer", fontFamily: B.sans, fontSize: 12, fontWeight: 500, color: B.textMut }}>
+                New
+              </button>
+            )}
+          </div>
         </div>
       </div>
 
