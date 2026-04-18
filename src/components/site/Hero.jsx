@@ -6,8 +6,8 @@ import './Hero.css';
 
 const BOOKING_URL = 'https://book.aryeo.com/order/redwards-media';
 
-// Drop your header video into public/videos/ and update this path
-const HERO_VIDEO_SRC = '/videos/hero-reel.mp4';
+// Drop your header video into public/videos/ and set this to the path (e.g. '/videos/hero-reel.mp4')
+const HERO_VIDEO_SRC = null;
 
 export function Hero() {
   const ref = useScrollReveal();
@@ -49,16 +49,18 @@ export function Hero() {
           </div>
         </div>
         <div className="hero__media reveal">
-          <video
-            ref={videoRef}
-            className={`hero__video ${videoLoaded ? 'hero__video--loaded' : ''}`}
-            src={HERO_VIDEO_SRC}
-            poster="/images/hero-exterior.jpg"
-            autoPlay
-            muted
-            loop
-            playsInline
-          />
+          {HERO_VIDEO_SRC && (
+            <video
+              ref={videoRef}
+              className={`hero__video ${videoLoaded ? 'hero__video--loaded' : ''}`}
+              src={HERO_VIDEO_SRC}
+              poster="/images/hero-exterior.jpg"
+              autoPlay
+              muted
+              loop
+              playsInline
+            />
+          )}
           {!videoLoaded && (
             <img
               className="hero__fallback-img"

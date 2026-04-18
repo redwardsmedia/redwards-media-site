@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /reelscripter/
+Disallow: /api/
+
+Sitemap: https://redwardsmedia.com/sitemap.xml

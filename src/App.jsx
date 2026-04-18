@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import { HomePage } from './pages/HomePage';
 import { ReelScripterPage } from './pages/ReelScripterPage';
 import { useGlobalScrollReveal } from './hooks/useGlobalScrollReveal';
@@ -13,9 +14,10 @@ export default function App() {
     return () => window.removeEventListener('popstate', onPopState);
   }, []);
 
-  if (path.startsWith('/reelscripter')) {
-    return <ReelScripterPage />;
-  }
-
-  return <HomePage />;
+  return (
+    <>
+      {path.startsWith('/reelscripter') ? <ReelScripterPage /> : <HomePage />}
+      <Analytics />
+    </>
+  );
 }
