@@ -9,6 +9,7 @@
   text-transform: uppercase;
   letter-spacing: 0.06em;
   padding: 0.85rem 2rem;
+  min-height: 44px;
   border-radius: var(--radius-sm);
   border: none;
   cursor: pointer;
