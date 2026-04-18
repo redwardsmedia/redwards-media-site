@@ -7,6 +7,7 @@ import { FeaturedWork } from '../components/site/FeaturedWork';
 import { About } from '../components/site/About';
 import { Process } from '../components/site/Process';
 import { Pricing } from '../components/site/Pricing';
+import { ServiceArea } from '../components/site/ServiceArea';
 import { FAQ } from '../components/site/FAQ';
 import { Testimonials } from '../components/site/Testimonials';
 import { Gallery } from '../components/site/Gallery';
@@ -27,6 +28,7 @@ export function HomePage() {
       <Process />
       <Pricing />
       <FAQ />
+      <ServiceArea />
       <Testimonials />
       <Gallery />
       <InstagramFeed />

@@ -40,6 +40,10 @@ export function Footer() {
 
       <div className="footer__bottom container">
         <span>&copy; 2026 Redwards Media. All Rights Reserved.</span>
+        <div className="footer__legal">
+          <a href="/privacy" className="footer__legal-link">Privacy</a>
+          <a href="/terms" className="footer__legal-link">Terms</a>
+        </div>
       </div>
     </footer>
   );

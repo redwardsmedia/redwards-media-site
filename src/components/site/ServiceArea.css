@@ -1,0 +1,85 @@
+.service-area {
+  background: var(--color-warm-white);
+}
+
+.service-area__lede {
+  text-align: center;
+  max-width: 620px;
+  margin: var(--space-md) auto 0;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--color-charcoal-light);
+}
+
+.service-area__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-lg);
+  margin-top: var(--space-2xl);
+}
+
+.service-area__region {
+  background: var(--color-sand-light);
+  border-radius: var(--radius-xl);
+  padding: var(--space-lg);
+  border-top: 3px solid var(--color-redwood);
+}
+
+.service-area__region-head {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-redwood);
+  margin-bottom: var(--space-md);
+}
+
+.service-area__region-name {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 500;
+  margin: 0;
+  color: var(--color-charcoal);
+}
+
+.service-area__towns {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.service-area__town {
+  font-size: 0.9rem;
+  color: var(--color-charcoal-light);
+}
+
+.service-area__note {
+  text-align: center;
+  margin-top: var(--space-2xl);
+  font-size: 0.88rem;
+  color: var(--color-charcoal-light);
+}
+
+.service-area__note a {
+  color: var(--color-redwood);
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+}
+
+@media (max-width: 1024px) {
+  .service-area__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .service-area__grid {
+    grid-template-columns: 1fr;
+    max-width: 360px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
